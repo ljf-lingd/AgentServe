@@ -1,12 +1,22 @@
 # AgentServe
 
-面向业务数据的只读分析助手。用自然语言查询 SQLite，在同一会话里追问时间、地区或指标。浏览器工作台同时提供业务规则问答、经营指标和简报。Task API 保存查询证据、取消状态和执行步骤，便于核对答案与定位失败。
+AgentServe 围绕一个可运行的 SQL Agent，研究**多轮分析如何记住正确的条件、业务问答如何引用正确的规则、模型推理如何降低任务总耗时**。三个问题分别做了基线对照，选出的方案接入同一套 Task API 和工作台。
 
-AgentServe is a self-hosted, read-only SQL and analytics agent with a persistent task API, configurable model serving, and a browser workbench.
+AgentServe is a research-oriented SQL agent for studying session memory, evidence-grounded retrieval, and end-to-end latency with speculative decoding.
 
-[安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md) · [架构与 API](docs/architecture.md) · [评测和复现](docs/evaluation.md)
+[研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
 
-## 已实现
+## 三条研究主线
+
+| 研究问题 | 对照与实现 | 代表结果 |
+| --- | --- | --- |
+| **同会话长程记忆** | 对照近期两轮窗口、语义压缩与混合检索、带来源的查询事件。最终将查询条件存成可恢复的版本，区分保留、修改和删除。 | 24 段正式会话每组 672 轮，记忆相关流程 **48/120 → 120/120**。44 轮会话整段通过 **0/12 → 12/12**。 |
+| **业务规则 RAG** | 比较固定证据、BM25、稠密检索和 RRF 融合。按数据集和生效日期筛条款，再核对问题所需属性与引用原文。 | 正式集固定证据 → BM25，有据回答 **8/24 → 23/24**。两组缺证据题均 **24/24** 正确弃答。 |
+| **全阶段推测解码** | 用后缀自动机从当前请求和同会话已提交的输出中找草稿，由目标模型验证。覆盖记忆规划、SQL 生成与修复、规则问答、最终回答。 | RTX 4090、Qwen2.5-7B、每组 40 个混合任务。仅回答阶段启用 → 全生成阶段启用，服务端 **JCT P95 从 17.286 降至 10.207 秒（约 41%）**。 |
+
+V3.2 和 V4 把版本化规则用于可执行的经营指标与月度简报。应用先绑定批准口径，再生成参数化 SQL，报告沿用同一读快照和已提交结果。JCT（Job Completion Time）由任务账本的创建时间量到终态，覆盖排队、模型调用和工具执行。 [研究设计与判分口径](docs/research.md)
+
+## 工作台与应用接口
 
 | 能力 | 使用方式 |
 | --- | --- |
@@ -42,7 +52,7 @@ python -m agentserve --config configs/app.demo.json --database demo_orders --que
 
 合成数据库的金标是 **6 位客户**。工作台启动、合成订单和 UCI 示例见 [安装指南](docs/getting-started.md)。模型替换与私有数据接入见 [扩展指南](docs/customization.md)。
 
-## 运行与评测
+## 工作台验收
 
 V7.1 在 RTX 4090 上使用 Qwen2.5-7B-Instruct，UCI 零售固定正式集 **47/48 轮正确**、**8/8 段多轮会话全对**、**零 SQL 超时**。唯一错误是把去重客户数查成了去重发票数。13 个历史超时任务经改写后，在原 1 秒 SQL 预算下全部符合金标。
 
