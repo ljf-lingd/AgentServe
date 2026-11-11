@@ -1,0 +1,41 @@
+{
+  "format": 1,
+  "rules": [
+    {
+      "metric_id": "settled_revenue",
+      "aliases": [
+        "成交营收",
+        "Settled Revenue"
+      ],
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "unit": "分",
+      "groups": [
+        "city",
+        "month"
+      ],
+      "source": "settled-revenue@1#1",
+      "source_binding_sha256": "0e41975bee016412ac06301c919baa017d370e538225f1f87bb3155ad4dec199"
+    },
+    {
+      "metric_id": "completed_orders",
+      "aliases": [
+        "完成订单量",
+        "Completed Orders"
+      ],
+      "formula": "order_count",
+      "statuses": [
+        "completed"
+      ],
+      "unit": "笔",
+      "groups": [
+        "city",
+        "month"
+      ],
+      "source": "completed-orders@1#1",
+      "source_binding_sha256": "7d30cf4bab27e20c2ccfeef2d65b0889ca309c3787db78ca84e8847f34781b5c"
+    }
+  ]
+}

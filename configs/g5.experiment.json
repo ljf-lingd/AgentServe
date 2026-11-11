@@ -1,0 +1,36 @@
+{
+  "application_config": "app.demo.json",
+  "database_manifest": "../data/splits/spider_g5_v1/databases.json",
+  "dataset_manifest": "../data/splits/spider_g5_v1/manifest.json",
+  "output_root": "../results/slice5",
+  "model_max_length": 8192,
+  "datasets": {
+    "demo": {"questions": "../data/processed/demo_orders/questions.json", "gold": "../data/gold/demo_orders/answers.json"},
+    "demo-load": {"questions": "../data/processed/demo_orders/questions.json", "gold": "../data/gold/demo_orders/answers.json", "task_count": 24},
+    "smoke": {"questions": "../data/splits/spider_g5_v1/smoke.json", "gold": "../data/gold/spider_g5_v1/smoke.json", "spider": true},
+    "development": {"questions": "../data/splits/spider_g5_v1/development.json", "gold": "../data/gold/spider_g5_v1/development.json", "spider": true},
+    "evaluation": {"questions": "../data/splits/spider_g5_v1/evaluation.json", "gold": "../data/gold/spider_g5_v1/evaluation.json", "spider": true}
+  },
+  "conditions": {
+    "smoke": {"dataset": "smoke", "kind": "quality", "task_concurrency": 4},
+    "development": {"dataset": "development", "kind": "quality", "task_concurrency": 4},
+    "evaluation": {"dataset": "evaluation", "kind": "quality", "task_concurrency": 4},
+    "demo-prewarm": {"dataset": "demo", "kind": "prewarm", "task_concurrency": 2},
+    "load-c1": {"dataset": "demo-load", "kind": "load", "task_concurrency": 1, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "load-c4": {"dataset": "demo-load", "kind": "load", "task_concurrency": 4, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "load-c8": {"dataset": "demo-load", "kind": "load", "task_concurrency": 8, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "load-c16": {"dataset": "demo-load", "kind": "load", "task_concurrency": 16, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "wait-c4-w0.1": {"dataset": "demo-load", "kind": "tool_wait", "task_concurrency": 4, "sql_wait_seconds": 0.1, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "wait-c8-w0.1": {"dataset": "demo-load", "kind": "tool_wait", "task_concurrency": 8, "sql_wait_seconds": 0.1, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "wait-c8-w1": {"dataset": "demo-load", "kind": "tool_wait", "task_concurrency": 8, "sql_wait_seconds": 1, "warmup_ids": ["demo-load-000", "demo-load-001"]},
+    "wait-c4-w1": {"dataset": "demo-load", "kind": "tool_wait", "task_concurrency": 4, "sql_wait_seconds": 1, "warmup_ids": ["demo-load-000", "demo-load-001"]}
+  },
+  "run_order": [
+    "smoke", "development", "evaluation", "demo-prewarm",
+    "load-c1", "load-c4", "load-c8", "load-c16", "load-c16", "load-c8", "load-c4", "load-c1", "load-c4", "load-c1", "load-c16", "load-c8",
+    "wait-c4-w0.1", "wait-c8-w0.1", "wait-c8-w1", "wait-c4-w1",
+    "wait-c4-w0.1", "wait-c8-w0.1", "wait-c8-w1", "wait-c4-w1",
+    "wait-c4-w0.1", "wait-c8-w0.1", "wait-c8-w1", "wait-c4-w1"
+  ],
+  "smoke_order": ["smoke"]
+}

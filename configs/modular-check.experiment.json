@@ -1,0 +1,53 @@
+{
+  "application_config": "app.demo.json",
+  "database_manifest": "../data/splits/spider_g5_v1/databases.json",
+  "dataset_manifest": "../data/splits/spider_g5_v1/manifest.json",
+  "output_root": "../results/modularization/config-check",
+  "model_max_length": 8192,
+  "datasets": {
+    "demo": {
+      "questions": "../data/processed/demo_orders/questions.json",
+      "gold": "../data/gold/demo_orders/answers.json"
+    },
+    "demo-load": {
+      "questions": "../data/processed/demo_orders/questions.json",
+      "gold": "../data/gold/demo_orders/answers.json",
+      "task_count": 8
+    },
+    "smoke": {
+      "questions": "../data/splits/spider_g5_v1/smoke.json",
+      "gold": "../data/gold/spider_g5_v1/smoke.json",
+      "spider": true
+    },
+    "development": {
+      "questions": "../data/splits/spider_g5_v1/development.json",
+      "gold": "../data/gold/spider_g5_v1/development.json",
+      "spider": true
+    },
+    "evaluation": {
+      "questions": "../data/splits/spider_g5_v1/evaluation.json",
+      "gold": "../data/gold/spider_g5_v1/evaluation.json",
+      "spider": true
+    }
+  },
+  "conditions": {
+    "load-c2": {
+      "dataset": "demo-load",
+      "kind": "load",
+      "task_concurrency": 2,
+      "llm_concurrency": 1,
+      "sql_workers": 1,
+      "warmup_ids": [
+        "demo-load-000",
+        "demo-load-001"
+      ]
+    }
+  },
+  "run_order": [
+    "load-c2",
+    "load-c2"
+  ],
+  "smoke_order": [
+    "load-c2"
+  ]
+}

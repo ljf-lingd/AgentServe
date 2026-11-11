@@ -1,0 +1,33 @@
+{# Vicuna roles and separators follow FastChat's vicuna_v1.1 conversation format.
+   The tool envelope matches vLLM's Hermes parser. #}
+{{- bos_token -}}
+{%- for message in messages if message.role == 'system' -%}
+    {{- message.content ~ ' ' -}}
+{%- endfor -%}
+{%- if tools -%}
+    {{- 'When the question requires a database query, call the available function. '
+        ~ 'For automatic tool use, output only <tool_call>{"name":"execute_sql","arguments":{"sql":"SELECT ..."}}'
+        ~ '</tool_call>. Available function definitions: ' -}}
+    {{- tools | tojson -}}
+    {{- ' ' -}}
+{%- endif -%}
+{%- for message in messages if message.role != 'system' -%}
+    {%- if message.role == 'user' -%}
+        {{- 'USER: ' ~ message.content ~ ' ' -}}
+    {%- elif message.role == 'assistant' -%}
+        {{- 'ASSISTANT: ' -}}
+        {%- if message.content -%}
+            {{- message.content -}}
+        {%- endif -%}
+        {%- for call in message.tool_calls or [] -%}
+            {{- '<tool_call>{"name":' ~ (call.function.name | tojson) ~ ',"arguments":' -}}
+            {{- call.function.arguments if call.function.arguments is string else (call.function.arguments | tojson) -}}
+            {{- '}</tool_call>' -}}
+        {%- endfor -%}
+        {{- eos_token -}}
+    {%- elif message.role == 'tool' -%}
+        {{- 'USER: SQL result: ' ~ message.content ~ ' ' -}}
+    {%- endif -%}
+{%- endfor -%}
+{%- if add_generation_prompt -%}{{- 'ASSISTANT:' -}}{%- endif -%}
+

@@ -1,0 +1,45 @@
+import { expect, test } from '@playwright/test'
+
+test('switches to UCI and keeps the dataset in the history URL', async ({ page }) => {
+  await page.goto('/app/')
+  const select = page.getByRole('combobox', { name: '数据集' })
+  await expect(select).toBeVisible()
+  await select.click()
+  await page.getByText('UCI 零售交易', { exact: true }).click()
+  await expect(page.getByRole('tab', { name: '经营简报' })).toHaveCount(0)
+  await page.getByRole('tab', { name: '业务规则' }).click()
+  await expect(page.getByText('数据覆盖 2009-12-01 至 2011-12-09 · 币种 GBP')).toBeVisible()
+  await page.getByRole('tab', { name: '多轮查数' }).click()
+  await page.getByRole('button', { name: '开始查数' }).click()
+  await expect(page).toHaveURL(/#online_retail_ii~sql\//)
+  const sessionUrl = page.url()
+  await page.reload()
+  await expect(page).toHaveURL(sessionUrl)
+  await expect(page.getByText('UCI 零售交易')).toBeVisible()
+})
+
+
+
+test('UCI demo answers the cancellation question, follow-up, and rule', async ({ page }) => {
+  await page.goto('/app/#online_retail_ii~sql')
+  await page.getByRole('button', { name: '开始查数' }).click()
+  const question = page.getByPlaceholder('输入经营问题', { exact: false })
+  await question.fill('英国 2011 年 11 月的取消金额是多少？只返回这个值。')
+  await question.press('Enter')
+  await expect(page.locator('.turn').last().getByText(/42,540[.]43 英镑/)).toBeVisible()
+  await question.fill('那德国呢？')
+  await question.press('Enter')
+  await expect(page.locator('.turn').last().getByText(/1,980[.]67 英镑/)).toBeVisible()
+  await question.fill('德国 2020 年 1 月的销售额是多少？')
+  await question.press('Enter')
+  await expect(page.locator('.turn').last().getByText(/超出数据覆盖范围/)).toBeVisible()
+  await question.fill('Brazil 2009 年 12 月的销售额是多少？只返回这个值。')
+  await question.press('Enter')
+  await expect(page.locator('.turn').last().getByText('没有找到符合条件的明细。')).toBeVisible()
+  await page.getByRole('tab', { name: '业务规则' }).click()
+  const rule = page.getByPlaceholder('怎么认定取消单？')
+  await rule.fill('怎么认定取消单？')
+  await rule.press('Enter')
+  await expect(page.locator('.answer').getByText(/发票号以 C 开头/)).toBeVisible()
+})
+

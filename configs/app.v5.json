@@ -1,0 +1,38 @@
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "agent-qwen-sam",
+  "session_sam": true,
+  "databases": {
+    "demo_orders": {
+      "path": "../data/databases/demo_orders/demo_orders.sqlite",
+      "schema_path": "../data/processed/demo_orders/schema.sql",
+      "context": "All monetary amounts are integer cents; do not convert units. Order statuses: completed/pending/cancelled. Cities: Beijing/Shanghai/Shenzhen.\nOrder analytics interpretation and SQL checks:\n- Respect the question's explicit scope. Counts and lists use all order statuses unless a status is explicitly requested. Only revenue defaults to completed. \"All statuses\" means no status predicate; it does not request grouping by status.\n- A total count asks for one count column. Group by status/month/city only when the question requests that breakdown.\n- Average completed-order amount requires filtering to completed orders BEFORE the per-order sum, then averaging those sums. Do not average all statuses or individual line items.\n- SELECT exactly the requested outputs in the requested order. An ID used only to order/group rows must stay outside SELECT. Group customers by their ID when names can repeat.\n- Use only tables needed for the requested outputs or conditions. Qualify ambiguous column names when joining. Prefer a direct aggregate with ORDER BY and LIMIT for a top result over unnecessary nested MAX subqueries.\n- For entities with no related record, preserve the entity table with NOT EXISTS or LEFT JOIN and a NULL check on the related key; do not reverse the outer join.\n- Use SQLite syntax. Removing every occurrence of a substring uses replace(text, old, new). TRIM(BOTH ... FROM ...) is not SQLite syntax.\n"
+    },
+    "business_orders_v1": {
+      "path": "../data/databases/business_orders_v1/business_orders_v1.sqlite",
+      "schema_path": "../data/processed/business_orders_v1/schema.sql",
+      "context": "This is synthetic acceptance data, not production orders. Dates use YYYY-MM-DD in 2026. All monetary values are integer cents; preserve cents in answers. Revenue includes only completed orders and is SUM(order_items.quantity * order_items.unit_price_cents), using historical item prices, not products.price_cents. Include pending/cancelled only when asked. City/category/name/sku values are case-sensitive text. Names may repeat; customer_id identifies people.\nOrder analytics interpretation and SQL checks:\n- Respect the question's explicit scope. Counts and lists use all order statuses unless a status is explicitly requested. Only revenue defaults to completed. \"All statuses\" means no status predicate; it does not request grouping by status.\n- A total count asks for one count column. Group by status/month/city only when the question requests that breakdown.\n- Average completed-order amount requires filtering to completed orders BEFORE the per-order sum, then averaging those sums. Do not average all statuses or individual line items.\n- SELECT exactly the requested outputs in the requested order. An ID used only to order/group rows must stay outside SELECT. Group customers by their ID when names can repeat.\n- Use only tables needed for the requested outputs or conditions. Qualify ambiguous column names when joining. Prefer a direct aggregate with ORDER BY and LIMIT for a top result over unnecessary nested MAX subqueries.\n- For entities with no related record, preserve the entity table with NOT EXISTS or LEFT JOIN and a NULL check on the related key; do not reverse the outer join.\n- Use SQLite syntax. Removing every occurrence of a substring uses replace(text, old, new). TRIM(BOTH ... FROM ...) is not SQLite syntax.\n"
+    }
+  },
+  "answer_style": "evidence_direct_v5",
+  "sql_function_profile": "with_replace_v1",
+  "sql_prompt_version": "evidence_v22",
+  "task_concurrency": 4,
+  "state_database": "../state/v5-tasks.sqlite",
+  "memory": {
+    "policy": "state_on_demand",
+    "resources_url": "http://127.0.0.1:8002",
+    "recent_turns": 2,
+    "context_tokens": 2048,
+    "model_context_tokens": 8192
+  },
+  "llm_concurrency": 4,
+  "knowledge": {
+    "snapshot_path": "../cache/v32-knowledge-bm25.json",
+    "strategy": "bm25"
+  },
+  "metric": {
+    "registry_path": "../data/knowledge_v32/registry.json"
+  },
+  "analysis_enabled": true
+}

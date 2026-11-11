@@ -1,0 +1,602 @@
+[
+  {
+    "id": "spider.dev.000384",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "What are the names of the teachers ordered by ascending age?"
+  },
+  {
+    "id": "spider.dev.000699",
+    "source_db_id": "voter_1",
+    "database_id": "spider_voter_1",
+    "question": "What are the create dates, states, and phone numbers of the votes that were for the contestant named 'Tabatha Gehling'?"
+  },
+  {
+    "id": "spider.dev.000514",
+    "source_db_id": "student_transcripts_tracking",
+    "database_id": "spider_student_transcripts_tracking",
+    "question": "What is the zip code for Port Chelsea?"
+  },
+  {
+    "id": "spider.dev.000060",
+    "source_db_id": "pets_1",
+    "database_id": "spider_pets_1",
+    "question": "What are the students' first names who have both cats and dogs as pets?"
+  },
+  {
+    "id": "spider.dev.000019",
+    "source_db_id": "concert_singer",
+    "database_id": "spider_concert_singer",
+    "question": "What is the name and capacity for the stadium with the highest average attendance?"
+  },
+  {
+    "id": "spider.dev.000839",
+    "source_db_id": "orchestra",
+    "database_id": "spider_orchestra",
+    "question": "What is the name of the conductor who has worked the greatest number of years?"
+  },
+  {
+    "id": "spider.dev.000506",
+    "source_db_id": "battle_death",
+    "database_id": "spider_battle_death",
+    "question": "What are the notes of the death events which has substring 'East'?"
+  },
+  {
+    "id": "spider.dev.000486",
+    "source_db_id": "wta_1",
+    "database_id": "spider_wta_1",
+    "question": "Find the number of left handed winners who participated in the WTA Championships."
+  },
+  {
+    "id": "spider.dev.001031",
+    "source_db_id": "real_estate_properties",
+    "database_id": "spider_real_estate_properties",
+    "question": "What is the feature type name of feature AirCon?"
+  },
+  {
+    "id": "spider.dev.000665",
+    "source_db_id": "poker_player",
+    "database_id": "spider_poker_player",
+    "question": "What is the birth date of the poker player with the lowest earnings?"
+  },
+  {
+    "id": "spider.dev.000269",
+    "source_db_id": "employee_hire_evaluation",
+    "database_id": "spider_employee_hire_evaluation",
+    "question": "Find the manager name and district of the shop whose number of products is the largest."
+  },
+  {
+    "id": "spider.dev.001001",
+    "source_db_id": "singer",
+    "database_id": "spider_singer",
+    "question": "What is the count of singers?"
+  },
+  {
+    "id": "spider.dev.000948",
+    "source_db_id": "dog_kennels",
+    "database_id": "spider_dog_kennels",
+    "question": "List the cost of each treatment and the corresponding treatment type description."
+  },
+  {
+    "id": "spider.dev.000611",
+    "source_db_id": "tvshow",
+    "database_id": "spider_tvshow",
+    "question": "List the title of all  Cartoons showed on TV Channel with series name \"Sky Radio\"."
+  },
+  {
+    "id": "spider.dev.000344",
+    "source_db_id": "cre_Doc_Template_Mgt",
+    "database_id": "spider_cre_Doc_Template_Mgt",
+    "question": "Return the code of the template type that is most commonly used in documents."
+  },
+  {
+    "id": "spider.dev.000773",
+    "source_db_id": "world_1",
+    "database_id": "spider_world_1",
+    "question": "Which countries have greater area than that of any country in Europe?"
+  },
+  {
+    "id": "spider.dev.000209",
+    "source_db_id": "flight_2",
+    "database_id": "spider_flight_2",
+    "question": "How many flights arriving in Aberdeen city?"
+  },
+  {
+    "id": "spider.dev.000871",
+    "source_db_id": "network_1",
+    "database_id": "spider_network_1",
+    "question": "What are the names of all high schoolers in grade 10?"
+  },
+  {
+    "id": "spider.dev.000413",
+    "source_db_id": "museum_visit",
+    "database_id": "spider_museum_visit",
+    "question": "What is the average age of the visitors whose membership level is not higher than 4?"
+  },
+  {
+    "id": "spider.dev.000145",
+    "source_db_id": "car_1",
+    "database_id": "spider_car_1",
+    "question": "how many cars were produced in 1980?"
+  },
+  {
+    "id": "spider.dev.000404",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "What are the names of the people who teach math courses?"
+  },
+  {
+    "id": "spider.dev.000698",
+    "source_db_id": "voter_1",
+    "database_id": "spider_voter_1",
+    "question": "What is the area code in which the most voters voted?"
+  },
+  {
+    "id": "spider.dev.000536",
+    "source_db_id": "student_transcripts_tracking",
+    "database_id": "spider_student_transcripts_tracking",
+    "question": "What are the first, middle, and last names for everybody enrolled in a Bachelors program?"
+  },
+  {
+    "id": "spider.dev.000063",
+    "source_db_id": "pets_1",
+    "database_id": "spider_pets_1",
+    "question": "Find the id of students who do not have a cat pet."
+  },
+  {
+    "id": "spider.dev.000031",
+    "source_db_id": "concert_singer",
+    "database_id": "spider_concert_singer",
+    "question": "Show names for all stadiums except for stadiums having a concert in year 2014."
+  },
+  {
+    "id": "spider.dev.000832",
+    "source_db_id": "orchestra",
+    "database_id": "spider_orchestra",
+    "question": "What are the maximum and minimum share of performances whose type is not \"Live final\"."
+  },
+  {
+    "id": "spider.dev.000505",
+    "source_db_id": "battle_death",
+    "database_id": "spider_battle_death",
+    "question": "Show names, results and bulgarian commanders of the battles with no ships lost in the 'English Channel'."
+  },
+  {
+    "id": "spider.dev.000467",
+    "source_db_id": "wta_1",
+    "database_id": "spider_wta_1",
+    "question": "find the names of loser and winner who played in the match with greatest number of minutes."
+  },
+  {
+    "id": "spider.dev.001032",
+    "source_db_id": "real_estate_properties",
+    "database_id": "spider_real_estate_properties",
+    "question": "Show the property type descriptions of properties belonging to that code."
+  },
+  {
+    "id": "spider.dev.000673",
+    "source_db_id": "poker_player",
+    "database_id": "spider_poker_player",
+    "question": "What are different nationalities of people and the corresponding number of people from each nation?"
+  },
+  {
+    "id": "spider.dev.000279",
+    "source_db_id": "employee_hire_evaluation",
+    "database_id": "spider_employee_hire_evaluation",
+    "question": "Find the name of the employee who got the highest one time bonus."
+  },
+  {
+    "id": "spider.dev.001006",
+    "source_db_id": "singer",
+    "database_id": "spider_singer",
+    "question": "List the name of singers whose citizenship is not \"France\"."
+  },
+  {
+    "id": "spider.dev.000985",
+    "source_db_id": "dog_kennels",
+    "database_id": "spider_dog_kennels",
+    "question": "What are the dog name, age and weight of the dogs that were abandoned? Note that 1 stands for yes, and 0 stands for no in the tables."
+  },
+  {
+    "id": "spider.dev.000588",
+    "source_db_id": "tvshow",
+    "database_id": "spider_tvshow",
+    "question": "What are the names of all cartoons directed by Ben Jones?"
+  },
+  {
+    "id": "spider.dev.000341",
+    "source_db_id": "cre_Doc_Template_Mgt",
+    "database_id": "spider_cre_Doc_Template_Mgt",
+    "question": "Show all template type codes and the number of documents using each type."
+  },
+  {
+    "id": "spider.dev.000721",
+    "source_db_id": "world_1",
+    "database_id": "spider_world_1",
+    "question": "Give the name of the country in Asia with the lowest life expectancy."
+  },
+  {
+    "id": "spider.dev.000207",
+    "source_db_id": "flight_2",
+    "database_id": "spider_flight_2",
+    "question": "How many flights depart from City Aberdeen?"
+  },
+  {
+    "id": "spider.dev.000914",
+    "source_db_id": "network_1",
+    "database_id": "spider_network_1",
+    "question": "Find the average grade of all students who have some friends."
+  },
+  {
+    "id": "spider.dev.000422",
+    "source_db_id": "museum_visit",
+    "database_id": "spider_museum_visit",
+    "question": "What is the name of the museum that had no visitor yet?"
+  },
+  {
+    "id": "spider.dev.000136",
+    "source_db_id": "car_1",
+    "database_id": "spider_car_1",
+    "question": "What is the average horsepower for all cars produced before 1980 ?"
+  },
+  {
+    "id": "spider.dev.000398",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "What are the towns from which at least two teachers come from?"
+  },
+  {
+    "id": "spider.dev.000701",
+    "source_db_id": "voter_1",
+    "database_id": "spider_voter_1",
+    "question": "Return the names of the contestants whose names contain the substring 'Al' ."
+  },
+  {
+    "id": "spider.dev.000573",
+    "source_db_id": "student_transcripts_tracking",
+    "database_id": "spider_student_transcripts_tracking",
+    "question": "Show the date of the transcript which shows the least number of results, also list the id."
+  },
+  {
+    "id": "spider.dev.000067",
+    "source_db_id": "pets_1",
+    "database_id": "spider_pets_1",
+    "question": "Find the type and weight of the youngest pet."
+  },
+  {
+    "id": "spider.dev.000004",
+    "source_db_id": "concert_singer",
+    "database_id": "spider_concert_singer",
+    "question": "What is the average, minimum, and maximum age of all singers from France?"
+  },
+  {
+    "id": "spider.dev.000835",
+    "source_db_id": "orchestra",
+    "database_id": "spider_orchestra",
+    "question": "Count the number of different nationalities of conductors."
+  },
+  {
+    "id": "spider.dev.000492",
+    "source_db_id": "battle_death",
+    "database_id": "spider_battle_death",
+    "question": "List the name and tonnage ordered by in descending alphaetical order for the names."
+  },
+  {
+    "id": "spider.dev.000481",
+    "source_db_id": "wta_1",
+    "database_id": "spider_wta_1",
+    "question": "Find the number of matches happened in each year."
+  },
+  {
+    "id": "spider.dev.001033",
+    "source_db_id": "real_estate_properties",
+    "database_id": "spider_real_estate_properties",
+    "question": "What are the names of properties that are either houses or apartments with more than 1 room?"
+  },
+  {
+    "id": "spider.dev.000663",
+    "source_db_id": "poker_player",
+    "database_id": "spider_poker_player",
+    "question": "List the names of poker players ordered by the final tables made in ascending order."
+  },
+  {
+    "id": "spider.dev.000287",
+    "source_db_id": "employee_hire_evaluation",
+    "database_id": "spider_employee_hire_evaluation",
+    "question": "Find the number of employees hired in each shop; show the shop name as well."
+  },
+  {
+    "id": "spider.dev.001015",
+    "source_db_id": "singer",
+    "database_id": "spider_singer",
+    "question": "What is the most common singer citizenship ?"
+  },
+  {
+    "id": "spider.dev.000946",
+    "source_db_id": "dog_kennels",
+    "database_id": "spider_dog_kennels",
+    "question": "List the date of each treatment, together with the first name of the professional who operated it."
+  },
+  {
+    "id": "spider.dev.000618",
+    "source_db_id": "tvshow",
+    "database_id": "spider_tvshow",
+    "question": "What is the maximum and minimum share for the TV series?"
+  },
+  {
+    "id": "spider.dev.000375",
+    "source_db_id": "cre_Doc_Template_Mgt",
+    "database_id": "spider_cre_Doc_Template_Mgt",
+    "question": "What is the document id with least number of paragraphs?"
+  },
+  {
+    "id": "spider.dev.000723",
+    "source_db_id": "world_1",
+    "database_id": "spider_world_1",
+    "question": "How many people live in Asia, and what is the largest GNP among them?"
+  },
+  {
+    "id": "spider.dev.000247",
+    "source_db_id": "flight_2",
+    "database_id": "spider_flight_2",
+    "question": "What are flight numbers of flights departing from Airport \"APG\"?"
+  },
+  {
+    "id": "spider.dev.000878",
+    "source_db_id": "network_1",
+    "database_id": "spider_network_1",
+    "question": "Which grade has the most high schoolers?"
+  },
+  {
+    "id": "spider.dev.000412",
+    "source_db_id": "museum_visit",
+    "database_id": "spider_museum_visit",
+    "question": "Find the names of the visitors whose membership level is higher than 4, and order the results by the level from high to low."
+  },
+  {
+    "id": "spider.dev.000152",
+    "source_db_id": "car_1",
+    "database_id": "spider_car_1",
+    "question": "What are the different models created by either the car maker General Motors or weighed more than 3500?"
+  },
+  {
+    "id": "spider.dev.000408",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "What are the names of the teachers who teach at least two courses?"
+  },
+  {
+    "id": "spider.dev.000691",
+    "source_db_id": "voter_1",
+    "database_id": "spider_voter_1",
+    "question": "What is last date created of votes from the state 'CA'?"
+  },
+  {
+    "id": "spider.dev.000552",
+    "source_db_id": "student_transcripts_tracking",
+    "database_id": "spider_student_transcripts_tracking",
+    "question": "What is the date and id of the transcript with at least 2 courses listed?"
+  },
+  {
+    "id": "spider.dev.000059",
+    "source_db_id": "pets_1",
+    "database_id": "spider_pets_1",
+    "question": "Find the first name of students who have both cat and dog pets ."
+  },
+  {
+    "id": "spider.dev.000027",
+    "source_db_id": "concert_singer",
+    "database_id": "spider_concert_singer",
+    "question": "What is the year that had the most concerts?"
+  },
+  {
+    "id": "spider.dev.000857",
+    "source_db_id": "orchestra",
+    "database_id": "spider_orchestra",
+    "question": "What are the record companies that are used by both orchestras founded before 2003 and those founded after 2003?"
+  },
+  {
+    "id": "spider.dev.000493",
+    "source_db_id": "battle_death",
+    "database_id": "spider_battle_death",
+    "question": "List the name, date and result of each battle."
+  },
+  {
+    "id": "spider.dev.000473",
+    "source_db_id": "wta_1",
+    "database_id": "spider_wta_1",
+    "question": "find the number of players for each country."
+  },
+  {
+    "id": "spider.dev.001030",
+    "source_db_id": "real_estate_properties",
+    "database_id": "spider_real_estate_properties",
+    "question": "How many available features are there in total?"
+  },
+  {
+    "id": "spider.dev.000658",
+    "source_db_id": "poker_player",
+    "database_id": "spider_poker_player",
+    "question": "Return the maximum final tables made across all poker players who have earnings below 200000."
+  },
+  {
+    "id": "spider.dev.000275",
+    "source_db_id": "employee_hire_evaluation",
+    "database_id": "spider_employee_hire_evaluation",
+    "question": "Find the names of stores whose number products is more than the average number of products."
+  },
+  {
+    "id": "spider.dev.001021",
+    "source_db_id": "singer",
+    "database_id": "spider_singer",
+    "question": "what are the different names of the singers that have sales more than 300000?"
+  },
+  {
+    "id": "spider.dev.000993",
+    "source_db_id": "dog_kennels",
+    "database_id": "spider_dog_kennels",
+    "question": "What is the charge amount of the most expensive charge type?"
+  },
+  {
+    "id": "spider.dev.000631",
+    "source_db_id": "tvshow",
+    "database_id": "spider_tvshow",
+    "question": "Find the package choice and series name of the TV channel that has high definition TV."
+  },
+  {
+    "id": "spider.dev.000348",
+    "source_db_id": "cre_Doc_Template_Mgt",
+    "database_id": "spider_cre_Doc_Template_Mgt",
+    "question": "What are the type codes and descriptions for all template types?"
+  },
+  {
+    "id": "spider.dev.000751",
+    "source_db_id": "world_1",
+    "database_id": "spider_world_1",
+    "question": "How many continents speak Chinese?"
+  },
+  {
+    "id": "spider.dev.000219",
+    "source_db_id": "flight_2",
+    "database_id": "spider_flight_2",
+    "question": "How many United Airlines flights go to City 'Aberdeen'?"
+  },
+  {
+    "id": "spider.dev.000902",
+    "source_db_id": "network_1",
+    "database_id": "spider_network_1",
+    "question": "Count the number of likes for each student id."
+  },
+  {
+    "id": "spider.dev.000420",
+    "source_db_id": "museum_visit",
+    "database_id": "spider_museum_visit",
+    "question": "What are the id, name and membership level of visitors who have spent the largest amount of money in total in all museum tickets?"
+  },
+  {
+    "id": "spider.dev.000115",
+    "source_db_id": "car_1",
+    "database_id": "spider_car_1",
+    "question": "How many car models are produced in the usa?"
+  },
+  {
+    "id": "spider.dev.000399",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "Show names of teachers and the courses they are arranged to teach."
+  },
+  {
+    "id": "spider.dev.000700",
+    "source_db_id": "voter_1",
+    "database_id": "spider_voter_1",
+    "question": "List the area codes in which voters voted both for the contestant 'Tabatha Gehling' and the contestant 'Kelly Clauss'."
+  },
+  {
+    "id": "spider.dev.000556",
+    "source_db_id": "student_transcripts_tracking",
+    "database_id": "spider_student_transcripts_tracking",
+    "question": "What is the first, middle, and last name of the first student to register?"
+  },
+  {
+    "id": "spider.dev.000078",
+    "source_db_id": "pets_1",
+    "database_id": "spider_pets_1",
+    "question": "What is the id of the pet owned by the student whose last name is 'Smith'?"
+  },
+  {
+    "id": "spider.dev.000010",
+    "source_db_id": "concert_singer",
+    "database_id": "spider_concert_singer",
+    "question": "Show all countries and the number of singers in each country."
+  },
+  {
+    "id": "spider.dev.000826",
+    "source_db_id": "orchestra",
+    "database_id": "spider_orchestra",
+    "question": "What are the names of conductors whose nationalities are not \"USA\"?"
+  },
+  {
+    "id": "spider.dev.000498",
+    "source_db_id": "battle_death",
+    "database_id": "spider_battle_death",
+    "question": "What are the different ids and names of the battles that lost any 'Brig' type shipes?"
+  },
+  {
+    "id": "spider.dev.000459",
+    "source_db_id": "wta_1",
+    "database_id": "spider_wta_1",
+    "question": "Find the first name and country code of the player who did the most number of tours."
+  },
+  {
+    "id": "spider.dev.000661",
+    "source_db_id": "poker_player",
+    "database_id": "spider_poker_player",
+    "question": "What are the names of poker players whose earnings is higher than 300000?"
+  },
+  {
+    "id": "spider.dev.000262",
+    "source_db_id": "employee_hire_evaluation",
+    "database_id": "spider_employee_hire_evaluation",
+    "question": "List the names of employees and sort in ascending order of age."
+  },
+  {
+    "id": "spider.dev.001005",
+    "source_db_id": "singer",
+    "database_id": "spider_singer",
+    "question": "What are the birth years and citizenships of the singers?"
+  },
+  {
+    "id": "spider.dev.000986",
+    "source_db_id": "dog_kennels",
+    "database_id": "spider_dog_kennels",
+    "question": "What is the average age of all the dogs?"
+  },
+  {
+    "id": "spider.dev.000637",
+    "source_db_id": "tvshow",
+    "database_id": "spider_tvshow",
+    "question": "Find the series name and country of the tv channel that is playing some cartoons directed by Ben Jones and Michael Chang?"
+  },
+  {
+    "id": "spider.dev.000359",
+    "source_db_id": "cre_Doc_Template_Mgt",
+    "database_id": "spider_cre_Doc_Template_Mgt",
+    "question": "How many paragraphs for the document with name 'Summer Show'?"
+  },
+  {
+    "id": "spider.dev.000759",
+    "source_db_id": "world_1",
+    "database_id": "spider_world_1",
+    "question": "What languages are only used by a single country with a republic government?"
+  },
+  {
+    "id": "spider.dev.000245",
+    "source_db_id": "flight_2",
+    "database_id": "spider_flight_2",
+    "question": "What are flight numbers of Airline \"United Airlines\"?"
+  },
+  {
+    "id": "spider.dev.000890",
+    "source_db_id": "network_1",
+    "database_id": "spider_network_1",
+    "question": "Show the names of all of the high schooler Kyle's friends."
+  },
+  {
+    "id": "spider.dev.000427",
+    "source_db_id": "museum_visit",
+    "database_id": "spider_museum_visit",
+    "question": "Find the number of visitors who did not visit any museum opened after 2010."
+  },
+  {
+    "id": "spider.dev.000160",
+    "source_db_id": "car_1",
+    "database_id": "spider_car_1",
+    "question": "What is the number of cars with a greater accelerate than the one with the most horsepower?"
+  },
+  {
+    "id": "spider.dev.000405",
+    "source_db_id": "course_teach",
+    "database_id": "spider_course_teach",
+    "question": "Show names of teachers and the number of courses they teach."
+  }
+]

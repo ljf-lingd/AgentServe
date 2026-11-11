@@ -1,0 +1,106 @@
+[
+  {
+    "id": "development-01",
+    "family": "winter-quarter",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-04-01"
+    }
+  },
+  {
+    "id": "development-02",
+    "family": "spring-beijing",
+    "request": {
+      "start": "2026-03-01",
+      "end": "2026-06-01",
+      "city": "Beijing"
+    }
+  },
+  {
+    "id": "development-03",
+    "family": "opening-shenzhen",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-02-01",
+      "city": "Shenzhen"
+    }
+  },
+  {
+    "id": "development-04",
+    "family": "last-shanghai",
+    "request": {
+      "start": "2026-06-01",
+      "end": "2026-07-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "development-05",
+    "family": "transition-shenzhen",
+    "request": {
+      "start": "2026-06-01",
+      "end": "2026-08-01",
+      "city": "Shenzhen"
+    }
+  },
+  {
+    "id": "development-06",
+    "family": "late-missing-city",
+    "request": {
+      "start": "2026-05-01",
+      "end": "2026-07-01",
+      "city": "Missing"
+    }
+  },
+  {
+    "id": "development-07",
+    "family": "future-midyear",
+    "request": {
+      "start": "2026-08-01",
+      "end": "2026-10-01"
+    }
+  },
+  {
+    "id": "development-08",
+    "family": "first-half-city",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "development-09",
+    "family": "april-city",
+    "request": {
+      "start": "2026-04-01",
+      "end": "2026-05-01",
+      "city": "Beijing"
+    }
+  },
+  {
+    "id": "development-10",
+    "family": "march-cities",
+    "request": {
+      "start": "2026-03-01",
+      "end": "2026-04-01"
+    }
+  },
+  {
+    "id": "development-11",
+    "family": "next-year-open",
+    "request": {
+      "start": "2027-01-01",
+      "end": "2027-02-01"
+    }
+  },
+  {
+    "id": "development-12",
+    "family": "cross-calendar",
+    "request": {
+      "start": "2026-10-01",
+      "end": "2027-02-01",
+      "city": "Beijing"
+    }
+  }
+]

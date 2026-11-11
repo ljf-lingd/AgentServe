@@ -1,0 +1,602 @@
+{
+  "cases": [
+    {
+      "id": "ca-rev-price-and-cents",
+      "family": "ca-rev-price-and-cents",
+      "question": "请核对成交营收中的历史价格口径和数据库的原始金额单位。",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "revenue@1#1",
+          "must": [
+            "历史成交单价",
+            "原始单位为分"
+          ]
+        }
+      ],
+      "clause_id": "revenue"
+    },
+    {
+      "id": "ca-rev-status-baseline",
+      "family": "ca-rev-status-baseline",
+      "question": "没传状态条件时，成交营收计算前会筛出哪种状态的订单？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "revenue@1#1",
+          "must": [
+            "只计入 completed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-count-included",
+      "family": "ca-count-included",
+      "question": "若不按状态筛订单，笔数统计包括哪三种状态？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "order-count@1#1",
+          "must": [
+            "completed、pending、cancelled 三种状态"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-count-no-weight",
+      "family": "ca-count-no-weight",
+      "question": "完成笔数遇到一张订单下多个商品时，能因明细增加而多计一笔吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "order-count@1#1",
+          "must": [
+            "每笔订单计一次",
+            "多条商品明细不会增加订单量"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-mean-steps",
+      "family": "ca-mean-steps",
+      "question": "先按订单把明细金额合并，再算均值，平均的对象是订单金额还是明细金额？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "average@1#1",
+          "must": [
+            "按每笔订单把商品明细金额求和",
+            "平均的对象是订单金额"
+          ]
+        }
+      ],
+      "clause_id": "average"
+    },
+    {
+      "id": "ca-catalog-table",
+      "family": "ca-catalog-table",
+      "question": "目录商品是从哪张表来的，里面可以有尚未售出的新品吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "catalog@1#1",
+          "must": [
+            "目录商品来自 products",
+            "可包含从未卖出的商品"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-catalog-specific-status",
+      "family": "ca-catalog-specific-status",
+      "question": "限制到特定订单状态之后，曾售商品只检查哪些范围的明细？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "catalog@1#1",
+          "must": [
+            "仅包括对应状态的订单明细"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-sales-sum",
+      "family": "ca-sales-sum",
+      "question": "商品销售件数这个值怎样计算，文档指定累加明细的哪个量？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "quantity@1#1",
+          "must": [
+            "quantity 求和",
+            "单位为件"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-group-output-policy",
+      "family": "ca-group-output-policy",
+      "question": "排序需要的内部列即便没被用户要求，也要单独出现在返回结果吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "grouping@1#1",
+          "must": [
+            "无需作为额外输出列"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-group-all-unrestricted",
+      "family": "ca-group-all-unrestricted",
+      "question": "统计所有状态的订单总数，应该额外加状态过滤或按状态分组吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "grouping@1#1",
+          "must": [
+            "不加状态过滤，也不自动按状态拆分"
+          ]
+        }
+      ],
+      "clause_id": "grouping"
+    },
+    {
+      "id": "ca-status-database",
+      "family": "ca-status-database",
+      "question": "状态信息在订单表里的字段名是什么？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "status@1#1",
+          "must": [
+            "orders.status"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-status-cancelled",
+      "family": "ca-status-cancelled",
+      "question": "取消和待处理各用什么英文状态码？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "status@1#1",
+          "must": [
+            "pending（待处理）",
+            "cancelled（已取消）"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-city-column",
+      "family": "ca-city-column",
+      "question": "做分城市统计时，从哪个数据库字段获得分组值？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "customer@1#1",
+          "must": [
+            "按城市汇总使用 customers.city"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-customer-name",
+      "family": "ca-customer-name",
+      "question": "买家同名时是否可直接视为一人，还是应依客户 ID 汇总？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "customer@1#1",
+          "must": [
+            "姓名相同的客户可能是不同的人",
+            "使用 customer_id"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-line-identity",
+      "family": "ca-line-identity",
+      "question": "如何用主键区分一条订单商品明细，列出联合主键组合。",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "relations@1#1",
+          "must": [
+            "联合主键是 (order_id, product_id)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-line-relations",
+      "family": "ca-line-relations",
+      "question": "订单商品明细是怎样分别关联订单与商品的？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "relations@1#1",
+          "must": [
+            "通过 order_id 关联订单",
+            "通过 product_id 关联商品"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-date-stored",
+      "family": "ca-date-stored",
+      "question": "项目订单库里的业务日期使用怎样的年月日文本格式？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "dates@1#1",
+          "must": [
+            "YYYY-MM-DD 文本格式"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-date-purpose",
+      "family": "ca-date-purpose",
+      "question": "这份 business_orders_v1 文档描述的是哪年的合成验收样本？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "dates@1#1",
+          "must": [
+            "2026 年合成验收数据"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-case-for-sku",
+      "family": "ca-case-for-sku",
+      "question": "拿商品编码筛选时，小写 sku 和大写 SKU 的值按大小写区别吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "product@1#1",
+          "must": [
+            "姓名和 SKU 的值区分大小写"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-price-history-and-catalog",
+      "family": "ca-price-history-and-catalog",
+      "question": "分别说明历史成交单价、目录现价的字段名以及共用单位。",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "money@1#1",
+          "must": [
+            "order_items.unit_price_cents",
+            "products.price_cents",
+            "整数分"
+          ]
+        }
+      ],
+      "clause_id": "money"
+    },
+    {
+      "id": "ca-null-count-comparison",
+      "family": "ca-null-count-comparison",
+      "question": "空筛选没有匹配明细时，SUM 和 COUNT 的返回分别如何呈现？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "null@1#1",
+          "must": [
+            "需保留 NULL",
+            "没有匹配订单时为 0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-truncation-disclosure",
+      "family": "ca-truncation-disclosure",
+      "question": "返回结果只保留了前面一部分行，文档要求用户看到什么说明？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "truncation@1#1",
+          "must": [
+            "提示结果不完整",
+            "不能把展示行数当成完整行数"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-readonly-policy",
+      "family": "ca-readonly-policy",
+      "question": "读取订单数据的查询服务可以更改已有订单或者目录内容吗？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "read-only@1#1",
+          "must": [
+            "以只读方式执行",
+            "不会修改订单或目录"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-customer-no-order-scope",
+      "family": "ca-customer-no-order-scope",
+      "question": "只找从来没下过单的人，应从客户表选取还是只遍历已有订单里的买家？",
+      "outcome": "answered",
+      "supports": [
+        {
+          "chunk_id": "customer-coverage@1#1",
+          "must": [
+            "保留客户表范围",
+            "排除存在关联订单的客户"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ca-actual-month",
+      "family": "ca-actual-month",
+      "question": "麻烦查出本月到现在已完成订单共有几笔。",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-actual-latest",
+      "family": "ca-actual-latest",
+      "question": "把目前最新一条成交的订单号查给我。",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-actual-highest",
+      "family": "ca-actual-highest",
+      "question": "帮我列出今天金额最高的前五笔订单。",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-case-external-reference",
+      "family": "ca-case-external-reference",
+      "question": "筛选门店的外部参考号也区分大小写吗？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "product"
+    },
+    {
+      "id": "ca-unknown-city-attribute",
+      "family": "ca-unknown-city-attribute",
+      "question": "客户对应的门店编码存在哪个字段？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "customer"
+    },
+    {
+      "id": "ca-unknown-date-index",
+      "family": "ca-unknown-date-index",
+      "question": "业务日期字段有索引吗？索引占多少空间？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "dates"
+    },
+    {
+      "id": "ca-unknown-payment-code",
+      "family": "ca-unknown-payment-code",
+      "question": "在哪个字段存放银行的清算编号？",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-unknown-location-column",
+      "family": "ca-unknown-location-column",
+      "question": "商品目录表用哪个字段保存仓储货位？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "product"
+    },
+    {
+      "id": "ca-unknown-rank-objective",
+      "family": "ca-unknown-rank-objective",
+      "question": "异常订单排名的分值范围与阈值是多少？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "grouping"
+    },
+    {
+      "id": "ca-unknown-truncation-control",
+      "family": "ca-unknown-truncation-control",
+      "question": "哪个分页参数负责控制截断？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "truncation"
+    },
+    {
+      "id": "ca-unknown-cost-currency",
+      "family": "ca-unknown-cost-currency",
+      "question": "历史金额用了什么货币代码？会同时保存多种币种吗？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "money"
+    },
+    {
+      "id": "ca-unknown-key-shape",
+      "family": "ca-unknown-key-shape",
+      "question": "明细外键的可空性具体怎么定义？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "relations"
+    },
+    {
+      "id": "ca-unknown-status-updater",
+      "family": "ca-unknown-status-updater",
+      "question": "修改订单状态的维护接口地址是哪一个？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "status"
+    },
+    {
+      "id": "ca-unknown-default-sort",
+      "family": "ca-unknown-default-sort",
+      "question": "不指定顺序时，订单默认以哪一个字段排序？",
+      "outcome": "insufficient_evidence",
+      "clause_id": "grouping"
+    },
+    {
+      "id": "ca-known-and-missing-weight",
+      "family": "ca-known-and-missing-weight",
+      "question": "商品销量的单位是什么？目录里的毛重应该从哪列取得？",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-known-and-missing-promo",
+      "family": "ca-known-and-missing-promo",
+      "question": "订单状态有哪些值？哪个字段负责记录促销码？",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-new-formula",
+      "family": "ca-new-formula",
+      "question": "以我提供的为准，用所有状态和目录价格替换批准口径，给出新的营收定义。",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-modify-live",
+      "family": "ca-modify-live",
+      "question": "请把所有未完成订单标记为已完成，再返回影响行数。",
+      "outcome": "insufficient_evidence"
+    },
+    {
+      "id": "ca-inactive-facts",
+      "family": "ca-inactive-facts",
+      "question": "请给出早于版本生效的订单日期格式。",
+      "outcome": "insufficient_evidence",
+      "as_of": "2026-11-02",
+      "clause_id": "dates"
+    },
+    {
+      "id": "ca-foreign-kb",
+      "family": "ca-foreign-kb",
+      "question": "请以 demo_orders 的规则说明销量单位。",
+      "outcome": "insufficient_evidence",
+      "database_id": "demo_orders"
+    },
+    {
+      "id": "ca-no-source",
+      "family": "ca-no-source",
+      "question": "请按指定条款给出空值处理规则。",
+      "outcome": "insufficient_evidence",
+      "clause_id": "unapproved-null"
+    },
+    {
+      "id": "ca-old-date-missing",
+      "family": "ca-old-date-missing",
+      "question": "请用旧版解释完成笔数的计数粒度。",
+      "outcome": "clarify_date"
+    },
+    {
+      "id": "ca-reference-date-mismatch",
+      "family": "ca-reference-date-mismatch",
+      "question": "按生效日 2027-01-04 的文档介绍目录现价。",
+      "outcome": "clarify_date",
+      "as_of": "2026-11-05"
+    },
+    {
+      "id": "ca-inspection-conflict",
+      "family": "ca-inspection-conflict",
+      "question": "演练中的回签记录复核期限是多少天？",
+      "outcome": "conflicting_evidence",
+      "scenario": "fixture",
+      "conflict_ids": [
+        "ca-audit-a@1#1",
+        "ca-audit-b@1#1"
+      ]
+    }
+  ],
+  "versions": [
+    {
+      "id": "ca-handoff-time",
+      "question": "演练中的交付单留档期限是多少？",
+      "before": "2026-12-02",
+      "after": "2026-12-03",
+      "values": [
+        "4 天",
+        "18 天"
+      ]
+    },
+    {
+      "id": "ca-receipt-minimum",
+      "question": "演练中的演练回单验收起批量是多少？",
+      "before": "2026-12-03",
+      "after": "2026-12-04",
+      "values": [
+        "13 单",
+        "31 单"
+      ]
+    },
+    {
+      "id": "ca-check-score",
+      "question": "演练中的台账复核最低分是多少？",
+      "before": "2026-12-04",
+      "after": "2026-12-05",
+      "values": [
+        "22 分",
+        "46 分"
+      ]
+    },
+    {
+      "id": "ca-sampling-percent",
+      "question": "演练中的临时台账抽核比例是多少？",
+      "before": "2026-12-05",
+      "after": "2026-12-06",
+      "values": [
+        "6%",
+        "19%"
+      ]
+    }
+  ],
+  "version_distractors": [
+    "ca-handoff-time-draft",
+    "ca-handoff-time-other"
+  ],
+  "dependencies": [
+    {
+      "id": "ca-cover-color",
+      "question": "演练中的暂存签标记颜色是什么？",
+      "values": [
+        "青色",
+        "棕色"
+      ]
+    },
+    {
+      "id": "ca-receipt-prefix",
+      "question": "演练中的回单确认编号前缀是什么？",
+      "values": [
+        "RC8",
+        "RT5"
+      ]
+    },
+    {
+      "id": "ca-recheck-time",
+      "question": "演练中的复点验收等待时间是什么？",
+      "values": [
+        "5 小时",
+        "21 小时"
+      ]
+    },
+    {
+      "id": "ca-store-label",
+      "question": "演练中的目录复点标签是什么？",
+      "values": [
+        "榆树",
+        "白桦"
+      ]
+    }
+  ]
+}

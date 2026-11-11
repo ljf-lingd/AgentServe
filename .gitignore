@@ -1,0 +1,79 @@
+# Personal coordination and private research
+.local/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519*
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+node_modules/
+playwright-report/
+test-results/
+
+# Local databases, model weights, datasets and experiment output
+data/*
+!/data/knowledge_v31/
+!/data/knowledge_v32/
+!/data/knowledge_online_retail_ii/
+!/data/evaluation/
+!/data/synthetic/
+/data/synthetic/*
+!/data/synthetic/knowledge_v3/
+!/data/splits/
+/data/splits/*
+!/data/splits/spider_g5_v1/
+!/data/gold/
+/data/gold/*
+!/data/gold/spider_g5_v1/
+models/
+!/configs/models/
+/configs/models/*
+!/configs/models/*.manifest.json
+runs/
+artifacts/
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+*.safetensors
+*.pt
+*.pth
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Server runtime files
+/cache/
+/state/
+/logs/
+/outputs/
+/results/
+/checkpoints/
+/reference/*
+!/reference/README.md
+
+# Machine-specific app configurations
+/configs/app.local.json
+/configs/app.*.local.json

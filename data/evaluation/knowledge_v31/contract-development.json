@@ -1,0 +1,250 @@
+[
+  {
+    "id": "cdev-revenue-units",
+    "family": "cdev-revenue-units",
+    "question": "报表解释成交营收的原始金额时，应把数字标为元还是分？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "revenue@1#1",
+        "must": [
+          "原始单位为分"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-count-grain",
+    "family": "cdev-count-grain",
+    "question": "已完成订单有三条明细，文档定义的完成订单量是按单还是按明细？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "order-count@1#1",
+        "must": [
+          "每笔订单计一次"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-average-scope",
+    "family": "cdev-average-scope",
+    "question": "平均完成单金额时，必须在合计每笔金额之前先选哪类订单？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "average@1#1",
+        "must": [
+          "先筛选 completed"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-sold-identity",
+    "family": "cdev-sold-identity",
+    "question": "同一种商品卖了好多次，要怎样算曾售商品种数？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "catalog@1#1",
+        "must": [
+          "order_items.product_id 去重"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-quantity-unit",
+    "family": "cdev-quantity-unit",
+    "question": "订单报表里的商品销量以什么量词计量？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "quantity@1#1",
+        "must": [
+          "单位为件"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-explicit-group",
+    "family": "cdev-explicit-group",
+    "question": "用户明确要求按城市拆开看时，系统可以按城市分组吗？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "grouping@1#1",
+        "must": [
+          "仅在明确要求时按状态、月份或城市分组"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-customer-identity",
+    "family": "cdev-customer-identity",
+    "question": "两位买家同名，汇总时使用什么唯一标识区分？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "customer@1#1",
+        "must": [
+          "使用 customer_id"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-order-key",
+    "family": "cdev-order-key",
+    "question": "订单标识由哪个数据库字段提供？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "relations@1#1",
+        "must": [
+          "orders.order_id 标识订单"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-date-by-month",
+    "family": "cdev-date-by-month",
+    "question": "要给订单分配统计月份，文档说依据哪个日期的月份？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "dates@1#1",
+        "must": [
+          "按月统计使用业务日期所属月份"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-category-case",
+    "family": "cdev-category-case",
+    "question": "同一个商品分类用大写和小写保存，比较它们时区分大小写吗？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "product@1#1",
+        "must": [
+          "城市、分类、姓名和 SKU 的值区分大小写"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-price-column",
+    "family": "cdev-price-column",
+    "question": "目录当前标价的库列名是什么？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "money@1#1",
+        "must": [
+          "products.price_cents 是目录当前标价"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-cut-unknown",
+    "family": "cdev-cut-unknown",
+    "question": "截断后不知道总共有多少行，应怎样告诉用户总行数的情况？",
+    "outcome": "answered",
+    "supports": [
+      {
+        "chunk_id": "truncation@1#1",
+        "must": [
+          "完整行数未知时应明确说明"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cdev-other-column",
+    "family": "cdev-other-column",
+    "question": "仓库货架号用哪个字段保存？",
+    "outcome": "insufficient_evidence"
+  },
+  {
+    "id": "cdev-case-surname-pinyin",
+    "family": "cdev-case-surname-pinyin",
+    "question": "客户拼音缩写作为独立字段时也按大小写比较吗？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "product"
+  },
+  {
+    "id": "cdev-other-time",
+    "family": "cdev-other-time",
+    "question": "仓库交接日期对应哪个数据库字段？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "dates"
+  },
+  {
+    "id": "cdev-secondary-net-mass",
+    "family": "cdev-secondary-net-mass",
+    "question": "销量用什么单位？查商品重量时应从哪列取值？",
+    "outcome": "insufficient_evidence"
+  },
+  {
+    "id": "cdev-decimal-currency",
+    "family": "cdev-decimal-currency",
+    "question": "两种价格的货币代码是 CNY 还是 USD？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "money"
+  },
+  {
+    "id": "cdev-default-key",
+    "family": "cdev-default-key",
+    "question": "不指定任何条件时，默认按哪个客户字段排序？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "grouping"
+  },
+  {
+    "id": "cdev-main-score",
+    "family": "cdev-main-score",
+    "question": "订单排名的评分下限设在多少分？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "grouping"
+  },
+  {
+    "id": "cdev-snapshot-live",
+    "family": "cdev-snapshot-live",
+    "question": "现在帮我列出最新一条商品明细的订单号。",
+    "outcome": "insufficient_evidence"
+  },
+  {
+    "id": "cdev-missing-old-date",
+    "family": "cdev-missing-old-date",
+    "question": "请问旧版曾售商品按什么去重？",
+    "outcome": "clarify_date"
+  },
+  {
+    "id": "cdev-out-of-date",
+    "family": "cdev-out-of-date",
+    "question": "按适用日 2027-01-01 的文档回答分类规则。",
+    "outcome": "clarify_date",
+    "as_of": "2026-11-05"
+  },
+  {
+    "id": "cdev-other-db",
+    "family": "cdev-other-db",
+    "question": "以 demo_orders 的批准文档解释日期格式。",
+    "outcome": "insufficient_evidence",
+    "database_id": "demo_orders"
+  },
+  {
+    "id": "cdev-physical-column",
+    "family": "cdev-physical-column",
+    "question": "明细表两个主键字段允许 NULL 吗？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "relations"
+  }
+]

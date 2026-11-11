@@ -1,0 +1,502 @@
+[
+  {
+    "id": "spider.train.004828",
+    "sql": "SELECT Name FROM pilot ORDER BY Age DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.005524",
+    "sql": "SELECT color_description FROM ref_colors",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004586",
+    "sql": "SELECT Product_Price FROM Products WHERE Product_Name  =  \"Dining\" OR Product_Name  =  \"Trading Policy\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001664",
+    "sql": "SELECT count(*) FROM exhibition WHERE YEAR  >=  2005",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003027",
+    "sql": "SELECT count(DISTINCT city) FROM bank",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001845",
+    "sql": "SELECT count(*) FROM wrestler",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003163",
+    "sql": "SELECT t1.name FROM train AS t1 JOIN route AS t2 ON t1.id  =  t2.train_id GROUP BY t2.train_id ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002646",
+    "sql": "SELECT T1.cmi_details FROM Customer_Master_Index AS T1 JOIN CMI_Cross_References AS T2 ON T1.master_customer_id  =  T2.master_customer_id WHERE T2.source_system_code  =  'Tax'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005003",
+    "sql": "SELECT T1.pName ,  T1.HS FROM player AS T1 JOIN tryout AS T2 ON T1.pID  =  T2.pID WHERE T2.decision  =  'yes'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003414",
+    "sql": "SELECT * FROM  departments WHERE department_name  =  'Marketing'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006304",
+    "sql": "SELECT gdp FROM city ORDER BY Regional_Population DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.000682",
+    "sql": "SELECT T2.customer_first_name ,  T2.customer_last_name ,  T1.customer_id FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id GROUP BY T1.customer_id ORDER BY count(*) ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.004071",
+    "sql": "SELECT count(*) FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE T2.firstname  =  \"TARRING\" AND T2.lastname  =  \"LEIA\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006618",
+    "sql": "SELECT name FROM station WHERE station_id NOT IN (SELECT station_id FROM train_station)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001924",
+    "sql": "SELECT DISTINCT TYPE FROM institution",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003146",
+    "sql": "SELECT T1.staff_name ,  T3.first_name ,  T3.last_name FROM Staff AS T1 JOIN Engineer_Visits AS T2 ON T1.staff_id  =  T2.contact_staff_id JOIN Maintenance_Engineers AS T3 ON T2.engineer_id  =  T3.engineer_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006702",
+    "sql": "SELECT count(*) FROM Lessons AS T1 JOIN Staff AS T2 ON T1.staff_id = T2.staff_id WHERE T2.first_name LIKE \"%a%\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004419",
+    "sql": "SELECT count(*) FROM Person WHERE age  >  30 AND job  =  'engineer'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002301",
+    "sql": "SELECT T1.Company FROM entrepreneur AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Height DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002806",
+    "sql": "SELECT avg(Years_working) FROM journalist",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000326",
+    "sql": "SELECT catalog_entry_name FROM catalog_contents ORDER BY capacity ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.000794",
+    "sql": "SELECT Membership_card FROM member GROUP BY Membership_card HAVING count(*)  >  5",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004701",
+    "sql": "SELECT max(T2.gradepoint) ,  min(T2.gradepoint) FROM ENROLLED_IN AS T1 JOIN GRADECONVERSION AS T2 JOIN STUDENT AS T3 ON T1.Grade  =  T2.lettergrade AND T1.StuID  =  T3.StuID WHERE T3.city_code  =  \"NYC\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000749",
+    "sql": "SELECT name ,  LOCATION FROM track",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002417",
+    "sql": "SELECT t1.name ,  t1.sex ,  min(oppose_rate) FROM people AS t1 JOIN candidate AS t2 ON t1.people_id  =  t2.people_id GROUP BY t1.sex",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002083",
+    "sql": "SELECT count(*) FROM pilot",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004617",
+    "sql": "SELECT Num_of_Audience FROM festival_detail WHERE YEAR  =  2008 OR YEAR  =  2010",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002943",
+    "sql": "SELECT T2.country FROM city AS T1 JOIN country AS T2 ON T1.country_id  =  T2.country_id GROUP BY T2.country_id HAVING count(*)  >=  3",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002142",
+    "sql": "SELECT count(*) FROM participants WHERE participant_type_code  =  'Organizer'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004498",
+    "sql": "SELECT Name FROM member WHERE Member_ID NOT IN (SELECT Member_ID FROM round)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004204",
+    "sql": "SELECT role_code ,  count(*) FROM Employees GROUP BY role_code",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002247",
+    "sql": "SELECT Team FROM technician GROUP BY Team ORDER BY COUNT(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.005773",
+    "sql": "SELECT town_city FROM customers WHERE customer_type_code  =  \"Good Credit Rating\" GROUP BY town_city ORDER BY count(*) LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.004110",
+    "sql": "SELECT Name FROM people WHERE People_ID NOT IN (SELECT People_ID FROM employment)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001990",
+    "sql": "SELECT T2.Name ,  sum(T1.Num_of_stock) FROM phone_market AS T1 JOIN phone AS T2 ON T1.Phone_ID  =  T2.Phone_ID GROUP BY T2.Name",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004864",
+    "sql": "SELECT LOCATION FROM school ORDER BY Founded DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.005158",
+    "sql": "SELECT T1.City_Town FROM Addresses AS T1 JOIN Customers AS T2 ON T1.Address_ID  =  T2.Address_ID EXCEPT SELECT T1.City_Town FROM Addresses AS T1 JOIN Performers AS T2 ON T1.Address_ID  =  T2.Address_ID",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005824",
+    "sql": "SELECT Author FROM submission ORDER BY Scores DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.006210",
+    "sql": "SELECT Status ,  COUNT(*) FROM roller_coaster GROUP BY Status",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006497",
+    "sql": "SELECT count(*) ,  T1.name FROM projects AS T1 JOIN assignedto AS T2 ON T1.code  =  T2.project WHERE T1.hours  >  300 GROUP BY T1.name",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001947",
+    "sql": "SELECT DISTINCT directed_by FROM film",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000138",
+    "sql": "SELECT COUNT(*) FROM weather WHERE mean_humidity  >  50 AND mean_visibility_miles  >  8",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005378",
+    "sql": "SELECT count(*) ,  T2.product_id FROM problems AS T1 JOIN product AS T2 ON T1.product_id = T2.product_id WHERE T1.date_problem_reported > \"1986-11-13\" GROUP BY T2.product_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001906",
+    "sql": "SELECT T2.school_name FROM budget AS T1 JOIN school AS T2 ON T1.school_id  =  T2.school_id JOIN endowment AS T3 ON T2.school_id  =  T3.school_id GROUP BY T2.school_name HAVING sum(T1.budgeted)  >  100 OR sum(T3.amount)  >  10",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004523",
+    "sql": "SELECT avg(t1.access_count) FROM documents AS t1 JOIN document_functional_areas AS t2 ON t1.document_code  =  t2.document_code JOIN functional_areas AS t3 ON t2.functional_area_code  =  t3.functional_area_code WHERE t3.functional_area_description  =  \"Acknowledgement\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000047",
+    "sql": "SELECT Status FROM city GROUP BY Status ORDER BY COUNT(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.000997",
+    "sql": "SELECT enrollment ,  primary_conference FROM university ORDER BY founded LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.001210",
+    "sql": "SELECT apt_number ,  room_count FROM Apartments",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001839",
+    "sql": "SELECT T3.name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T1.name  =  'CACHEbox' INTERSECT SELECT T3.name FROM web_client_accelerator AS T1 JOIN accelerator_compatible_browser AS T2 ON T2.accelerator_id  =  T1.id JOIN browser AS T3 ON T2.browser_id  =  T3.id WHERE T1.name  =  'Fasterfox'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005425",
+    "sql": "SELECT name FROM member WHERE member_id NOT IN (SELECT member_id FROM membership_register_branch)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006117",
+    "sql": "SELECT count(DISTINCT customer_id) FROM customer_orders WHERE order_status  =  \"Cancelled\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001492",
+    "sql": "SELECT count(*) FROM debate",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000627",
+    "sql": "SELECT T1.title FROM albums AS T1 JOIN tracks AS T2 ON T1.id = T2.album_id GROUP BY T1.id HAVING count(T1.id)  >  10;",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002166",
+    "sql": "SELECT T1.forename ,  T1.surname FROM drivers AS T1 JOIN laptimes AS T2 ON T1.driverid = T2.driverid ORDER BY T2.milliseconds LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.006033",
+    "sql": "SELECT count(DISTINCT StuID) FROM Plays_games",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005647",
+    "sql": "SELECT LOCATION FROM railway GROUP BY LOCATION HAVING COUNT(*)  >  1",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005339",
+    "sql": "SELECT * FROM products AS T1 JOIN Manufacturers AS T2 ON T1.manufacturer  =  T2.code",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000000",
+    "sql": "SELECT count(*) FROM head WHERE age  >  56",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001037",
+    "sql": "SELECT T1.WiFi , T3.Type FROM chip_model AS T1 JOIN phone AS T2 ON T1.Model_name  =  T2.chip_model JOIN screen_mode AS T3 ON T2.screen_mode = T3.Graphics_mode WHERE T2.Hardware_Model_name = \"LG-P760\";",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001707",
+    "sql": "SELECT T1.title ,  T1.i_id FROM item AS T1 JOIN review AS T2 ON T1.i_id  =  T2.i_id GROUP BY T2.i_id ORDER BY avg(T2.rating) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002539",
+    "sql": "SELECT min(Crime_rate) ,  max(Crime_rate) FROM county_public_safety",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001306",
+    "sql": "SELECT DISTINCT T1.player_name ,  T1.birthday FROM Player AS T1 JOIN Player_Attributes AS T2 ON T1.player_api_id  =  T2.player_api_id ORDER BY potential DESC LIMIT 5",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002135",
+    "sql": "SELECT fname ,  lname FROM employee WHERE salary  >  30000",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003714",
+    "sql": "SELECT max(height) ,  avg(height) FROM mountain",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001149",
+    "sql": "SELECT Name FROM mountain WHERE Height  >  5000 OR Prominence  >  1000",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006369",
+    "sql": "SELECT max(group_equity_shareholding) FROM operate_company",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006414",
+    "sql": "SELECT project_id FROM Documents GROUP BY project_id ORDER BY count(*) ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.004373",
+    "sql": "SELECT organisation_details FROM Organisations AS T1 JOIN organisation_Types AS T2 ON T1.organisation_type  =  T2.organisation_type WHERE T2.organisation_type_description  =  'Sponsor' ORDER BY organisation_details",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.005463",
+    "sql": "SELECT Advisor FROM STUDENT WHERE city_code  =  \"BAL\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003597",
+    "sql": "SELECT avg(rating) ,  avg(resolution) FROM song WHERE languages  =  \"bangla\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004763",
+    "sql": "SELECT T1.supplier_name ,  T1.supplier_phone FROM Suppliers AS T1 JOIN supplier_addresses AS T2 ON T1.supplier_id  =  T2.supplier_id JOIN addresses AS T3 ON T2.address_id  =  T3.address_id ORDER BY T3.address_details",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002336",
+    "sql": "SELECT campusfee FROM campuses AS T1 JOIN csu_fees AS T2 ON T1.id  =  t2.campus WHERE t1.campus  =  \"San Jose State University\" AND T2.year  =  1996",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001631",
+    "sql": "SELECT name FROM church ORDER BY open_date DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.004306",
+    "sql": "SELECT DISTINCT t1.clubname FROM club AS t1 JOIN member_of_club AS t2 ON t1.clubid  =  t2.clubid JOIN student AS t3 ON t2.stuid  =  t3.stuid WHERE t3.city_code  =  \"HOU\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001734",
+    "sql": "SELECT T1.club_id ,  T1.club_name, count(*) FROM club AS T1 JOIN coach AS T2 ON T1.club_id  =  T2.club_id GROUP BY T1.club_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002868",
+    "sql": "SELECT count(*) FROM authors AS t1 JOIN authorship AS t2 ON t1.authid  =  t2.authid JOIN papers AS t3 ON t2.paperid  =  t3.paperid WHERE  t1.fname  =  \"Atsushi\" AND t1.lname  =  \"Ohori\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006946",
+    "sql": "SELECT name ,  nationality ,  id FROM architect WHERE gender  =  'male' ORDER BY name",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.001158",
+    "sql": "SELECT T2.Name FROM body_builder AS T1 JOIN people AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Weight DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.006885",
+    "sql": "SELECT order_id FROM orders ORDER BY date_order_placed DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.003998",
+    "sql": "SELECT count(*) FROM ship",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005658",
+    "sql": "SELECT product_type_code FROM products GROUP BY product_type_code HAVING count(*)  >=  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003907",
+    "sql": "SELECT name ,  phone FROM appointment AS T1 JOIN patient AS T2 ON T1.patient  =  T2.ssn GROUP BY T1.patient HAVING count(*)  >  1",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003204",
+    "sql": "SELECT count(*) ,  class_room FROM CLASS GROUP BY class_room HAVING count(*)  >=  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005631",
+    "sql": "SELECT avg(capacity) FROM stadium WHERE opening_year  =  2005",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002711",
+    "sql": "SELECT region_name FROM region WHERE region_id NOT IN (SELECT region_id FROM affected_region)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003768",
+    "sql": "SELECT count(*) FROM COURSES",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002673",
+    "sql": "SELECT Nationality ,  COUNT(*) FROM HOST GROUP BY Nationality",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006831",
+    "sql": "SELECT name ,  city ,  country FROM airports ORDER BY elevation DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002856",
+    "sql": "SELECT t1.route_name FROM Delivery_Routes AS t1 JOIN Delivery_Route_Locations AS t2 ON t1.route_id  =  t2.route_id GROUP BY t1.route_id ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.002312",
+    "sql": "SELECT sum(T2.Killed) FROM people AS T1 JOIN perpetrator AS T2 ON T1.People_ID  =  T2.People_ID WHERE T1.Height  >  1.84",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006167",
+    "sql": "SELECT T2.Song FROM music_festival AS T1 JOIN volume AS T2 ON T1.Volume  =  T2.Volume_ID WHERE T1.Result  =  \"Nominated\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003663",
+    "sql": "SELECT name_first ,  name_last FROM player WHERE weight  >  220 OR height  <  75",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.000231",
+    "sql": "SELECT COUNT (DISTINCT Publication_Date) FROM publication",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001797",
+    "sql": "SELECT name FROM accounts ORDER BY name",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.003399",
+    "sql": "SELECT max(num_of_shops) ,  avg(Num_of_Factories) FROM manufacturer WHERE open_year  <  1990",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003760",
+    "sql": "SELECT name FROM program WHERE origin != 'Beijing'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006349",
+    "sql": "SELECT name ,  home_city ,  age FROM driver",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001560",
+    "sql": "SELECT count(*) FROM Customers WHERE customer_id NOT IN (SELECT customer_id FROM Accounts)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002841",
+    "sql": "SELECT Student.Fname , Student.Lname FROM Student JOIN Visits_Restaurant ON Student.StuID = Visits_Restaurant.StuID GROUP BY Student.StuID ORDER BY count(*) DESC LIMIT 1;",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.005075",
+    "sql": "SELECT T2.Shop_Name FROM stock AS T1 JOIN shop AS T2 ON T1.Shop_ID  =  T2.Shop_ID GROUP BY T1.Shop_ID ORDER BY SUM(T1.quantity) DESC LIMIT 1",
+    "ordered": true
+  }
+]

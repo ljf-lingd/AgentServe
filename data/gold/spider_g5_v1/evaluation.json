@@ -1,0 +1,502 @@
+[
+  {
+    "id": "spider.dev.000384",
+    "sql": "SELECT Name FROM teacher ORDER BY Age ASC",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000699",
+    "sql": "SELECT T2.created ,  T2.state ,  T2.phone_number FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number WHERE T1.contestant_name  =  'Tabatha Gehling'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000514",
+    "sql": "SELECT zip_postcode FROM Addresses WHERE city  =  'Port Chelsea'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000060",
+    "sql": "SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat' INTERSECT SELECT T1.Fname FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'dog'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000019",
+    "sql": "SELECT name ,  capacity FROM stadium ORDER BY average DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000839",
+    "sql": "SELECT Name FROM conductor ORDER BY Year_of_Work DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000506",
+    "sql": "SELECT note FROM death WHERE note LIKE '%East%'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000486",
+    "sql": "SELECT count(DISTINCT winner_name) FROM matches WHERE tourney_name  =  'WTA Championships' AND winner_hand  =  'L'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.001031",
+    "sql": "SELECT T2.feature_type_name FROM Other_Available_Features AS T1 JOIN Ref_Feature_Types AS T2 ON T1.feature_type_code  =  T2.feature_type_code WHERE T1.feature_name  =  \"AirCon\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000665",
+    "sql": "SELECT T1.Birth_Date FROM people AS T1 JOIN poker_player AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Earnings ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000269",
+    "sql": "SELECT manager_name ,  district FROM shop ORDER BY number_products DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.001001",
+    "sql": "SELECT count(*) FROM singer",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000948",
+    "sql": "SELECT T1.cost_of_treatment ,  T2.treatment_type_description FROM Treatments AS T1 JOIN treatment_types AS T2 ON T1.treatment_type_code  =  T2.treatment_type_code",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000611",
+    "sql": "SELECT T2.Title FROM TV_Channel AS T1 JOIN Cartoon AS T2 ON T1.id = T2.Channel WHERE T1.series_name = \"Sky Radio\";",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000344",
+    "sql": "SELECT T1.template_type_code FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000773",
+    "sql": "SELECT Name FROM country WHERE SurfaceArea  >  (SELECT min(SurfaceArea) FROM country WHERE Continent  =  \"Europe\")",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000209",
+    "sql": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000871",
+    "sql": "SELECT name FROM Highschooler WHERE grade  =  10",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000413",
+    "sql": "SELECT avg(age) FROM visitor WHERE Level_of_membership  <=  4",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000145",
+    "sql": "SELECT count(*) FROM CARS_DATA WHERE YEAR  =  1980;",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000404",
+    "sql": "SELECT T3.Name FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID WHERE T2.Course  =  \"Math\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000698",
+    "sql": "SELECT T1.area_code FROM area_code_state AS T1 JOIN votes AS T2 ON T1.state  =  T2.state GROUP BY T1.area_code ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000536",
+    "sql": "SELECT DISTINCT T1.first_name ,  T1.middle_name ,  T1.last_name FROM Students AS T1 JOIN Student_Enrolment AS T2 ON T1.student_id  =  T2.student_id JOIN Degree_Programs AS T3 ON T2.degree_program_id  =  T3.degree_program_id WHERE T3.degree_summary_name  =  'Bachelor'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000063",
+    "sql": "SELECT stuid FROM student EXCEPT SELECT T1.stuid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid JOIN pets AS T3 ON T3.petid  =  T2.petid WHERE T3.pettype  =  'cat'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000031",
+    "sql": "SELECT name FROM stadium EXCEPT SELECT T2.name FROM concert AS T1 JOIN stadium AS T2 ON T1.stadium_id  =  T2.stadium_id WHERE T1.year  =  2014",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000832",
+    "sql": "SELECT max(SHARE) ,  min(SHARE) FROM performance WHERE TYPE != \"Live final\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000505",
+    "sql": "SELECT name ,  RESULT ,  bulgarian_commander FROM battle EXCEPT SELECT T1.name ,  T1.result ,  T1.bulgarian_commander FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.location  =  'English Channel'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000467",
+    "sql": "SELECT winner_name ,  loser_name FROM matches ORDER BY minutes DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.001032",
+    "sql": "SELECT T2.property_type_description FROM Properties AS T1 JOIN Ref_Property_Types AS T2 ON T1.property_type_code  =  T2.property_type_code GROUP BY T1.property_type_code",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000673",
+    "sql": "SELECT Nationality ,  COUNT(*) FROM people GROUP BY Nationality",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000279",
+    "sql": "SELECT t1.name FROM employee AS t1 JOIN evaluation AS t2 ON t1.Employee_ID  =  t2.Employee_ID ORDER BY t2.bonus DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.001006",
+    "sql": "SELECT Name FROM singer WHERE Citizenship != \"France\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000985",
+    "sql": "SELECT name ,  age ,  weight FROM Dogs WHERE abandoned_yn  =  1",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000588",
+    "sql": "SELECT Title FROM Cartoon WHERE Directed_by = \"Ben Jones\";",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000341",
+    "sql": "SELECT T1.template_type_code ,  count(*) FROM Templates AS T1 JOIN Documents AS T2 ON T1.template_id  =  T2.template_id GROUP BY T1.template_type_code",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000721",
+    "sql": "SELECT Name FROM country WHERE Continent  =  \"Asia\" ORDER BY LifeExpectancy LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000207",
+    "sql": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.SourceAirport  =  T2.AirportCode WHERE T2.City  =  \"Aberdeen\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000914",
+    "sql": "SELECT avg(grade) FROM Highschooler WHERE id IN (SELECT T1.student_id FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id)",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000422",
+    "sql": "SELECT name FROM museum WHERE Museum_ID NOT IN (SELECT museum_id FROM visit)",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000136",
+    "sql": "select avg(horsepower) from cars_data where year  <  1980;",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000398",
+    "sql": "SELECT Hometown FROM teacher GROUP BY Hometown HAVING COUNT(*)  >=  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000701",
+    "sql": "select contestant_name from contestants where contestant_name like \"%al%\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000573",
+    "sql": "SELECT T2.transcript_date ,  T1.transcript_id FROM Transcript_Contents AS T1 JOIN Transcripts AS T2 ON T1.transcript_id  =  T2.transcript_id GROUP BY T1.transcript_id ORDER BY count(*) ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000067",
+    "sql": "SELECT pettype ,  weight FROM pets ORDER BY pet_age LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000004",
+    "sql": "SELECT avg(age) ,  min(age) ,  max(age) FROM singer WHERE country  =  'France'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000835",
+    "sql": "SELECT count(DISTINCT Nationality) FROM conductor",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000492",
+    "sql": "SELECT name ,  tonnage FROM ship ORDER BY name DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000481",
+    "sql": "SELECT count(*) ,  YEAR FROM matches GROUP BY YEAR",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.001033",
+    "sql": "SELECT property_name FROM Properties WHERE property_type_code  =  \"House\" UNION SELECT property_name FROM Properties WHERE property_type_code  =  \"Apartment\" AND room_count  >  1",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000663",
+    "sql": "SELECT T1.Name FROM people AS T1 JOIN poker_player AS T2 ON T1.People_ID  =  T2.People_ID ORDER BY T2.Final_Table_Made",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000287",
+    "sql": "SELECT count(*) ,  t2.name FROM hiring AS t1 JOIN shop AS t2 ON t1.shop_id  =  t2.shop_id GROUP BY t2.name",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.001015",
+    "sql": "select citizenship from singer group by citizenship order by count(*) desc limit 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000946",
+    "sql": "SELECT T1.date_of_treatment ,  T2.first_name FROM Treatments AS T1 JOIN Professionals AS T2 ON T1.professional_id  =  T2.professional_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000618",
+    "sql": "SELECT max(SHARE) , min(SHARE) FROM TV_series;",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000375",
+    "sql": "SELECT document_id FROM Paragraphs GROUP BY document_id ORDER BY count(*) ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000723",
+    "sql": "SELECT sum(Population) ,  max(GNP) FROM country WHERE Continent  =  \"Asia\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000247",
+    "sql": "SELECT FlightNo FROM FLIGHTS WHERE SourceAirport  =  \"APG\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000878",
+    "sql": "SELECT grade FROM Highschooler GROUP BY grade ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000412",
+    "sql": "SELECT name FROM visitor WHERE Level_of_membership  >  4 ORDER BY Level_of_membership DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000152",
+    "sql": "SELECT DISTINCT T2.Model FROM CAR_NAMES AS T1 JOIN MODEL_LIST AS T2 ON T1.Model  =  T2.Model JOIN CAR_MAKERS AS T3 ON T2.Maker  =  T3.Id JOIN CARS_DATA AS T4 ON T1.MakeId  =  T4.Id WHERE T3.FullName  =  'General Motors' OR T4.weight  >  3500;",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000408",
+    "sql": "SELECT T2.Name FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name HAVING COUNT(*)  >=  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000691",
+    "sql": "SELECT max(created) FROM votes WHERE state  =  'CA'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000552",
+    "sql": "SELECT T2.transcript_date ,  T1.transcript_id FROM Transcript_Contents AS T1 JOIN Transcripts AS T2 ON T1.transcript_id  =  T2.transcript_id GROUP BY T1.transcript_id HAVING count(*)  >=  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000059",
+    "sql": "select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'cat' intersect select t1.fname from student as t1 join has_pet as t2 on t1.stuid  =  t2.stuid join pets as t3 on t3.petid  =  t2.petid where t3.pettype  =  'dog'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000027",
+    "sql": "SELECT YEAR FROM concert GROUP BY YEAR ORDER BY count(*) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000857",
+    "sql": "SELECT Record_Company FROM orchestra WHERE Year_of_Founded  <  2003 INTERSECT SELECT Record_Company FROM orchestra WHERE Year_of_Founded  >  2003",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000493",
+    "sql": "SELECT name ,  date FROM battle",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000473",
+    "sql": "SELECT count(*) ,  country_code FROM players GROUP BY country_code",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.001030",
+    "sql": "SELECT count(*) FROM Other_Available_Features",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000658",
+    "sql": "SELECT max(Final_Table_Made) FROM poker_player WHERE Earnings  <  200000",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000275",
+    "sql": "SELECT name FROM shop WHERE number_products  >  (SELECT avg(number_products) FROM shop)",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.001021",
+    "sql": "SELECT DISTINCT T1.Name FROM singer AS T1 JOIN song AS T2 ON T1.Singer_ID  =  T2.Singer_ID WHERE T2.Sales  >  300000",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000993",
+    "sql": "SELECT max(charge_amount) FROM Charges",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000631",
+    "sql": "SELECT package_option ,  series_name FROM TV_Channel WHERE hight_definition_TV  =  \"yes\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000348",
+    "sql": "SELECT template_type_code ,  template_type_description FROM Ref_template_types",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000751",
+    "sql": "SELECT COUNT( DISTINCT Continent) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  \"Chinese\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000219",
+    "sql": "SELECT count(*) FROM FLIGHTS AS T1 JOIN AIRPORTS AS T2 ON T1.DestAirport  =  T2.AirportCode JOIN AIRLINES AS T3 ON T3.uid  =  T1.Airline WHERE T2.City  =  \"Aberdeen\" AND T3.Airline  =  \"United Airlines\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000902",
+    "sql": "SELECT student_id ,  count(*) FROM Likes GROUP BY student_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000420",
+    "sql": "SELECT t2.visitor_id ,  t1.name ,  t1.Level_of_membership FROM visitor AS t1 JOIN visit AS t2 ON t1.id  =  t2.visitor_id GROUP BY t2.visitor_id ORDER BY sum(t2.Total_spent) DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000115",
+    "sql": "SELECT count(*) FROM MODEL_LIST AS T1 JOIN CAR_MAKERS AS T2 ON T1.Maker  =  T2.Id JOIN COUNTRIES AS T3 ON T2.Country  =  T3.CountryId WHERE T3.CountryName  =  'usa';",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000399",
+    "sql": "SELECT T3.Name ,  T2.Course FROM course_arrange AS T1 JOIN course AS T2 ON T1.Course_ID  =  T2.Course_ID JOIN teacher AS T3 ON T1.Teacher_ID  =  T3.Teacher_ID",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000700",
+    "sql": "SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Tabatha Gehling' INTERSECT SELECT T3.area_code FROM contestants AS T1 JOIN votes AS T2 ON T1.contestant_number  =  T2.contestant_number JOIN area_code_state AS T3 ON T2.state  =  T3.state WHERE T1.contestant_name  =  'Kelly Clauss'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000556",
+    "sql": "SELECT first_name ,  middle_name ,  last_name FROM Students ORDER BY date_first_registered ASC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000078",
+    "sql": "SELECT T2.petid FROM student AS T1 JOIN has_pet AS T2 ON T1.stuid  =  T2.stuid WHERE T1.Lname  =  'Smith'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000010",
+    "sql": "SELECT country ,  count(*) FROM singer GROUP BY country",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000826",
+    "sql": "SELECT Name FROM conductor WHERE Nationality != 'USA'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000498",
+    "sql": "SELECT DISTINCT T1.id ,  T1.name FROM battle AS T1 JOIN ship AS T2 ON T1.id  =  T2.lost_in_battle WHERE T2.ship_type  =  'Brig'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000459",
+    "sql": "SELECT T1.country_code ,  T1.first_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id  =  T2.player_id ORDER BY T2.tours DESC LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.000661",
+    "sql": "SELECT T1.Name FROM people AS T1 JOIN poker_player AS T2 ON T1.People_ID  =  T2.People_ID WHERE T2.Earnings  >  300000",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000262",
+    "sql": "SELECT name FROM employee ORDER BY age",
+    "ordered": true
+  },
+  {
+    "id": "spider.dev.001005",
+    "sql": "SELECT Birth_Year ,  Citizenship FROM singer",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000986",
+    "sql": "SELECT avg(age) FROM Dogs",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000637",
+    "sql": "SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Michael Chang' INTERSECT SELECT T1.series_name ,  T1.country FROM TV_Channel AS T1 JOIN cartoon AS T2 ON T1.id = T2.Channel WHERE T2.directed_by  =  'Ben Jones'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000359",
+    "sql": "SELECT count(*) FROM Paragraphs AS T1 JOIN Documents AS T2 ON T1.document_ID  =  T2.document_ID WHERE T2.document_name  =  'Summer Show'",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000759",
+    "sql": "SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T1.GovernmentForm  =  \"Republic\" GROUP BY T2.Language HAVING COUNT(*)  =  1",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000245",
+    "sql": "SELECT T1.FlightNo FROM FLIGHTS AS T1 JOIN AIRLINES AS T2 ON T2.uid  =  T1.Airline WHERE T2.Airline  =  \"United Airlines\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000890",
+    "sql": "SELECT T3.name FROM Friend AS T1 JOIN Highschooler AS T2 ON T1.student_id  =  T2.id JOIN Highschooler AS T3 ON T1.friend_id  =  T3.id WHERE T2.name  =  \"Kyle\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000427",
+    "sql": "SELECT count(*) FROM visitor WHERE id NOT IN (SELECT t2.visitor_id FROM museum AS t1 JOIN visit AS t2 ON t1.Museum_ID  =  t2.Museum_ID WHERE t1.open_year  >  2010)",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000160",
+    "sql": "SELECT COUNT(*) FROM CARS_DATA WHERE Accelerate  >  ( SELECT Accelerate FROM CARS_DATA ORDER BY Horsepower DESC LIMIT 1 );",
+    "ordered": false
+  },
+  {
+    "id": "spider.dev.000405",
+    "sql": "SELECT T2.Name ,  COUNT(*) FROM course_arrange AS T1 JOIN teacher AS T2 ON T1.Teacher_ID  =  T2.Teacher_ID GROUP BY T2.Name",
+    "ordered": false
+  }
+]

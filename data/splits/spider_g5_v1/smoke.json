@@ -1,0 +1,122 @@
+[
+  {
+    "id": "spider.train.004825",
+    "source_db_id": "aircraft",
+    "database_id": "spider_aircraft",
+    "question": "List the names of aircrafts and the number of times it won matches."
+  },
+  {
+    "id": "spider.train.005529",
+    "source_db_id": "products_gen_characteristics",
+    "database_id": "spider_products_gen_characteristics",
+    "question": "Return the names of products in the category 'Spices'."
+  },
+  {
+    "id": "spider.train.004587",
+    "source_db_id": "solvency_ii",
+    "database_id": "spider_solvency_ii",
+    "question": "What is the average price for products?"
+  },
+  {
+    "id": "spider.train.001678",
+    "source_db_id": "theme_gallery",
+    "database_id": "spider_theme_gallery",
+    "question": "What are the themes and years for exhibitions, sorted by ticket price descending?"
+  },
+  {
+    "id": "spider.train.003061",
+    "source_db_id": "loan_1",
+    "database_id": "spider_loan_1",
+    "question": "What are the names of the different bank branches, and what are their total loan amounts?"
+  },
+  {
+    "id": "spider.train.001875",
+    "source_db_id": "wrestler",
+    "database_id": "spider_wrestler",
+    "question": "Which locations are shared by more than two wrestlers?"
+  },
+  {
+    "id": "spider.train.003160",
+    "source_db_id": "station_weather",
+    "database_id": "spider_station_weather",
+    "question": "How many trains have 'Express' in their names?"
+  },
+  {
+    "id": "spider.train.002657",
+    "source_db_id": "local_govt_mdm",
+    "database_id": "spider_local_govt_mdm",
+    "question": "What are the distinct cross reference source system codes which are related to the master customer details 'Gottlieb, Becker and Wyman'?"
+  },
+  {
+    "id": "spider.train.005048",
+    "source_db_id": "soccer_2",
+    "database_id": "spider_soccer_2",
+    "question": "What is the number of states that has some colleges whose enrollment is smaller than the average enrollment?"
+  },
+  {
+    "id": "spider.train.003467",
+    "source_db_id": "hr_1",
+    "database_id": "spider_hr_1",
+    "question": "display job title and average salary of employees."
+  },
+  {
+    "id": "spider.train.006284",
+    "source_db_id": "city_record",
+    "database_id": "spider_city_record",
+    "question": "Which city has the lowest GDP? Please list the city name and its GDP."
+  },
+  {
+    "id": "spider.train.000734",
+    "source_db_id": "customers_card_transactions",
+    "database_id": "spider_customers_card_transactions",
+    "question": "What are the different types of transactions?"
+  },
+  {
+    "id": "spider.train.004046",
+    "source_db_id": "student_1",
+    "database_id": "spider_student_1",
+    "question": "Find the last names of the teachers that teach fifth grade."
+  },
+  {
+    "id": "spider.train.006612",
+    "source_db_id": "train_station",
+    "database_id": "spider_train_station",
+    "question": "Show the station name and number of trains in each station."
+  },
+  {
+    "id": "spider.train.001929",
+    "source_db_id": "protein_institute",
+    "database_id": "spider_protein_institute",
+    "question": "How many institutions do not have an associated protein in our record?"
+  },
+  {
+    "id": "spider.train.003140",
+    "source_db_id": "assets_maintenance",
+    "database_id": "spider_assets_maintenance",
+    "question": "Which engineers have never visited to maintain the assets? List the engineer first name and last name."
+  },
+  {
+    "id": "spider.train.006695",
+    "source_db_id": "driving_school",
+    "database_id": "spider_driving_school",
+    "question": "What are the first and last names of all customers with more than 2 payments?"
+  },
+  {
+    "id": "spider.train.004460",
+    "source_db_id": "network_2",
+    "database_id": "spider_network_2",
+    "question": "Find the male friend of Alice whose job is a doctor?"
+  },
+  {
+    "id": "spider.train.002269",
+    "source_db_id": "entrepreneur",
+    "database_id": "spider_entrepreneur",
+    "question": "What is the average money requested by all entrepreneurs?"
+  },
+  {
+    "id": "spider.train.002803",
+    "source_db_id": "news_report",
+    "database_id": "spider_news_report",
+    "question": "List the names of journalists in ascending order of years working."
+  }
+]

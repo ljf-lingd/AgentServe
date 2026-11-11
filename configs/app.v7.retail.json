@@ -1,0 +1,89 @@
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "agent-qwen-sam",
+  "session_sam": true,
+  "databases": {
+    "demo_orders": {
+      "path": "../data/databases/demo_orders/demo_orders.sqlite",
+      "schema_path": "../data/processed/demo_orders/schema.sql",
+      "context": "All monetary amounts are integer cents; do not convert units. Order statuses: completed/pending/cancelled. Cities: Beijing/Shanghai/Shenzhen.\nOrder analytics interpretation and SQL checks:\n- Respect the question's explicit scope. Counts and lists use all order statuses unless a status is explicitly requested. Only revenue defaults to completed. \"All statuses\" means no status predicate; it does not request grouping by status.\n- A total count asks for one count column. Group by status/month/city only when the question requests that breakdown.\n- Average completed-order amount requires filtering to completed orders BEFORE the per-order sum, then averaging those sums. Do not average all statuses or individual line items.\n- SELECT exactly the requested outputs in the requested order. An ID used only to order/group rows must stay outside SELECT. Group customers by their ID when names can repeat.\n- Use only tables needed for the requested outputs or conditions. Qualify ambiguous column names when joining. Prefer a direct aggregate with ORDER BY and LIMIT for a top result over unnecessary nested MAX subqueries.\n- For entities with no related record, preserve the entity table with NOT EXISTS or LEFT JOIN and a NULL check on the related key; do not reverse the outer join.\n- Use SQLite syntax. Removing every occurrence of a substring uses replace(text, old, new). TRIM(BOTH ... FROM ...) is not SQLite syntax.\n"
+    },
+    "business_orders_v1": {
+      "path": "../data/databases/business_orders_v1/business_orders_v1.sqlite",
+      "schema_path": "../data/processed/business_orders_v1/schema.sql",
+      "context": "This is synthetic acceptance data, not production orders. Dates use YYYY-MM-DD in 2026. All monetary values are integer cents; preserve cents in answers. Revenue includes only completed orders and is SUM(order_items.quantity * order_items.unit_price_cents), using historical item prices, not products.price_cents. Include pending/cancelled only when asked. City/category/name/sku values are case-sensitive text. Names may repeat; customer_id identifies people.\nOrder analytics interpretation and SQL checks:\n- Respect the question's explicit scope. Counts and lists use all order statuses unless a status is explicitly requested. Only revenue defaults to completed. \"All statuses\" means no status predicate; it does not request grouping by status.\n- A total count asks for one count column. Group by status/month/city only when the question requests that breakdown.\n- Average completed-order amount requires filtering to completed orders BEFORE the per-order sum, then averaging those sums. Do not average all statuses or individual line items.\n- SELECT exactly the requested outputs in the requested order. An ID used only to order/group rows must stay outside SELECT. Group customers by their ID when names can repeat.\n- Use only tables needed for the requested outputs or conditions. Qualify ambiguous column names when joining. Prefer a direct aggregate with ORDER BY and LIMIT for a top result over unnecessary nested MAX subqueries.\n- For entities with no related record, preserve the entity table with NOT EXISTS or LEFT JOIN and a NULL check on the related key; do not reverse the outer join.\n- Use SQLite syntax. Removing every occurrence of a substring uses replace(text, old, new). TRIM(BOTH ... FROM ...) is not SQLite syntax.\n",
+      "workbench": {
+        "label": "中文订单",
+        "first_date": "2026-01-01",
+        "last_date": "2026-06-30",
+        "currency": "CNY",
+        "modes": [
+          "sql",
+          "knowledge",
+          "metric",
+          "analysis"
+        ],
+        "data_description": "订单日期与状态、客户城市、商品目录和订单明细。可按城市和月份查笔数、成交额或商品销量。",
+        "rule_description": "成交营收、订单笔数、客单价、商品销量等计算口径，以及订单字段、空结果和只读查询说明。",
+        "query_examples": [
+          "有哪些城市有订单？",
+          "2026 年 3 月上海有多少笔订单？",
+          "杭州 5 月成交额是多少？"
+        ],
+        "rule_examples": [
+          "成交营收算哪些订单？",
+          "完成订单量怎么统计？",
+          "订单金额取成交价还是商品标价？"
+        ]
+      }
+    },
+    "online_retail_ii": {
+      "path": "../data/databases/online_retail_ii/online_retail_ii.sqlite",
+      "schema_path": "../data/databases/online_retail_ii/schema.sql",
+      "context": "Query only retail_transactions. Each row is a source transaction line. Amounts sales_gbp and cancellation_gbp are already in GBP. Use ROUND(SUM(sales_gbp),6) AS sales_gbp for sales amount and ROUND(SUM(cancellation_gbp),6) AS cancellation_gbp for positive cancellation amount. Never divide the result or recompute amount from quantity. NULL means no matching valued line. For distinct purchase invoices use COUNT(DISTINCT invoice) with WHERE is_cancellation = 0, for distinct cancellation invoices use COUNT(DISTINCT invoice) with WHERE is_cancellation = 1. For buyers count distinct non-null customer_id. Country values are English: 英国 United Kingdom, 德国 Germany, 法国 France, 荷兰 Netherlands, 澳大利亚 Australia, 西班牙 Spain, 比利时 Belgium, 瑞士 Switzerland, 丹麦 Denmark, 美国 USA, 日本 Japan. Filter country using exact English equality. invoice_date is YYYY-MM-DD HH:MM:SS. Always filter dates using half-open ranges like invoice_date >= '2011-11-01' AND invoice_date < '2011-12-01' to use the index. Keep conditions from the latest successful query on follow-ups that change one field. Rank ties by country ascending.",
+      "workbench": {
+        "label": "UCI 零售交易",
+        "first_date": "2009-12-01",
+        "last_date": "2011-12-09",
+        "currency": "GBP",
+        "modes": [
+          "sql",
+          "knowledge"
+        ],
+        "data_description": "UCI Online Retail II 的 1,067,371 条公开交易明细，包含 43 个国家或地区标签。可按国家、商品和月份查询销售额、取消金额和发票笔数。",
+        "rule_description": "取消单识别、销售和取消金额、统计日期、币种、客户缺失值和异常调整。",
+        "query_examples": [
+          "英国 2011 年 11 月的取消金额是多少？",
+          "那德国呢？",
+          "2011 年 11 月销售额前五的国家有哪些？"
+        ],
+        "rule_examples": [
+          "怎么认定取消单？",
+          "取消金额按哪个月份统计？",
+          "客户 ID 缺失会计入客户数吗？"
+        ]
+      }
+    }
+  },
+  "answer_style": "evidence_direct_v5",
+  "sql_function_profile": "with_replace_v1",
+  "sql_prompt_version": "evidence_v22",
+  "task_concurrency": 4,
+  "state_database": "../state/v7-tasks.sqlite",
+  "memory": {
+    "policy": "state_on_demand",
+    "resources_url": "http://127.0.0.1:8002",
+    "recent_turns": 2,
+    "context_tokens": 2048,
+    "model_context_tokens": 8192
+  },
+  "llm_concurrency": 4,
+  "knowledge": {
+    "snapshot_path": "../cache/v7-knowledge-bm25.json",
+    "strategy": "bm25"
+  },
+  "metric": {
+    "registry_path": "../data/knowledge_v32/registry.json"
+  },
+  "analysis_enabled": true
+}

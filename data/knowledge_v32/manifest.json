@@ -1,0 +1,33 @@
+{
+  "as_of": "2026-11-06",
+  "purpose": "product",
+  "documents": [
+    {
+      "path": "settled-revenue.md",
+      "database_id": "business_orders_v1",
+      "clause_id": "settled-revenue",
+      "purpose": "product",
+      "approval_ref": "V2.2.1/configs/app.v221.C1.json+agents/order_sql.py; V3/P3",
+      "source_sha256": "894817f155b9e7d29ab630455bdc3a6757135c783557b8b0de7b878914a4bf01",
+      "version": "1",
+      "effective_from": "2026-01-01",
+      "effective_to": null,
+      "id": "settled-revenue",
+      "heading": "成交营收"
+    },
+    {
+      "path": "completed-orders.md",
+      "database_id": "business_orders_v1",
+      "clause_id": "completed-orders",
+      "purpose": "product",
+      "approval_ref": "V2.2.1/configs/app.v221.C1.json+agents/order_sql.py; V3/P3",
+      "source_sha256": "25bd9a1f6b310746fb7dc5ea6ee138701128baaa188cbec07be798188a0ebeeb",
+      "version": "1",
+      "effective_from": "2026-01-01",
+      "effective_to": null,
+      "id": "completed-orders",
+      "heading": "完成订单量"
+    }
+  ],
+  "static": []
+}

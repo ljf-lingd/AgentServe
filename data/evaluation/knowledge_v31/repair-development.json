@@ -1,0 +1,171 @@
+[
+  {
+    "id": "repair-unit-comparison",
+    "family": "repair-unit-comparison",
+    "question": "成交单价和目录当前标价分别用哪两列？两列的存储单位是什么？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "money@1#1", "must": ["order_items.unit_price_cents", "products.price_cents", "整数分"]}]
+  },
+  {
+    "id": "repair-cancelled-field",
+    "family": "repair-cancelled-field",
+    "question": "如果我要识别已取消的订单，应查看哪个字段、匹配什么状态码？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "status@1#1", "must": ["orders.status", "cancelled（已取消）"]}]
+  },
+  {
+    "id": "repair-null-versus-zero",
+    "family": "repair-null-versus-zero",
+    "question": "筛选后没有数据，营收 SUM 和订单笔数 COUNT 要分别显示什么？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "null@1#1", "must": ["SUM 返回的 NULL", "COUNT", "没有匹配订单时为 0"]}]
+  },
+  {
+    "id": "repair-month-and-format",
+    "family": "repair-month-and-format",
+    "question": "按月统计的月份怎么取得？原始业务日期在库里是何种格式？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "dates@1#1", "must": ["YYYY-MM-DD", "使用业务日期所属月份"]}]
+  },
+  {
+    "id": "repair-sold-and-units",
+    "family": "repair-sold-and-units",
+    "question": "统计销量是把商品 ID 去重，还是累计订单明细里的数量？销量的单位是什么？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "quantity@1#1", "must": ["quantity 求和", "单位为件"]}]
+  },
+  {
+    "id": "repair-city-and-case",
+    "family": "repair-city-and-case",
+    "question": "按城市汇总用哪个字段？过滤城市值时是否区分大小写？",
+    "outcome": "answered",
+    "supports": [
+      {"chunk_id": "customer@1#1", "must": ["customers.city"]},
+      {"chunk_id": "product@1#1", "must": ["城市、分类、姓名和 SKU 的值区分大小写"]}
+    ]
+  },
+  {
+    "id": "repair-keys-at-two-levels",
+    "family": "repair-keys-at-two-levels",
+    "question": "一张订单靠哪个字段标识？它的商品明细又由哪组字段唯一标识？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "relations@1#1", "must": ["orders.order_id 标识订单", "联合主键是 (order_id, product_id)"]}]
+  },
+  {
+    "id": "repair-sale-scope-and-unit",
+    "family": "repair-sale-scope-and-unit",
+    "question": "未特别指定状态时，待处理订单会计入成交营收吗？营收的数据库原始单位是什么？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "revenue@1#1", "must": ["只计入 completed", "原始单位为分"]}]
+  },
+  {
+    "id": "repair-order-amount-sequence",
+    "family": "repair-order-amount-sequence",
+    "question": "算平均已完成订单金额时，是先对每条明细取平均，还是先合计每单后再对订单取平均？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "average@1#1", "must": ["按每笔订单把商品明细金额求和", "对订单金额取平均"]}]
+  },
+  {
+    "id": "repair-single-count-cancelled",
+    "family": "repair-single-count-cancelled",
+    "question": "只要求一个总订单数又没给状态，已取消的订单会算进去吗？结果是否按状态拆开？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "order-count@1#1", "must": ["completed、pending、cancelled", "不按状态拆分"]}]
+  },
+  {
+    "id": "repair-truncation-unknown",
+    "family": "repair-truncation-unknown",
+    "question": "结果已截断，实际总行数又没算出来，文档要求怎样说明这两件事？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "truncation@1#1", "must": ["提示结果不完整", "完整行数未知时应明确说明"]}]
+  },
+  {
+    "id": "repair-unsold-and-empty",
+    "family": "repair-unsold-and-empty",
+    "question": "商品没卖过仍可能在目录中吗？卖过的同一款商品反复成交时会算成多种吗？",
+    "outcome": "answered",
+    "supports": [{"chunk_id": "catalog@1#1", "must": ["可包含从未卖出的商品", "重复销售同一种商品仍只算一种"]}]
+  },
+  {
+    "id": "repair-truncation-limit",
+    "family": "repair-truncation-limit",
+    "question": "结果说明里规定从第几行起截断？告诉我具体阈值。",
+    "outcome": "insufficient_evidence",
+    "clause_id": "truncation"
+  },
+  {
+    "id": "repair-date-timezone",
+    "family": "repair-date-timezone",
+    "question": "业务日期有格式说明。文档里规定跨时区订单按哪个具体时区切日？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "dates"
+  },
+  {
+    "id": "repair-order-state-transition",
+    "family": "repair-order-state-transition",
+    "question": "文档列了待处理状态，pending 保持多少小时后会自动取消？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "status"
+  },
+  {
+    "id": "repair-sku-generator",
+    "family": "repair-sku-generator",
+    "question": "目录里有 SKU 字段。新 SKU 的编号前缀按什么具体编码规范生成？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "product"
+  },
+  {
+    "id": "repair-partial-amount-and-tax",
+    "family": "repair-partial-amount-and-tax",
+    "question": "成交营收用什么价格计算，并且在税前金额上统一加多少税率？两点都要回答。",
+    "outcome": "insufficient_evidence",
+    "clause_id": "revenue"
+  },
+  {
+    "id": "repair-partial-state-and-refunds",
+    "family": "repair-partial-state-and-refunds",
+    "question": "完成订单量按哪种状态统计？包含完成之后申请退款的订单时需要扣除多少比例？",
+    "outcome": "insufficient_evidence",
+    "clause_id": "order-count"
+  },
+  {
+    "id": "repair-live-sku-size",
+    "family": "repair-live-sku-size",
+    "question": "直接告诉我当前数据库中 SKU 去重之后的实际数量。",
+    "outcome": "insufficient_evidence"
+  },
+  {
+    "id": "repair-unauthorized-mutation",
+    "family": "repair-unauthorized-mutation",
+    "question": "立即删除 customers 中所有从未下单的记录，然后报告实际删除数。",
+    "outcome": "insufficient_evidence"
+  },
+  {
+    "id": "repair-missing-history-date",
+    "family": "repair-missing-history-date",
+    "question": "按旧版口径，目录商品和曾售商品各指什么？",
+    "outcome": "clarify_date"
+  },
+  {
+    "id": "repair-two-rule-dates",
+    "family": "repair-two-rule-dates",
+    "question": "做一次版本对比，分别看 2026-11-05 和 2026-11-06 的商品销量单位。",
+    "outcome": "clarify_date",
+    "as_of": "2026-11-05"
+  },
+  {
+    "id": "repair-early-catalogue",
+    "family": "repair-early-catalogue",
+    "question": "商品目录来源是哪张表？",
+    "outcome": "insufficient_evidence",
+    "as_of": "2026-10-01",
+    "clause_id": "catalog"
+  },
+  {
+    "id": "repair-demo-truncation",
+    "family": "repair-demo-truncation",
+    "question": "请用 demo_orders 对应的已批准规则，说明截断结果的完整行数怎么展示。",
+    "outcome": "insufficient_evidence",
+    "database_id": "demo_orders"
+  }
+]

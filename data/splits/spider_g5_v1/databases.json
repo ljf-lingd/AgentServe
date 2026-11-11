@@ -1,0 +1,602 @@
+{
+  "spider_aircraft": {
+    "path": "data/databases/spider/aircraft/aircraft.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/aircraft.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_apartment_rentals": {
+    "path": "data/databases/spider/apartment_rentals/apartment_rentals.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/apartment_rentals.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_architecture": {
+    "path": "data/databases/spider/architecture/architecture.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/architecture.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_assets_maintenance": {
+    "path": "data/databases/spider/assets_maintenance/assets_maintenance.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/assets_maintenance.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_baseball_1": {
+    "path": "data/databases/spider/baseball_1/baseball_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/baseball_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_battle_death": {
+    "path": "data/databases/spider/battle_death/battle_death.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/battle_death.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_bike_1": {
+    "path": "data/databases/spider/bike_1/bike_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/bike_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_body_builder": {
+    "path": "data/databases/spider/body_builder/body_builder.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/body_builder.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_book_2": {
+    "path": "data/databases/spider/book_2/book_2.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/book_2.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_browser_web": {
+    "path": "data/databases/spider/browser_web/browser_web.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/browser_web.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_candidate_poll": {
+    "path": "data/databases/spider/candidate_poll/candidate_poll.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/candidate_poll.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_car_1": {
+    "path": "data/databases/spider/car_1/car_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/car_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_cinema": {
+    "path": "data/databases/spider/cinema/cinema.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/cinema.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_city_record": {
+    "path": "data/databases/spider/city_record/city_record.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/city_record.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_climbing": {
+    "path": "data/databases/spider/climbing/climbing.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/climbing.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_club_1": {
+    "path": "data/databases/spider/club_1/club_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/club_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_coffee_shop": {
+    "path": "data/databases/spider/coffee_shop/coffee_shop.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/coffee_shop.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_college_1": {
+    "path": "data/databases/spider/college_1/college_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/college_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_college_3": {
+    "path": "data/databases/spider/college_3/college_3.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/college_3.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_company_1": {
+    "path": "data/databases/spider/company_1/company_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/company_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_company_employee": {
+    "path": "data/databases/spider/company_employee/company_employee.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/company_employee.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_concert_singer": {
+    "path": "data/databases/spider/concert_singer/concert_singer.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/concert_singer.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_county_public_safety": {
+    "path": "data/databases/spider/county_public_safety/county_public_safety.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/county_public_safety.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_course_teach": {
+    "path": "data/databases/spider/course_teach/course_teach.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/course_teach.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_cre_Doc_Template_Mgt": {
+    "path": "data/databases/spider/cre_Doc_Template_Mgt/cre_Doc_Template_Mgt.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/cre_Doc_Template_Mgt.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_cre_Doc_Tracking_DB": {
+    "path": "data/databases/spider/cre_Doc_Tracking_DB/cre_Doc_Tracking_DB.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/cre_Doc_Tracking_DB.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_cre_Docs_and_Epenses": {
+    "path": "data/databases/spider/cre_Docs_and_Epenses/cre_Docs_and_Epenses.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/cre_Docs_and_Epenses.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_cre_Drama_Workshop_Groups": {
+    "path": "data/databases/spider/cre_Drama_Workshop_Groups/cre_Drama_Workshop_Groups.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/cre_Drama_Workshop_Groups.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_csu_1": {
+    "path": "data/databases/spider/csu_1/csu_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/csu_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customer_complaints": {
+    "path": "data/databases/spider/customer_complaints/customer_complaints.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customer_complaints.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customer_deliveries": {
+    "path": "data/databases/spider/customer_deliveries/customer_deliveries.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customer_deliveries.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customers_and_addresses": {
+    "path": "data/databases/spider/customers_and_addresses/customers_and_addresses.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customers_and_addresses.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customers_and_invoices": {
+    "path": "data/databases/spider/customers_and_invoices/customers_and_invoices.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customers_and_invoices.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customers_and_products_contacts": {
+    "path": "data/databases/spider/customers_and_products_contacts/customers_and_products_contacts.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customers_and_products_contacts.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_customers_card_transactions": {
+    "path": "data/databases/spider/customers_card_transactions/customers_card_transactions.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/customers_card_transactions.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_debate": {
+    "path": "data/databases/spider/debate/debate.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/debate.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_decoration_competition": {
+    "path": "data/databases/spider/decoration_competition/decoration_competition.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/decoration_competition.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_department_management": {
+    "path": "data/databases/spider/department_management/department_management.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/department_management.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_department_store": {
+    "path": "data/databases/spider/department_store/department_store.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/department_store.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_device": {
+    "path": "data/databases/spider/device/device.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/device.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_document_management": {
+    "path": "data/databases/spider/document_management/document_management.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/document_management.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_dog_kennels": {
+    "path": "data/databases/spider/dog_kennels/dog_kennels.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/dog_kennels.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_driving_school": {
+    "path": "data/databases/spider/driving_school/driving_school.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/driving_school.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_e_learning": {
+    "path": "data/databases/spider/e_learning/e_learning.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/e_learning.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_employee_hire_evaluation": {
+    "path": "data/databases/spider/employee_hire_evaluation/employee_hire_evaluation.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/employee_hire_evaluation.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_entertainment_awards": {
+    "path": "data/databases/spider/entertainment_awards/entertainment_awards.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/entertainment_awards.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_entrepreneur": {
+    "path": "data/databases/spider/entrepreneur/entrepreneur.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/entrepreneur.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_epinions_1": {
+    "path": "data/databases/spider/epinions_1/epinions_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/epinions_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_farm": {
+    "path": "data/databases/spider/farm/farm.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/farm.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_flight_2": {
+    "path": "data/databases/spider/flight_2/flight_2.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/flight_2.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_flight_4": {
+    "path": "data/databases/spider/flight_4/flight_4.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/flight_4.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_flight_company": {
+    "path": "data/databases/spider/flight_company/flight_company.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/flight_company.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_formula_1": {
+    "path": "data/databases/spider/formula_1/formula_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/formula_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_game_1": {
+    "path": "data/databases/spider/game_1/game_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/game_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_hospital_1": {
+    "path": "data/databases/spider/hospital_1/hospital_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/hospital_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_hr_1": {
+    "path": "data/databases/spider/hr_1/hr_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/hr_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_icfp_1": {
+    "path": "data/databases/spider/icfp_1/icfp_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/icfp_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_loan_1": {
+    "path": "data/databases/spider/loan_1/loan_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/loan_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_local_govt_in_alabama": {
+    "path": "data/databases/spider/local_govt_in_alabama/local_govt_in_alabama.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/local_govt_in_alabama.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_local_govt_mdm": {
+    "path": "data/databases/spider/local_govt_mdm/local_govt_mdm.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/local_govt_mdm.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_machine_repair": {
+    "path": "data/databases/spider/machine_repair/machine_repair.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/machine_repair.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_manufactory_1": {
+    "path": "data/databases/spider/manufactory_1/manufactory_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/manufactory_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_manufacturer": {
+    "path": "data/databases/spider/manufacturer/manufacturer.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/manufacturer.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_mountain_photos": {
+    "path": "data/databases/spider/mountain_photos/mountain_photos.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/mountain_photos.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_museum_visit": {
+    "path": "data/databases/spider/museum_visit/museum_visit.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/museum_visit.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_music_1": {
+    "path": "data/databases/spider/music_1/music_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/music_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_music_4": {
+    "path": "data/databases/spider/music_4/music_4.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/music_4.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_network_1": {
+    "path": "data/databases/spider/network_1/network_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/network_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_network_2": {
+    "path": "data/databases/spider/network_2/network_2.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/network_2.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_news_report": {
+    "path": "data/databases/spider/news_report/news_report.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/news_report.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_orchestra": {
+    "path": "data/databases/spider/orchestra/orchestra.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/orchestra.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_party_host": {
+    "path": "data/databases/spider/party_host/party_host.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/party_host.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_perpetrator": {
+    "path": "data/databases/spider/perpetrator/perpetrator.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/perpetrator.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_pets_1": {
+    "path": "data/databases/spider/pets_1/pets_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/pets_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_phone_1": {
+    "path": "data/databases/spider/phone_1/phone_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/phone_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_phone_market": {
+    "path": "data/databases/spider/phone_market/phone_market.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/phone_market.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_pilot_record": {
+    "path": "data/databases/spider/pilot_record/pilot_record.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/pilot_record.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_poker_player": {
+    "path": "data/databases/spider/poker_player/poker_player.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/poker_player.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_product_catalog": {
+    "path": "data/databases/spider/product_catalog/product_catalog.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/product_catalog.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_products_gen_characteristics": {
+    "path": "data/databases/spider/products_gen_characteristics/products_gen_characteristics.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/products_gen_characteristics.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_program_share": {
+    "path": "data/databases/spider/program_share/program_share.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/program_share.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_protein_institute": {
+    "path": "data/databases/spider/protein_institute/protein_institute.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/protein_institute.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_race_track": {
+    "path": "data/databases/spider/race_track/race_track.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/race_track.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_railway": {
+    "path": "data/databases/spider/railway/railway.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/railway.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_real_estate_properties": {
+    "path": "data/databases/spider/real_estate_properties/real_estate_properties.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/real_estate_properties.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_restaurant_1": {
+    "path": "data/databases/spider/restaurant_1/restaurant_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/restaurant_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_riding_club": {
+    "path": "data/databases/spider/riding_club/riding_club.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/riding_club.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_roller_coaster": {
+    "path": "data/databases/spider/roller_coaster/roller_coaster.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/roller_coaster.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_sakila_1": {
+    "path": "data/databases/spider/sakila_1/sakila_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/sakila_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_school_bus": {
+    "path": "data/databases/spider/school_bus/school_bus.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/school_bus.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_school_finance": {
+    "path": "data/databases/spider/school_finance/school_finance.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/school_finance.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_school_player": {
+    "path": "data/databases/spider/school_player/school_player.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/school_player.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_scientist_1": {
+    "path": "data/databases/spider/scientist_1/scientist_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/scientist_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_ship_mission": {
+    "path": "data/databases/spider/ship_mission/ship_mission.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/ship_mission.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_shop_membership": {
+    "path": "data/databases/spider/shop_membership/shop_membership.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/shop_membership.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_singer": {
+    "path": "data/databases/spider/singer/singer.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/singer.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_small_bank_1": {
+    "path": "data/databases/spider/small_bank_1/small_bank_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/small_bank_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_soccer_1": {
+    "path": "data/databases/spider/soccer_1/soccer_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/soccer_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_soccer_2": {
+    "path": "data/databases/spider/soccer_2/soccer_2.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/soccer_2.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_solvency_ii": {
+    "path": "data/databases/spider/solvency_ii/solvency_ii.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/solvency_ii.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_station_weather": {
+    "path": "data/databases/spider/station_weather/station_weather.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/station_weather.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_store_1": {
+    "path": "data/databases/spider/store_1/store_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/store_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_storm_record": {
+    "path": "data/databases/spider/storm_record/storm_record.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/storm_record.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_student_1": {
+    "path": "data/databases/spider/student_1/student_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/student_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_student_transcripts_tracking": {
+    "path": "data/databases/spider/student_transcripts_tracking/student_transcripts_tracking.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/student_transcripts_tracking.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_swimming": {
+    "path": "data/databases/spider/swimming/swimming.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/swimming.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_theme_gallery": {
+    "path": "data/databases/spider/theme_gallery/theme_gallery.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/theme_gallery.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_tracking_grants_for_research": {
+    "path": "data/databases/spider/tracking_grants_for_research/tracking_grants_for_research.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/tracking_grants_for_research.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_tracking_orders": {
+    "path": "data/databases/spider/tracking_orders/tracking_orders.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/tracking_orders.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_tracking_software_problems": {
+    "path": "data/databases/spider/tracking_software_problems/tracking_software_problems.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/tracking_software_problems.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_train_station": {
+    "path": "data/databases/spider/train_station/train_station.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/train_station.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_tvshow": {
+    "path": "data/databases/spider/tvshow/tvshow.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/tvshow.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_university_basketball": {
+    "path": "data/databases/spider/university_basketball/university_basketball.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/university_basketball.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_voter_1": {
+    "path": "data/databases/spider/voter_1/voter_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/voter_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_voter_2": {
+    "path": "data/databases/spider/voter_2/voter_2.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/voter_2.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_wedding": {
+    "path": "data/databases/spider/wedding/wedding.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/wedding.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_workshop_paper": {
+    "path": "data/databases/spider/workshop_paper/workshop_paper.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/workshop_paper.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_world_1": {
+    "path": "data/databases/spider/world_1/world_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/world_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_wrestler": {
+    "path": "data/databases/spider/wrestler/wrestler.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/wrestler.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  },
+  "spider_wta_1": {
+    "path": "data/databases/spider/wta_1/wta_1.sqlite",
+    "schema_path": "data/processed/spider_g5_v1/wta_1.sql",
+    "context": "Use SQLite syntax. Respect exact table and column names; do not invent values."
+  }
+}

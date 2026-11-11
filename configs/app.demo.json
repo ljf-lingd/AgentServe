@@ -1,0 +1,11 @@
+{
+  "base_url": "http://127.0.0.1:8000/v1",
+  "model": "agent-qwen",
+  "databases": {
+    "demo_orders": {
+      "path": "../data/databases/demo_orders/demo_orders.sqlite",
+      "schema_path": "../data/processed/demo_orders/schema.sql",
+      "context": "All monetary amounts are integer cents; do not convert units. Order statuses: completed/pending/cancelled. Cities: Beijing/Shanghai/Shenzhen."
+    }
+  }
+}

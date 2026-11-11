@@ -1,0 +1,602 @@
+[
+  {
+    "id": "spider.train.004828",
+    "source_db_id": "aircraft",
+    "database_id": "spider_aircraft",
+    "question": "What are the names of all pilots listed by descending age?"
+  },
+  {
+    "id": "spider.train.005524",
+    "source_db_id": "products_gen_characteristics",
+    "database_id": "spider_products_gen_characteristics",
+    "question": "List the description of all the colors."
+  },
+  {
+    "id": "spider.train.004586",
+    "source_db_id": "solvency_ii",
+    "database_id": "spider_solvency_ii",
+    "question": "Show the prices of the products named \"Dining\" or \"Trading Policy\"."
+  },
+  {
+    "id": "spider.train.001664",
+    "source_db_id": "theme_gallery",
+    "database_id": "spider_theme_gallery",
+    "question": "Count the number of exhibitions that happened in or after 2005."
+  },
+  {
+    "id": "spider.train.003027",
+    "source_db_id": "loan_1",
+    "database_id": "spider_loan_1",
+    "question": "In how many different cities are banks located?"
+  },
+  {
+    "id": "spider.train.001845",
+    "source_db_id": "wrestler",
+    "database_id": "spider_wrestler",
+    "question": "Count the number of wrestlers."
+  },
+  {
+    "id": "spider.train.003163",
+    "source_db_id": "station_weather",
+    "database_id": "spider_station_weather",
+    "question": "Find the name of the train whose route runs through greatest number of stations."
+  },
+  {
+    "id": "spider.train.002646",
+    "source_db_id": "local_govt_mdm",
+    "database_id": "spider_local_govt_mdm",
+    "question": "what are the details of the cmi masters that have the cross reference code 'Tax'?"
+  },
+  {
+    "id": "spider.train.005003",
+    "source_db_id": "soccer_2",
+    "database_id": "spider_soccer_2",
+    "question": "What are the names and hours spent practicing of every student who received a yes at tryouts?"
+  },
+  {
+    "id": "spider.train.003414",
+    "source_db_id": "hr_1",
+    "database_id": "spider_hr_1",
+    "question": "What is all the information about the Marketing department?"
+  },
+  {
+    "id": "spider.train.006304",
+    "source_db_id": "city_record",
+    "database_id": "spider_city_record",
+    "question": "what is the GDP of the city with the largest population."
+  },
+  {
+    "id": "spider.train.000682",
+    "source_db_id": "customers_card_transactions",
+    "database_id": "spider_customers_card_transactions",
+    "question": "Give the full name and customer id of the customer with the fewest accounts."
+  },
+  {
+    "id": "spider.train.004071",
+    "source_db_id": "student_1",
+    "database_id": "spider_student_1",
+    "question": "How many students are taught by teacher TARRING LEIA?"
+  },
+  {
+    "id": "spider.train.006618",
+    "source_db_id": "train_station",
+    "database_id": "spider_train_station",
+    "question": "Show station names without any trains."
+  },
+  {
+    "id": "spider.train.001924",
+    "source_db_id": "protein_institute",
+    "database_id": "spider_protein_institute",
+    "question": "Show all the distinct institution types."
+  },
+  {
+    "id": "spider.train.003146",
+    "source_db_id": "assets_maintenance",
+    "database_id": "spider_assets_maintenance",
+    "question": "Which staff have contacted which engineers? List the staff name and the engineer first name and last name."
+  },
+  {
+    "id": "spider.train.006702",
+    "source_db_id": "driving_school",
+    "database_id": "spider_driving_school",
+    "question": "How many lessons taught by staff whose first name has letter 'a' in it?"
+  },
+  {
+    "id": "spider.train.004419",
+    "source_db_id": "network_2",
+    "database_id": "spider_network_2",
+    "question": "HOw many engineers are older than 30?"
+  },
+  {
+    "id": "spider.train.002301",
+    "source_db_id": "entrepreneur",
+    "database_id": "spider_entrepreneur",
+    "question": "Show the company of the tallest entrepreneur."
+  },
+  {
+    "id": "spider.train.002806",
+    "source_db_id": "news_report",
+    "database_id": "spider_news_report",
+    "question": "What is the average number of years spent working as a journalist?"
+  },
+  {
+    "id": "spider.train.000326",
+    "source_db_id": "product_catalog",
+    "database_id": "spider_product_catalog",
+    "question": "Which catalog content has the smallest capacity? Return the catalog entry name."
+  },
+  {
+    "id": "spider.train.000794",
+    "source_db_id": "coffee_shop",
+    "database_id": "spider_coffee_shop",
+    "question": "Which membership card has more than 5 members?"
+  },
+  {
+    "id": "spider.train.004701",
+    "source_db_id": "college_3",
+    "database_id": "spider_college_3",
+    "question": "What is the maximum and minimum grade point of students who live in NYC?"
+  },
+  {
+    "id": "spider.train.000749",
+    "source_db_id": "race_track",
+    "database_id": "spider_race_track",
+    "question": "Show the name and location for all tracks."
+  },
+  {
+    "id": "spider.train.002417",
+    "source_db_id": "candidate_poll",
+    "database_id": "spider_candidate_poll",
+    "question": "For each sex, what is the name and sex of the candidate with the oppose rate for their sex?"
+  },
+  {
+    "id": "spider.train.002083",
+    "source_db_id": "pilot_record",
+    "database_id": "spider_pilot_record",
+    "question": "How many pilots are there?"
+  },
+  {
+    "id": "spider.train.004617",
+    "source_db_id": "entertainment_awards",
+    "database_id": "spider_entertainment_awards",
+    "question": "Show the number of audience in year 2008 or 2010."
+  },
+  {
+    "id": "spider.train.002943",
+    "source_db_id": "sakila_1",
+    "database_id": "spider_sakila_1",
+    "question": "What are the countries that contain 3 or more cities?"
+  },
+  {
+    "id": "spider.train.002142",
+    "source_db_id": "local_govt_in_alabama",
+    "database_id": "spider_local_govt_in_alabama",
+    "question": "How many participants belong to the type 'Organizer'?"
+  },
+  {
+    "id": "spider.train.004498",
+    "source_db_id": "decoration_competition",
+    "database_id": "spider_decoration_competition",
+    "question": "List the names of members who did not participate in any round."
+  },
+  {
+    "id": "spider.train.004204",
+    "source_db_id": "cre_Doc_Tracking_DB",
+    "database_id": "spider_cre_Doc_Tracking_DB",
+    "question": "Show all role codes and the number of employees in each role."
+  },
+  {
+    "id": "spider.train.002247",
+    "source_db_id": "machine_repair",
+    "database_id": "spider_machine_repair",
+    "question": "Please show the team that has the most number of technicians."
+  },
+  {
+    "id": "spider.train.005773",
+    "source_db_id": "customer_complaints",
+    "database_id": "spider_customer_complaints",
+    "question": "Return the city with the customer type code \"Good Credit Rating\" that had the fewest customers."
+  },
+  {
+    "id": "spider.train.004110",
+    "source_db_id": "company_employee",
+    "database_id": "spider_company_employee",
+    "question": "List the names of people that are not employed by any company"
+  },
+  {
+    "id": "spider.train.001990",
+    "source_db_id": "phone_market",
+    "database_id": "spider_phone_market",
+    "question": "For each phone, show its names and total number of stocks."
+  },
+  {
+    "id": "spider.train.004864",
+    "source_db_id": "school_player",
+    "database_id": "spider_school_player",
+    "question": "List the locations of schools in descending order of founded year."
+  },
+  {
+    "id": "spider.train.005158",
+    "source_db_id": "cre_Drama_Workshop_Groups",
+    "database_id": "spider_cre_Drama_Workshop_Groups",
+    "question": "Show all cities where at least one customer lives in but no performer lives in."
+  },
+  {
+    "id": "spider.train.005824",
+    "source_db_id": "workshop_paper",
+    "database_id": "spider_workshop_paper",
+    "question": "What is the author of the submission with the highest score?"
+  },
+  {
+    "id": "spider.train.006210",
+    "source_db_id": "roller_coaster",
+    "database_id": "spider_roller_coaster",
+    "question": "Show the different statuses and the numbers of roller coasters for each status."
+  },
+  {
+    "id": "spider.train.006497",
+    "source_db_id": "scientist_1",
+    "database_id": "spider_scientist_1",
+    "question": "Find the number of scientists involved for the projects that require more than 300 hours."
+  },
+  {
+    "id": "spider.train.001947",
+    "source_db_id": "cinema",
+    "database_id": "spider_cinema",
+    "question": "Show all directors."
+  },
+  {
+    "id": "spider.train.000138",
+    "source_db_id": "bike_1",
+    "database_id": "spider_bike_1",
+    "question": "What is the number of days that had an average humity above 50 and an average visibility above 8?"
+  },
+  {
+    "id": "spider.train.005378",
+    "source_db_id": "tracking_software_problems",
+    "database_id": "spider_tracking_software_problems",
+    "question": "For each product that has problems, find the number of problems reported after 1986-11-13 and the product id?"
+  },
+  {
+    "id": "spider.train.001906",
+    "source_db_id": "school_finance",
+    "database_id": "spider_school_finance",
+    "question": "Show the names of schools with a total budget amount greater than 100 or a total endowment greater than 10."
+  },
+  {
+    "id": "spider.train.004523",
+    "source_db_id": "document_management",
+    "database_id": "spider_document_management",
+    "question": "Find the average access counts of documents with functional area \"Acknowledgement\"."
+  },
+  {
+    "id": "spider.train.000047",
+    "source_db_id": "farm",
+    "database_id": "spider_farm",
+    "question": "What is the most common status across all cities?"
+  },
+  {
+    "id": "spider.train.000997",
+    "source_db_id": "university_basketball",
+    "database_id": "spider_university_basketball",
+    "question": "Show the enrollment and primary_conference of the oldest college."
+  },
+  {
+    "id": "spider.train.001210",
+    "source_db_id": "apartment_rentals",
+    "database_id": "spider_apartment_rentals",
+    "question": "Return the apartment number and the number of rooms for each apartment."
+  },
+  {
+    "id": "spider.train.001839",
+    "source_db_id": "browser_web",
+    "database_id": "spider_browser_web",
+    "question": "List the names of the browser that are compatible with both 'CACHEbox' and 'Fasterfox'."
+  },
+  {
+    "id": "spider.train.005425",
+    "source_db_id": "shop_membership",
+    "database_id": "spider_shop_membership",
+    "question": "What are the names of the members that have never registered at any branch?"
+  },
+  {
+    "id": "spider.train.006117",
+    "source_db_id": "customers_and_addresses",
+    "database_id": "spider_customers_and_addresses",
+    "question": "How many customers have at least one order with status \"Cancelled\"?"
+  },
+  {
+    "id": "spider.train.001492",
+    "source_db_id": "debate",
+    "database_id": "spider_debate",
+    "question": "How many debates are there?"
+  },
+  {
+    "id": "spider.train.000627",
+    "source_db_id": "store_1",
+    "database_id": "spider_store_1",
+    "question": "List title of albums have the number of tracks greater than 10."
+  },
+  {
+    "id": "spider.train.002166",
+    "source_db_id": "formula_1",
+    "database_id": "spider_formula_1",
+    "question": "What is the forename and surname of the driver with the shortest laptime?"
+  },
+  {
+    "id": "spider.train.006033",
+    "source_db_id": "game_1",
+    "database_id": "spider_game_1",
+    "question": "How many students play video games?"
+  },
+  {
+    "id": "spider.train.005647",
+    "source_db_id": "railway",
+    "database_id": "spider_railway",
+    "question": "Show the locations that have more than one railways."
+  },
+  {
+    "id": "spider.train.005339",
+    "source_db_id": "manufactory_1",
+    "database_id": "spider_manufactory_1",
+    "question": "What is all the product data, as well as  each product's manufacturer?"
+  },
+  {
+    "id": "spider.train.000000",
+    "source_db_id": "department_management",
+    "database_id": "spider_department_management",
+    "question": "How many heads of the departments are older than 56 ?"
+  },
+  {
+    "id": "spider.train.001037",
+    "source_db_id": "phone_1",
+    "database_id": "spider_phone_1",
+    "question": "What are the wifi and screen mode type of the hardware model named \"LG-P760\"?"
+  },
+  {
+    "id": "spider.train.001707",
+    "source_db_id": "epinions_1",
+    "database_id": "spider_epinions_1",
+    "question": "Find the name and id of the item with the highest average rating."
+  },
+  {
+    "id": "spider.train.002539",
+    "source_db_id": "county_public_safety",
+    "database_id": "spider_county_public_safety",
+    "question": "Return the minimum and maximum crime rates across all counties."
+  },
+  {
+    "id": "spider.train.001306",
+    "source_db_id": "soccer_1",
+    "database_id": "spider_soccer_1",
+    "question": "List the names and birthdays of the top five players in terms of potential."
+  },
+  {
+    "id": "spider.train.002135",
+    "source_db_id": "company_1",
+    "database_id": "spider_company_1",
+    "question": "Return the first names and last names of employees who earn more than 30000 in salary."
+  },
+  {
+    "id": "spider.train.003714",
+    "source_db_id": "mountain_photos",
+    "database_id": "spider_mountain_photos",
+    "question": "What are the maximum and average height of the mountains?"
+  },
+  {
+    "id": "spider.train.001149",
+    "source_db_id": "climbing",
+    "database_id": "spider_climbing",
+    "question": "What are the names of mountains that have a height of over 5000 or a prominence of over 1000?"
+  },
+  {
+    "id": "spider.train.006369",
+    "source_db_id": "flight_company",
+    "database_id": "spider_flight_company",
+    "question": "What is maximum group equity shareholding of the companies?"
+  },
+  {
+    "id": "spider.train.006414",
+    "source_db_id": "cre_Docs_and_Epenses",
+    "database_id": "spider_cre_Docs_and_Epenses",
+    "question": "Return the id of the project that has the fewest corresponding documents."
+  },
+  {
+    "id": "spider.train.004373",
+    "source_db_id": "tracking_grants_for_research",
+    "database_id": "spider_tracking_grants_for_research",
+    "question": "What are the details of all organizations that are described as Sponsors and sort the results in ascending order?"
+  },
+  {
+    "id": "spider.train.005463",
+    "source_db_id": "voter_2",
+    "database_id": "spider_voter_2",
+    "question": "Show the advisors of the students whose city of residence has city code \"BAL\"."
+  },
+  {
+    "id": "spider.train.003597",
+    "source_db_id": "music_1",
+    "database_id": "spider_music_1",
+    "question": "What are the average rating and resolution of songs that are in Bangla?"
+  },
+  {
+    "id": "spider.train.004763",
+    "source_db_id": "department_store",
+    "database_id": "spider_department_store",
+    "question": "List the name and phone number of all suppliers in the alphabetical order of their addresses."
+  },
+  {
+    "id": "spider.train.002336",
+    "source_db_id": "csu_1",
+    "database_id": "spider_csu_1",
+    "question": "What is the campus fee of \"San Jose State University\" in year 1996?"
+  },
+  {
+    "id": "spider.train.001631",
+    "source_db_id": "wedding",
+    "database_id": "spider_wedding",
+    "question": "List all church names in descending order of opening date."
+  },
+  {
+    "id": "spider.train.004306",
+    "source_db_id": "club_1",
+    "database_id": "spider_club_1",
+    "question": "Find the names of the clubs that have at least a member from the city with city code \"HOU\"."
+  },
+  {
+    "id": "spider.train.001734",
+    "source_db_id": "riding_club",
+    "database_id": "spider_riding_club",
+    "question": "How many coaches does each club has? List the club id, name and the number of coaches."
+  },
+  {
+    "id": "spider.train.002868",
+    "source_db_id": "icfp_1",
+    "database_id": "spider_icfp_1",
+    "question": "How many papers have \"Atsushi Ohori\" published?"
+  },
+  {
+    "id": "spider.train.006946",
+    "source_db_id": "architecture",
+    "database_id": "spider_architecture",
+    "question": "List the name, nationality and id of all male architects ordered by their names lexicographically."
+  },
+  {
+    "id": "spider.train.001158",
+    "source_db_id": "body_builder",
+    "database_id": "spider_body_builder",
+    "question": "What is the name of the body builder with the greatest body weight?"
+  },
+  {
+    "id": "spider.train.006885",
+    "source_db_id": "tracking_orders",
+    "database_id": "spider_tracking_orders",
+    "question": "What is the id of the most recent order?"
+  },
+  {
+    "id": "spider.train.003998",
+    "source_db_id": "ship_mission",
+    "database_id": "spider_ship_mission",
+    "question": "How many ships are there?"
+  },
+  {
+    "id": "spider.train.005658",
+    "source_db_id": "customers_and_products_contacts",
+    "database_id": "spider_customers_and_products_contacts",
+    "question": "Show the product type codes which have at least two products."
+  },
+  {
+    "id": "spider.train.003907",
+    "source_db_id": "hospital_1",
+    "database_id": "spider_hospital_1",
+    "question": "Which patients made more than one appointment? Tell me the name and phone number of these patients."
+  },
+  {
+    "id": "spider.train.003204",
+    "source_db_id": "college_1",
+    "database_id": "spider_college_1",
+    "question": "For each classroom with at least 2 classes, how many classes are offered?"
+  },
+  {
+    "id": "spider.train.005631",
+    "source_db_id": "swimming",
+    "database_id": "spider_swimming",
+    "question": "What is the average capacity of the stadiums that were opened in year 2005?"
+  },
+  {
+    "id": "spider.train.002711",
+    "source_db_id": "storm_record",
+    "database_id": "spider_storm_record",
+    "question": "What are the names of regions that were not affected?"
+  },
+  {
+    "id": "spider.train.003768",
+    "source_db_id": "e_learning",
+    "database_id": "spider_e_learning",
+    "question": "How many courses are there in total?"
+  },
+  {
+    "id": "spider.train.002673",
+    "source_db_id": "party_host",
+    "database_id": "spider_party_host",
+    "question": "How many hosts does each nationality have? List the nationality and the count."
+  },
+  {
+    "id": "spider.train.006831",
+    "source_db_id": "flight_4",
+    "database_id": "spider_flight_4",
+    "question": "Find the name, city, and country of the airport that has the highest latitude."
+  },
+  {
+    "id": "spider.train.002856",
+    "source_db_id": "customer_deliveries",
+    "database_id": "spider_customer_deliveries",
+    "question": "Find the name of route that has the highest number of deliveries."
+  },
+  {
+    "id": "spider.train.002312",
+    "source_db_id": "perpetrator",
+    "database_id": "spider_perpetrator",
+    "question": "What is the total kills of the perpetrators with height more than 1.84."
+  },
+  {
+    "id": "spider.train.006167",
+    "source_db_id": "music_4",
+    "database_id": "spider_music_4",
+    "question": "Please show the songs that have result \"nominated\" at music festivals."
+  },
+  {
+    "id": "spider.train.003663",
+    "source_db_id": "baseball_1",
+    "database_id": "spider_baseball_1",
+    "question": "List players' first name and last name who have weight greater than 220 or height shorter than 75."
+  },
+  {
+    "id": "spider.train.000231",
+    "source_db_id": "book_2",
+    "database_id": "spider_book_2",
+    "question": "What is the number of distinct publication dates?"
+  },
+  {
+    "id": "spider.train.001797",
+    "source_db_id": "small_bank_1",
+    "database_id": "spider_small_bank_1",
+    "question": "What are the names of all the customers in alphabetical order?"
+  },
+  {
+    "id": "spider.train.003399",
+    "source_db_id": "manufacturer",
+    "database_id": "spider_manufacturer",
+    "question": "what is the average number of factories and maximum number of shops for manufacturers that opened before 1990."
+  },
+  {
+    "id": "spider.train.003760",
+    "source_db_id": "program_share",
+    "database_id": "spider_program_share",
+    "question": "find the names of programs whose origin is not in Beijing."
+  },
+  {
+    "id": "spider.train.006349",
+    "source_db_id": "school_bus",
+    "database_id": "spider_school_bus",
+    "question": "Show the name, home city, and age for all drivers."
+  },
+  {
+    "id": "spider.train.001560",
+    "source_db_id": "customers_and_invoices",
+    "database_id": "spider_customers_and_invoices",
+    "question": "Count the number of customers who do not have an account."
+  },
+  {
+    "id": "spider.train.002841",
+    "source_db_id": "restaurant_1",
+    "database_id": "spider_restaurant_1",
+    "question": "Which student visited restaurant most often? List student's first name and last name."
+  },
+  {
+    "id": "spider.train.005075",
+    "source_db_id": "device",
+    "database_id": "spider_device",
+    "question": "What is the name of the shop that has the greatest quantity of devices in stock?"
+  }
+]

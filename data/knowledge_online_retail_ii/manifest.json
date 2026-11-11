@@ -1,0 +1,92 @@
+{
+  "as_of": "2026-11-05",
+  "purpose": "product",
+  "static": [],
+  "fact_index": "properties.json",
+  "documents": [
+    {
+      "id": "retail-cancellation",
+      "clause_id": "retail-cancellation",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 取消单识别",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-sales",
+      "clause_id": "retail-sales",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 销售额",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-cancel-amount",
+      "clause_id": "retail-cancel-amount",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 取消金额",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-dates",
+      "clause_id": "retail-dates",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 统计月份",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-currency",
+      "clause_id": "retail-currency",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 金额单位",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-customer",
+      "clause_id": "retail-customer",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 缺失客户 ID",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    },
+    {
+      "id": "retail-adjustment",
+      "clause_id": "retail-adjustment",
+      "path": "rules.md",
+      "heading": "UCI 零售规则 / 异常调整",
+      "database_id": "online_retail_ii",
+      "purpose": "product",
+      "version": "1",
+      "approval_ref": "UCI Online Retail II (10.24432/C5CG6D) + AgentServe 零售统计计划",
+      "source_sha256": "369022518210d6ec5c9df0d028fc9ee75f9a8b7847578a3c39f72a25ca0060a6",
+      "effective_from": "2026-11-05"
+    }
+  ]
+}

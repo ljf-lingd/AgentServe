@@ -1,0 +1,17 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.sql text eol=lf
+
+# Preserve the original bytes of registered knowledge and benchmark sources.
+data/knowledge_v31/** -text
+data/knowledge_v32/** -text
+data/knowledge_online_retail_ii/** -text
+data/synthetic/knowledge_v3/** -text
+data/splits/spider_g5_v1/** -text
+data/gold/spider_g5_v1/** -text

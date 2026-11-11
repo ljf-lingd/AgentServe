@@ -1,0 +1,102 @@
+[
+  {
+    "id": "spider.train.004825",
+    "sql": "SELECT T1.Aircraft ,  COUNT(*) FROM aircraft AS T1 JOIN MATCH AS T2 ON T1.Aircraft_ID  =  T2.Winning_Aircraft GROUP BY T2.Winning_Aircraft",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005529",
+    "sql": "SELECT product_name FROM products WHERE product_category_code  =  \"Spices\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004587",
+    "sql": "SELECT avg(Product_Price) FROM Products",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001678",
+    "sql": "SELECT theme ,  YEAR FROM exhibition ORDER BY ticket_price DESC",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.003061",
+    "sql": "SELECT sum(amount) ,  T1.bname FROM bank AS T1 JOIN loan AS T2 ON T1.branch_id  =  T2.branch_id GROUP BY T1.bname",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001875",
+    "sql": "SELECT LOCATION FROM wrestler GROUP BY LOCATION HAVING COUNT(*)  >  2",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003160",
+    "sql": "SELECT count(*) FROM train WHERE name LIKE \"%Express%\"",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002657",
+    "sql": "SELECT DISTINCT T2.source_system_code FROM customer_master_index AS T1 JOIN cmi_cross_references AS T2 ON T1.master_customer_id  =  T2.master_customer_id WHERE T1.cmi_details  =  'Gottlieb ,  Becker and Wyman'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.005048",
+    "sql": "SELECT count(DISTINCT state) FROM college WHERE enr  <  (SELECT avg(enr) FROM college)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003467",
+    "sql": "SELECT job_title ,  AVG(salary) FROM employees AS T1 JOIN jobs AS T2 ON T1.job_id  =  T2.job_id GROUP BY T2.job_title",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006284",
+    "sql": "SELECT city ,  GDP FROM city ORDER BY GDP LIMIT 1",
+    "ordered": true
+  },
+  {
+    "id": "spider.train.000734",
+    "sql": "SELECT DISTINCT transaction_type FROM Financial_Transactions",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004046",
+    "sql": "SELECT DISTINCT T2.lastname FROM list AS T1 JOIN teachers AS T2 ON T1.classroom  =  T2.classroom WHERE grade  =  5",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006612",
+    "sql": "SELECT T2.name ,  count(*) FROM train_station AS T1 JOIN station AS T2 ON T1.station_id  =  T2.station_id GROUP BY T1.station_id",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.001929",
+    "sql": "SELECT count(*) FROM institution WHERE institution_id NOT IN (SELECT institution_id FROM protein)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.003140",
+    "sql": "SELECT first_name ,  last_name FROM Maintenance_Engineers WHERE engineer_id NOT IN (SELECT engineer_id FROM Engineer_Visits)",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.006695",
+    "sql": "SELECT T2.first_name ,  T2.last_name FROM Customer_Payments AS T1 JOIN Customers AS T2 ON T1.customer_id = T2.customer_id GROUP BY T1.customer_id HAVING count(*)  >  2;",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.004460",
+    "sql": "SELECT T2.friend FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T2.name  =  'Alice' AND T1.gender  =  'male' AND T1.job  =  'doctor'",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002269",
+    "sql": "SELECT avg(Money_Requested) FROM entrepreneur",
+    "ordered": false
+  },
+  {
+    "id": "spider.train.002803",
+    "sql": "SELECT Name FROM journalist ORDER BY Years_working ASC",
+    "ordered": true
+  }
+]

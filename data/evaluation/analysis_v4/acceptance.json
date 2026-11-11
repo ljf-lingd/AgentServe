@@ -1,0 +1,208 @@
+[
+  {
+    "id": "acceptance-01",
+    "family": "opening-month",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-02-01"
+    }
+  },
+  {
+    "id": "acceptance-02",
+    "family": "full-year",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2027-01-01"
+    }
+  },
+  {
+    "id": "acceptance-03",
+    "family": "full-year-city",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2027-01-01",
+      "city": "Shenzhen"
+    }
+  },
+  {
+    "id": "acceptance-04",
+    "family": "second-quarter",
+    "request": {
+      "start": "2026-04-01",
+      "end": "2026-07-01"
+    }
+  },
+  {
+    "id": "acceptance-05",
+    "family": "first-half",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-07-01"
+    }
+  },
+  {
+    "id": "acceptance-06",
+    "family": "february-all",
+    "request": {
+      "start": "2026-02-01",
+      "end": "2026-03-01"
+    }
+  },
+  {
+    "id": "acceptance-07",
+    "family": "may-all",
+    "request": {
+      "start": "2026-05-01",
+      "end": "2026-06-01"
+    }
+  },
+  {
+    "id": "acceptance-08",
+    "family": "closing-month",
+    "request": {
+      "start": "2026-06-01",
+      "end": "2026-07-01"
+    }
+  },
+  {
+    "id": "acceptance-09",
+    "family": "pre-summer-shanghai",
+    "request": {
+      "start": "2026-03-01",
+      "end": "2026-05-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "acceptance-10",
+    "family": "second-month-shenzhen",
+    "request": {
+      "start": "2026-02-01",
+      "end": "2026-03-01",
+      "city": "Shenzhen"
+    }
+  },
+  {
+    "id": "acceptance-11",
+    "family": "closing-beijing",
+    "request": {
+      "start": "2026-06-01",
+      "end": "2026-07-01",
+      "city": "Beijing"
+    }
+  },
+  {
+    "id": "acceptance-12",
+    "family": "early-spring-beijing",
+    "request": {
+      "start": "2026-02-01",
+      "end": "2026-04-01",
+      "city": "Beijing"
+    }
+  },
+  {
+    "id": "acceptance-13",
+    "family": "half-year-shenzhen",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "city": "Shenzhen"
+    }
+  },
+  {
+    "id": "acceptance-14",
+    "family": "half-year-beijing",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-07-01",
+      "city": "Beijing"
+    }
+  },
+  {
+    "id": "acceptance-15",
+    "family": "sparse-intersection",
+    "request": {
+      "start": "2026-05-01",
+      "end": "2026-08-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "acceptance-16",
+    "family": "cutoff-month",
+    "request": {
+      "start": "2026-07-01",
+      "end": "2026-08-01"
+    }
+  },
+  {
+    "id": "acceptance-17",
+    "family": "no-orders-annual",
+    "request": {
+      "start": "2026-07-01",
+      "end": "2027-07-01"
+    }
+  },
+  {
+    "id": "acceptance-18",
+    "family": "later-years",
+    "request": {
+      "start": "2028-02-01",
+      "end": "2028-04-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "acceptance-19",
+    "family": "city-case",
+    "request": {
+      "start": "2026-03-01",
+      "end": "2026-04-01",
+      "city": "beijing"
+    }
+  },
+  {
+    "id": "acceptance-20",
+    "family": "literal-city",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-04-01",
+      "city": "Beijing' OR 1=1 --"
+    }
+  },
+  {
+    "id": "acceptance-21",
+    "family": "mid-range-missing",
+    "request": {
+      "start": "2026-02-01",
+      "end": "2026-06-01",
+      "city": "不存在的城市"
+    }
+  },
+  {
+    "id": "acceptance-22",
+    "family": "december-february",
+    "request": {
+      "start": "2026-12-01",
+      "end": "2027-03-01"
+    }
+  },
+  {
+    "id": "acceptance-23",
+    "family": "distinct-price-period",
+    "request": {
+      "start": "2026-01-01",
+      "end": "2026-03-01",
+      "city": "Shanghai"
+    }
+  },
+  {
+    "id": "acceptance-24",
+    "family": "spring-shenzhen",
+    "request": {
+      "start": "2026-03-01",
+      "end": "2026-06-01",
+      "city": "Shenzhen"
+    }
+  }
+]

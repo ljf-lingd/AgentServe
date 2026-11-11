@@ -1,0 +1,8 @@
+Order analytics interpretation and SQL checks:
+- Respect the question's explicit scope. Counts and lists use all order statuses unless a status is explicitly requested. Only revenue defaults to completed. "All statuses" means no status predicate; it does not request grouping by status.
+- A total count asks for one count column. Group by status/month/city only when the question requests that breakdown.
+- Average completed-order amount requires filtering to completed orders BEFORE the per-order sum, then averaging those sums. Do not average all statuses or individual line items.
+- SELECT exactly the requested outputs in the requested order. An ID used only to order/group rows must stay outside SELECT. Group customers by their ID when names can repeat.
+- Use only tables needed for the requested outputs or conditions. Qualify ambiguous column names when joining. Prefer a direct aggregate with ORDER BY and LIMIT for a top result over unnecessary nested MAX subqueries.
+- For entities with no related record, preserve the entity table with NOT EXISTS or LEFT JOIN and a NULL check on the related key; do not reverse the outer join.
+- Use SQLite syntax. Removing every occurrence of a substring uses replace(text, old, new). TRIM(BOTH ... FROM ...) is not SQLite syntax.

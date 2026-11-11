@@ -1,0 +1,6 @@
+name: agent-vllm
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.11.18

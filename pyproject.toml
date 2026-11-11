@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentserve"
+version = "0.1.0"
+description = "Bounded read-only SQL agents with explicit execution evidence"
+requires-python = ">=3.11"
+dependencies = ["httpx==0.28.1", "pydantic==2.14.2", "fastapi==0.162.0", "uvicorn==0.54.0", "aiosqlite==0.22.1", "filelock==4.2.4"]
+
+[project.urls]
+Repository = "https://github.com/ljf-lingd/AgentServe"
+Issues = "https://github.com/ljf-lingd/AgentServe/issues"
+
+[project.scripts]
+agentserve = "agentserve.cli:main"
+agentserve-account = "agentserve.api.web:main"
+
+[project.optional-dependencies]
+web = ["argon2-cffi==25.1.0", "tzdata==2026.6; sys_platform == 'win32'"]
+test = ["pytest==9.2.0", "pytest-asyncio==1.4.1"]
+retail = ["openpyxl==3.1.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100

@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "retail_cancellation": {
+      "description": "取消单识别",
+      "subject": "取消单|取消交易|发票号",
+      "relation": "认定|识别|判断|前缀|开头|定义|区分",
+      "witnesses": {
+        "retail-cancellation@1#1": [
+          "发票号以 C 开头的明细属于取消单，识别时不区分大小写。"
+        ]
+      }
+    },
+    "retail_sales": {
+      "description": "销售额",
+      "subject": "销售额|销售金额",
+      "relation": "口径|计算|怎么算|范围|公式|纳入",
+      "witnesses": {
+        "retail-sales@1#1": [
+          "销售额只汇总非取消且数量、单价均为正的交易明细，明细金额为数量乘以单价。"
+        ]
+      }
+    },
+    "retail_cancel_amount": {
+      "description": "取消金额",
+      "subject": "取消金额|取消额",
+      "relation": "怎么算|计算|公式|正负|纳入|口径",
+      "witnesses": {
+        "retail-cancel-amount@1#1": [
+          "取消金额只汇总取消单中数量为负、单价为正的明细，计算数量乘单价后取正值。"
+        ]
+      }
+    },
+    "retail_dates": {
+      "description": "统计月份",
+      "subject": "取消单|取消金额|取消额|开票",
+      "relation": "月份|时间|日期|归属|哪一天",
+      "witnesses": {
+        "retail-dates@1#1": [
+          "取消金额按取消单自身的开票时间归入月份，日期字段为 invoice_date。"
+        ]
+      }
+    },
+    "retail_currency": {
+      "description": "金额单位",
+      "subject": "金额|单价|币种",
+      "relation": "单位|币种|英镑|存储|展示|什么币",
+      "witnesses": {
+        "retail-currency@1#1": [
+          "原始单价单位是英镑，导入后金额以百万分之一英镑存储，回答金额以英镑展示。"
+        ]
+      }
+    },
+    "retail_customer": {
+      "description": "缺失客户 ID",
+      "subject": "客户|客户 ID|客户数",
+      "relation": "缺失|缺少|没有|空|去重|计入",
+      "witnesses": {
+        "retail-customer@1#1": [
+          "缺少客户 ID 的明细参与销售额与取消金额计算，去重客户数不计入空客户 ID。"
+        ]
+      }
+    },
+    "retail_adjustment": {
+      "description": "异常调整",
+      "subject": "调整|异常|零价|负价",
+      "relation": "处理|纳入|计入|保留|排除",
+      "witnesses": {
+        "retail-adjustment@1#1": [
+          "不符合正价正量的销售明细或正价负量的取消明细单列为调整，保留原始记录并从两项金额口径排除。"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "development-revenue-01",
+    "family": "jan-first-fortnight",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "成交营收",
+      "start": "2026-01-01",
+      "end": "2026-01-15"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-01",
+    "family": "jan-first-fortnight",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "完成订单量",
+      "start": "2026-01-01",
+      "end": "2026-01-15"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  },
+  {
+    "id": "development-revenue-02",
+    "family": "feb-first-week",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "Settled Revenue",
+      "start": "2026-02-01",
+      "end": "2026-02-08",
+      "city": "Beijing"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-02",
+    "family": "feb-first-week",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "Completed Orders",
+      "start": "2026-02-01",
+      "end": "2026-02-08",
+      "city": "Beijing"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  },
+  {
+    "id": "development-revenue-03",
+    "family": "march-midmonth-city-breakdown",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "settled_revenue",
+      "start": "2026-03-10",
+      "end": "2026-03-20",
+      "group_by": "city"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-03",
+    "family": "march-midmonth-city-breakdown",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "completed_orders",
+      "start": "2026-03-10",
+      "end": "2026-03-20",
+      "group_by": "city"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  },
+  {
+    "id": "development-revenue-04",
+    "family": "spring-midmonth-crossing",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "ＳＥＴＴＬＥＤ　 Revenue",
+      "start": "2026-03-25",
+      "end": "2026-04-09",
+      "city": "Shanghai",
+      "group_by": "month"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-04",
+    "family": "spring-midmonth-crossing",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "ＣＯＭＰＬＥＴＥＤ　 Orders",
+      "start": "2026-03-25",
+      "end": "2026-04-09",
+      "city": "Shanghai",
+      "group_by": "month"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  },
+  {
+    "id": "development-revenue-05",
+    "family": "may-shenzhen-cities",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "成交营收",
+      "start": "2026-05-08",
+      "end": "2026-05-20",
+      "city": "Shenzhen",
+      "group_by": "city"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-05",
+    "family": "may-shenzhen-cities",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "完成订单量",
+      "start": "2026-05-08",
+      "end": "2026-05-20",
+      "city": "Shenzhen",
+      "group_by": "city"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  },
+  {
+    "id": "development-revenue-06",
+    "family": "zero-day-after-data",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "Settled Revenue",
+      "start": "2026-07-09",
+      "end": "2026-07-10"
+    },
+    "reference": {
+      "formula": "revenue",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "分",
+      "chunk_id": "settled-revenue@1#1"
+    }
+  },
+  {
+    "id": "development-orders-06",
+    "family": "zero-day-after-data",
+    "origin": "engineered-window-and-aggregation",
+    "request": {
+      "name": "Completed Orders",
+      "start": "2026-07-09",
+      "end": "2026-07-10"
+    },
+    "reference": {
+      "formula": "orders",
+      "statuses": [
+        "completed"
+      ],
+      "version": "1",
+      "unit": "笔",
+      "chunk_id": "completed-orders@1#1"
+    }
+  }
+]
