@@ -16,18 +16,21 @@ MODEL = "Qwen/Qwen3-Embedding-0.6B"
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", choices=["modelscope", "huggingface"], default="modelscope")
+    parser.add_argument("--revision", help="Use an immutable revision from the selected source")
     args = parser.parse_args()
     target = ROOT / "models/Qwen3-Embedding-0.6B"
     manifest = target / "agent-manifest.json"
     if manifest.exists():
         record = json.loads(manifest.read_text())
+        if args.revision is not None and (record["revision"], record["source"]) != (args.revision, args.source):
+            raise ValueError("Existing embedding snapshot differs from the selected source and revision")
         for name, digest in record["files"].items():
             if hashlib.sha256((target / name).read_bytes()).hexdigest() != digest:
                 raise RuntimeError("Existing embedding snapshot changed: " + name)
         print(json.dumps(record), flush=True)
         return
     if args.source == "huggingface":
-        revision = HfApi().model_info(MODEL, timeout=20).sha
+        revision = args.revision or HfApi().model_info(MODEL, timeout=20).sha
         snapshot_download(
             MODEL,
             revision=revision,
@@ -37,10 +40,11 @@ def main():
     else:
         # Official publisher mirror; resolve once, then pin every request and verify source hashes.
         endpoint = "https://modelscope.cn/api/v1/models/" + MODEL + "/repo"
-        data = json.load(urllib.request.urlopen(endpoint + "/files?Revision=master", timeout=30))[
-            "Data"
-        ]
-        revision = max(data["Files"], key=lambda f: f["CommittedDate"])["Revision"]
+        revision = args.revision
+        if revision is None:
+            with urllib.request.urlopen(endpoint + "/files?Revision=master", timeout=30) as response:
+                files = json.load(response)["Data"]["Files"]
+            revision = max(files, key=lambda item: item["CommittedDate"])["Revision"]
         pinned = json.load(
             urllib.request.urlopen(
                 endpoint + "/files?" + urllib.parse.urlencode({"Revision": revision}), timeout=30

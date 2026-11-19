@@ -91,8 +91,8 @@ export function AdminOverview() {
             { title: 'TTFT（ms）', render: (_, row) => number(row.metrics?.time_to_first_token_ms) },
             { title: '模型输出速率（tokens/s）', render: (_, row) => number(row.metrics?.tokens_per_second) },
             { title: '平均 ITL（ms）', render: (_, row) => number(row.metrics?.mean_itl_ms) },
-            { title: 'SAM 草稿', render: (_, row) => number(row.metrics?.num_draft_tokens) },
-            { title: 'SAM 接受', render: (_, row) => number(row.metrics?.num_accepted_draft_tokens) },
+            { title: '草稿 token', render: (_, row) => number(row.metrics?.num_draft_tokens) },
+            { title: '接受的草稿 token', render: (_, row) => number(row.metrics?.num_accepted_draft_tokens) },
             { title: '任务编号', render: (_, row) => identifier(row.task_id) },
             { title: '模型请求编号', render: (_, row) => identifier(row.request_id) },
           ]} />

@@ -16,8 +16,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 
-def create_proxy():
-    config = json.loads(Path(os.environ["AGENTSERVE_PROXY_CONFIG"]).read_text())
+def create_proxy(config=None, *, upstream_transport=None):
+    if config is None:
+        config = json.loads(Path(os.environ["AGENTSERVE_PROXY_CONFIG"]).read_text())
     audit = Path(config["audit_path"])
     release = asyncio.Event()
     state = {"mode": "normal", "requests": 0, "injections": 0, "held": 0}
@@ -29,7 +30,7 @@ def create_proxy():
     @asynccontextmanager
     async def lifespan(app):
         async with httpx.AsyncClient(
-            base_url=config["target_url"] + "/", trust_env=False, timeout=90
+            base_url=config["target_url"] + "/", trust_env=False, timeout=90, transport=upstream_transport
         ) as client:
             app.state.upstream = client
             yield
@@ -42,7 +43,7 @@ def create_proxy():
 
     @app.post("/control/{mode}")
     async def control(mode: str):
-        if mode not in {"normal", "fail_once", "hold_response", "release"}:
+        if mode not in {"normal", "fail_once", "hold_response", "hold_once", "release"}:
             return JSONResponse(status_code=400, content={"error": "Unknown experiment mode"})
         if mode == "release":
             release.set()
@@ -66,7 +67,13 @@ def create_proxy():
                 status_code=503,
                 content={"error": "Experiment-injected 503, not a real service outage"},
             )
-        record("UPSTREAM_STARTED", sequence=sequence)
+        if mode == "hold_once":
+            state["mode"] = "normal"
+        record(
+            "UPSTREAM_STARTED", sequence=sequence,
+            tool_names=[tool["function"]["name"] for tool in body.get("tools", [])],
+            tool_choice=body.get("tool_choice"), response_format=body.get("response_format", {}).get("type"),
+        )
         response = await request.app.state.upstream.post("chat/completions", json=body)
         response.raise_for_status()
         payload = response.json()
@@ -75,8 +82,9 @@ def create_proxy():
             sequence=sequence,
             request_id=payload["id"],
             usage=payload.get("usage"),
+            finish_reason=payload["choices"][0]["finish_reason"],
         )
-        if mode == "hold_response":
+        if mode in {"hold_response", "hold_once"}:
             state["held"] += 1
             record("RESPONSE_HELD", sequence=sequence)
             try:

@@ -12,7 +12,11 @@ from conftest import completion
 from test_memory import resources
 from test_task_api import terminal
 
-from agentserve.agents.retail_sql import RETAIL_DATABASE, use_retail_date_index
+from agentserve.agents.retail_sql import (
+    RETAIL_DATABASE,
+    bind_retail_customer_count,
+    use_retail_date_index,
+)
 from agentserve.api.app import create_app
 from agentserve.config import MemorySettings
 from agentserve.storage.memory import MemoryRepository
@@ -79,6 +83,62 @@ def test_retail_rewrite_preserves_date_boundaries(predicate, expected):
 ])
 def test_retail_rewrite_leaves_other_queries_intact(statement):
     assert use_retail_date_index(statement) == statement
+
+
+_CUSTOMER_QUESTION = "德国 2011 年 1 月的有 ID 的去重客户数是多少？只返回这个值。"
+_INVOICE_QUERY = "SELECT COUNT(DISTINCT invoice) FROM retail_transactions WHERE country = 'Germany'"
+
+
+@pytest.mark.parametrize(("question", "sql"), [
+    ("德国 2011 年 1 月的销售发票数是多少？", _INVOICE_QUERY),
+    ("德国 2011 年 1 月的有 ID 的去重客户数和发票数是多少？", _INVOICE_QUERY),
+    (_CUSTOMER_QUESTION, _INVOICE_QUERY + " GROUP BY customer_id"),
+    (_CUSTOMER_QUESTION, _INVOICE_QUERY + " AND customer_id IN (SELECT customer_id FROM retail_lines)"),
+    (_CUSTOMER_QUESTION, _INVOICE_QUERY + "; SELECT 1"),
+    (_CUSTOMER_QUESTION, _INVOICE_QUERY.replace("invoice", "customer_id")),
+])
+def test_retail_customer_binding_leaves_other_intents_and_shapes_unchanged(question, sql):
+    assert bind_retail_customer_count(question, sql) == sql
+
+
+async def test_retail_customer_binding_changes_the_value_and_journals_the_sql(settings):
+    database = settings.databases.pop("demo_orders")
+    settings.databases[RETAIL_DATABASE] = database
+    settings.answer_style = "evidence_direct_v5"
+    schema = SCHEMA["SCHEMA"] + SCHEMA["VIEW"]
+    database.schema_path.write_text(schema, encoding="utf-8")
+    with sqlite3.connect(database.path) as conn:
+        conn.executescript(schema)
+        conn.executemany(
+            """INSERT INTO retail_lines(source_sheet,source_row,invoice,stock_code,
+               quantity,invoice_date,unit_price_millionths,customer_id,country)
+               VALUES('test',?,?,'sku',1,'2011-01-15',1000000,?,?)""",
+            [(1, "1", "A", "Germany"), (2, "1", "A", "Germany"),
+             (3, "2", "A", "Germany"), (4, "3", None, "Germany"), (5, "4", "B", "France")],
+        )
+    proposed = _INVOICE_QUERY + " AND strftime('%Y-%m', invoice_date) = '2011-01'"
+    executed = use_retail_date_index(proposed.replace("DISTINCT invoice", "DISTINCT customer_id"))
+    app = create_app(
+        settings,
+        model_transport=httpx.MockTransport(lambda _: httpx.Response(200, json=completion(sql=proposed))),
+    )
+    async with app.router.lifespan_context(app), httpx.AsyncClient(
+        transport=httpx.ASGITransport(app), base_url="http://test",
+    ) as client:
+        submit = await client.post("/tasks", json={
+            "database_id": RETAIL_DATABASE, "question": _CUSTOMER_QUESTION,
+        })
+        task_id = submit.raise_for_status().json()["task_id"]
+        task = await terminal(client, task_id)
+        assert task["status"] == "COMPLETED", task["error"]
+        assert task["report"]["sql"] == executed
+        assert task["report"]["query_result"]["rows"] == [[1]]
+        steps = (await client.get(f"/tasks/{task_id}/steps")).raise_for_status().json()["steps"]
+        assert [step["input"]["sql"] for step in steps if step["kind"] == "sql"] == [executed]
+        events = (await client.get(f"/tasks/{task_id}/events")).raise_for_status().json()["events"]
+        assert [event["payload"] for event in events if event["type"] == "SQL_REWRITTEN"] == [
+            {"rule": "retail_customer_count", "original_sql": proposed, "sql": executed},
+        ]
 
 
 async def test_retail_task_journals_the_executed_statement_in_a_v7_session(settings):

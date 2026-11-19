@@ -9,7 +9,7 @@ from pathlib import Path
 from agentserve.api.app import create_app
 
 
-def create_recovery_app():
+def create_recovery_app(settings=None, *, web_mode=None):
     config = json.loads(Path(os.environ["AGENTSERVE_RECOVERY_PROBE"]).read_text())
     audit = Path(config["audit_path"])
 
@@ -37,4 +37,4 @@ def create_recovery_app():
         if await asyncio.to_thread(persist, record):
             await asyncio.Event().wait()
 
-    return create_app(step_hook=boundary)
+    return create_app(settings, step_hook=boundary, web_mode=web_mode)

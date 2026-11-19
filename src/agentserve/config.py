@@ -1,12 +1,19 @@
 """Load application configuration at the boundary; relative paths use the config directory."""
 
+import os
 from datetime import date
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationInfo, field_validator, model_validator
 
 DEFAULT_APP_CONFIG = Path("configs/app.v5.json")
+V8ServingProfile = Literal["suffix", "suffix-agspec", "session-sam"]
+V8_SERVING_MODELS: dict[V8ServingProfile, str] = {
+    "suffix": "agent-qwen-suffix",
+    "suffix-agspec": "agent-qwen-suffix-agspec",
+    "session-sam": "agent-qwen-sam",
+}
 
 
 class WorkbenchDataset(BaseModel):
@@ -68,6 +75,7 @@ class Settings(BaseModel):
     model_config = ConfigDict(extra="forbid")
     base_url: str = "http://127.0.0.1:8000/v1"
     model: str = "agent-qwen"
+    serving_profile: V8ServingProfile | None = Field(default=None, exclude_if=lambda value: value is None)
     model_tool_choice: Literal["auto", "named"] = Field(
         default="auto", exclude_if=lambda value: value == "auto"
     )
@@ -87,9 +95,9 @@ class Settings(BaseModel):
     answer_style: Literal[
         "baseline", "concise_v1", "bounded_v1", "evidence_v21", "evidence_v221", "evidence_direct_v5"
     ] = "baseline"
-    sql_prompt_version: Literal["baseline", "projection_v1", "evidence_v21", "evidence_v22"] = (
-        "baseline"
-    )
+    sql_prompt_version: Literal[
+        "baseline", "projection_v1", "evidence_v21", "evidence_v22"
+    ] = "baseline"
     sql_function_profile: Literal["baseline", "with_replace_v1"] = "baseline"
     state_database: Path = Path("../state/tasks.sqlite")
     task_concurrency: int = Field(default=2, ge=1, le=16)
@@ -111,9 +119,26 @@ class Settings(BaseModel):
             raise ValueError("base_url must be an HTTP(S) endpoint")
         return value.rstrip("/")
 
+    @model_validator(mode="before")
+    @classmethod
+    def apply_serving_override(cls, data, info: ValidationInfo):
+        override = (info.context or {}).get("serving_profile")
+        if override and isinstance(data, dict) and data.get("serving_profile") is not None:
+            return {**data, "serving_profile": override}
+        return data
+
+    @model_validator(mode="after")
+    def configure_serving_profile(self):
+        if self.serving_profile is not None:
+            self.model = V8_SERVING_MODELS[self.serving_profile]
+            self.session_sam = self.session_sam_all_phases = self.serving_profile == "session-sam"
+        return self
+
     @classmethod
     def load(cls, path: Path) -> "Settings":
-        settings = cls.model_validate_json(path.read_text(encoding="utf-8"))
+        settings = cls.model_validate_json(path.read_text(encoding="utf-8"), context={
+            "serving_profile": os.environ.get("AGENTSERVE_SERVING_PROFILE"),
+        })
         for database in settings.databases.values():
             database.path = (path.parent / database.path).resolve(strict=True)
             database.schema_path = (path.parent / database.schema_path).resolve(strict=True)

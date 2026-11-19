@@ -347,7 +347,10 @@ async def test_cross_year_followup_uses_last_explicit_year_and_handles_empty_ran
                 assert report["answer"] == "所查范围内没有可汇总的金额。"
 
 
-async def test_demo_history_metrics_and_failure(web_settings):
+@pytest.mark.parametrize("session_sam,drafts,accepted", [(True, 0, 0), (False, 7, 4)])
+async def test_demo_history_metrics_and_failure(web_settings, session_sam, drafts, accepted):
+    web_settings.session_sam = session_sam
+
     async def model(request):
         payload = json.loads(request.content)
         if "Simulate model error" in str(payload["messages"]):
@@ -355,11 +358,12 @@ async def test_demo_history_metrics_and_failure(web_settings):
         if payload["tool_choice"] != "none":
             assert "上海 -> Shanghai" in payload["messages"][0]["content"]
             return httpx.Response(200, json=completion())
+        assert ("agentserve_v5_sam" in payload.get("vllm_xargs", {})) == session_sam
         return httpx.Response(200, json={
             **completion(answer="Two customers."), "id": "explain-model",
             "metrics": {
                 "time_to_first_token_ms": 5, "tokens_per_second": 10, "mean_itl_ms": None,
-                "speculative_decoding": {"num_draft_tokens": 0, "num_accepted_draft_tokens": 0},
+                "speculative_decoding": {"num_draft_tokens": drafts, "num_accepted_draft_tokens": accepted},
                 "unrelated": "internal-only-detail",
             },
         })
@@ -396,7 +400,7 @@ async def test_demo_history_metrics_and_failure(web_settings):
         entry = next(row for row in overview["requests"] if row["request_id"] == "explain-model")
         assert entry["metrics"] == {
             "time_to_first_token_ms": 5, "tokens_per_second": 10,
-            "num_draft_tokens": 0, "num_accepted_draft_tokens": 0,
+            "num_draft_tokens": drafts, "num_accepted_draft_tokens": accepted,
         }
         assert any(row["metrics"] is None for row in overview["requests"])
         direct_jct = next(row for row in overview["jct"] if row["mode"] == "sql")

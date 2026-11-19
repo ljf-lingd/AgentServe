@@ -4,7 +4,11 @@ AgentServe 围绕一个可运行的 SQL Agent，研究**多轮分析如何记住
 
 AgentServe is a research-oriented SQL agent for studying session memory, evidence-grounded retrieval, and end-to-end latency with speculative decoding.
 
-[研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
+[研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [V5 真机运行手册](docs/v5-reproduction.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
+
+## 当前版本 · V8
+
+工作台新增跨请求 Suffix 默认配置，并提供可切换的 Suffix + AgSpec 反馈和 Session-SAM 基线。在同一张 RTX 4090、同一 Qwen2.5-7B-Instruct 的 UCI 四并发对照中，原生跨请求 Suffix 相比 Session-SAM 的任务 JCT P95 低 **39.3%–39.6%**，正确任务吞吐高 **34.4%–35.8%**。四组各轮正确数均为 71/72。 [V8 启动](docs/v8-release.md) · [配对评测与复现](docs/v8-suffix-evaluation.md)
 
 ## 三条研究主线
 
@@ -16,6 +20,12 @@ AgentServe is a research-oriented SQL agent for studying session memory, evidenc
 
 JCT（Job Completion Time）从任务创建计到终态提交，包含排队、模型调用和工具执行。 [研究设计与判分口径](docs/research.md)
 
+路线图 V5 的扩展对照每组每块运行 239 条，三组四块共 2,868 次提交。全阶段 SAM 比纯 AR 的块内 JCT P95 下降 14.4%–20.6%。并发 1 的吞吐上升，并发 4 的吞吐下降。分母、知识生成覆盖、只读恢复和原生 Suffix 的同栈复现均见 [V5 真机运行手册](docs/v5-reproduction.md)。
+
+## 执行可靠性
+
+V5 通过真实模型与故障注入验证了模型响应超时、进程退出后恢复、重复提交、取消和 SQL / 知识权限。重启测试在只读查询执行后、步骤提交前结束进程，恢复时沿用原任务和截止时间，并复用已提交的两条模型输出。零售端另有一个可复现的业务错误案例：SQL 执行成功，但把去重客户数算成了去重发票数。 [工程验证与复盘](docs/v5-reliability.md)
+
 ## 项目演进
 
 | 阶段 | 主要进展 |
@@ -25,6 +35,7 @@ JCT（Job Completion Time）从任务创建计到终态提交，包含排队、�
 | V3–V4 | 比较业务规则检索方案。V3.2 将版本化口径用于指标查询，V4 用一条参数化 SQL 在同一读快照中计算月度简报的两项指标。 |
 | V5–V6 | 从回答阶段扩展到各模型生成阶段的推测解码，用工作台混合任务比较端到端 JCT。 |
 | V7–V7.1 | 接入 UCI 零售数据进行跨数据集验证，修复全量库中已复现的日期查询超时。 |
+| V8 | 接入原生跨请求 Suffix 和可选的基于验证反馈的草稿长度调整，保留 Session-SAM 供配对评测。 |
 
 [更新日志](CHANGELOG.md)
 
@@ -78,6 +89,7 @@ V7.1 在 RTX 4090 上使用 Qwen2.5-7B-Instruct，UCI 零售固定正式集 **47
 | [web](web) | React / TypeScript 浏览器工作台与 Playwright 测试 |
 | [configs](configs) | API、模型与示例数据集配置 |
 | [scripts](scripts) | 数据准备、模型探针、回放和验收 |
+| [V8 运行与评测](docs/v8-release.md) | 推理配置切换、数据准备及实验分母 |
 | [serving/vllm](serving/vllm) | 可选 vLLM 启动器与推测解码实现 |
 | [tests](tests) | API、执行边界、恢复和业务功能回归 |
 
