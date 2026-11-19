@@ -1,4 +1,4 @@
-"""Run a Qwen protocol pilot and two full four-arm retail blocks on one GPU."""
+"""Run a Qwen protocol pilot and two full retail blocks on one GPU."""
 
 import argparse
 import asyncio
@@ -8,9 +8,8 @@ import signal
 from pathlib import Path
 
 import httpx
-from filelock import FileLock
-
 import v5_engine
+from filelock import FileLock
 from retail_history import run_arm
 from retail_replay import DATABASE, gold, workloads
 from run_v5_phase import interrupt
@@ -21,6 +20,7 @@ from vllm_suffix_probe import probe_protocol
 
 ARMS = ("ar", "suffix-local", "suffix-global", "session")
 SMOKE_ORDER = ("suffix-local", "suffix-global", "ar", "session")
+FEEDBACK = "suffix-feedback"
 
 
 def load(path):
@@ -32,8 +32,11 @@ def arguments(arm):
         return engine_args("ar" if arm == "ar" else "all")
     suffix = {"method": "suffix", "num_speculative_tokens": SPEC["num_speculative_tokens"],
               "suffix_decoding_max_cached_requests": 0 if arm == "suffix-local" else 256}
-    return [*engine_args("ar"), "--speculative-config", json.dumps(suffix, separators=(",", ":")),
-            "--per-request-spec-decode-metrics", "detailed"]
+    result = [*engine_args("ar"), "--speculative-config", json.dumps(suffix, separators=(",", ":")),
+              "--per-request-spec-decode-metrics", "detailed"]
+    if arm == FEEDBACK:
+        result.extend(("--worker-cls", "suffix_feedback_worker.SuffixFeedbackWorker"))
+    return result
 
 
 async def measure(base, url, resources, cases, warmup, output, arm, pilot):
@@ -58,7 +61,7 @@ async def measure(base, url, resources, cases, warmup, output, arm, pilot):
     return result
 
 
-def execute(args, base, plan):
+def execute(args, base, plan, *, arm_measure=measure):
     registration = args.output / "run.json"
     if registration.exists():
         if load(registration) != plan:
@@ -70,7 +73,9 @@ def execute(args, base, plan):
     for scope in scopes:
         if scope == "matrix" and not (args.output / "smoke-complete.json").is_file():
             raise ValueError("The completed same-stack smoke is required")
-        blocks = (SMOKE_ORDER,) if scope == "smoke" else (ARMS, ARMS[::-1])
+        arms_order = tuple(plan["arguments"])
+        smoke_order = SMOKE_ORDER + ((FEEDBACK,) if FEEDBACK in arms_order else ())
+        blocks = (smoke_order,) if scope == "smoke" else (arms_order, arms_order[::-1])
         report = []
         for number, order in enumerate(blocks, 1):
             arms, sessions = {}, {}
@@ -90,15 +95,18 @@ def execute(args, base, plan):
                         v5_engine.engine(directory, arm, args.model_dir, args.vllm_python, args.gpu_uuid,
                                          server_args=arguments(arm), extra_env=env) as url,
                     ):
-                        result = asyncio.run(measure(base, url, resources, plan[scope], plan["warmup"],
-                                                     directory, arm, scope == "smoke"))
+                        result = asyncio.run(arm_measure(base, url, resources, plan[scope], plan["warmup"],
+                                                         directory, arm, scope == "smoke"))
                     dump(complete, {"attempt": directory.relative_to(args.output).as_posix()})
                 arms[arm] = {**result, "attempt": directory.relative_to(args.output).as_posix()}
                 sessions[arm] = load(directory / "retail.json")["sessions"]
                 print(json.dumps({"stage": scope, "block": number, "arm": arm,
                                   **{k: result[k] for k in ("correct", "n", "jct", "model_requests", "accepted_tokens", "protocol")}}), flush=True)
             report.append({"block": number, "order": list(order), "arms": arms,
-                           "pairs": {arm: compare(sessions["ar"], sessions[arm]) for arm in ARMS if arm != "ar"}})
+                           "pairs": {arm: compare(sessions["ar"], sessions[arm])
+                                     for arm in arms_order if arm != "ar"},
+                           **({"feedback_vs_suffix_global": compare(sessions["suffix-global"], sessions[FEEDBACK])}
+                              if FEEDBACK in arms_order else {})})
         completed = args.output / f"{scope}-complete.json"
         if not completed.exists():
             dump(completed, {"run_sha256": file_sha(registration), "blocks": report})
@@ -113,6 +121,7 @@ def main():
     parser.add_argument("--vllm-python", required=True)
     parser.add_argument("--gpu-uuid", required=True)
     parser.add_argument("--arctic-site", type=Path, required=True)
+    parser.add_argument("--feedback", action="store_true", help="Include native Suffix with rejection feedback")
     args = parser.parse_args()
     config = ROOT / "configs/app.v7.retail.json"
     base = Settings.load(config)
@@ -135,7 +144,8 @@ def main():
     ))
     plan = {"environment": env, "gpu_uuid": args.gpu_uuid, "model_snapshot": v5_engine.verify_model(args.model_dir),
             "arctic_extension_sha256": file_sha(extension), "source_sha256": {p.resolve().relative_to(ROOT).as_posix(): file_sha(p) for p in paths},
-            "arguments": {arm: arguments(arm) for arm in ARMS}, "smoke": gold(database, development[-2:]),
+            "arguments": {arm: arguments(arm) for arm in ARMS + ((FEEDBACK,) if args.feedback else ())},
+            "smoke": gold(database, development[-2:]),
             "matrix": formal, "warmup": gold(database, [development[0]])[0][0]}
     for sig in (signal.SIGHUP, signal.SIGTERM):
         signal.signal(sig, interrupt)

@@ -30,9 +30,9 @@ def web_settings(mode: str) -> Settings:
     config = Settings.load(Path(os.environ.get("AGENTSERVE_CONFIG", str(DEFAULT_APP_CONFIG))))
     state_dir = Path(os.environ.get("AGENTSERVE_WEB_STATE_DIR", str(config.state_database.parent)))
     config.state_database = state_dir.resolve() / f"v6-{mode}.sqlite"
-    config.session_sam_all_phases = os.environ.get(
-        "AGENTSERVE_WEB_SAM_ALL_PHASES", "1" if config.session_sam else "0",
-    ) == "1"
+    config.session_sam_all_phases = (
+        config.session_sam and os.environ.get("AGENTSERVE_WEB_SAM_ALL_PHASES", "1") == "1"
+    )
     if model_port := os.environ.get("AGENTSERVE_WEB_MODEL_PORT"):
         config.base_url = f"http://127.0.0.1:{int(model_port)}/v1"
     if resource_port := os.environ.get("AGENTSERVE_WEB_RESOURCE_PORT"):

@@ -68,6 +68,10 @@ python scripts/setup/prepare_online_retail_ii.py /path/to/online-retail-ii.zip d
 
 复制 `configs/app.v7.retail.json` 作为自己的工作台配置。如果服务使用常规解码，将两个 SAM 开关设为 `false`，并将 `model` 改为服务返回的模型名。然后用新配置重启工作台，切换至「UCI 零售交易」。UCI 支持查数和业务规则，问法示例为「英国 2011 年 11 月的取消金额是多少」。
 
+## 5. 使用 V8 推理配置
+
+V8 的双库工作台使用 `configs/app.v8.json`。准备本页的合成数据、UCI 库、资源服务及前端构建后，按 V8 指南启动匹配的应用端和 vLLM 配置。原有通用兼容模型和 V7 启动步骤可用于相应基线。 [V8 启动指南](v8-release.md)
+
 ## 排查
 
 | 现象 | 检查 |

@@ -86,6 +86,8 @@ The protocol pilot passed 48/48 checks with exact output-token parity against AR
 
 Cross-request Suffix reduced within-block JCT P95 by about 56% on this fixed single-concurrency workload. The cache can reuse continuations from earlier requests in the same engine. This workload keeps the size, task order and reuse opportunity fixed.
 
+The V8 release adds a separate [concurrency-four retail workload and feedback replay](v8-suffix-evaluation.md).
+
 ## Reading the results
 
 Use the per-arm summaries and the paired SQL and model token evidence. Raw events, failed tasks and Prometheus snapshots are written under the run directory. JCT uses `ended_at - created_at`. Rejections contribute to submission counts, and JCT has a separate sample count. The Suffix experiment engine snapshots include the one retail warmup. The retail task and request summaries cover only formally measured tasks. Compare ITL event intervals with TPOT per-output-token timing using their separate denominators.

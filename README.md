@@ -6,6 +6,10 @@ AgentServe is a research-oriented SQL agent for studying session memory, evidenc
 
 [研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [V5 真机运行手册](docs/v5-reproduction.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
 
+## 当前版本 · V8
+
+工作台新增跨请求 Suffix 默认配置，并提供可切换的 Suffix + AgSpec 反馈和 Session-SAM 基线。在同一张 RTX 4090、同一 Qwen2.5-7B-Instruct 的 UCI 四并发对照中，原生跨请求 Suffix 相比 Session-SAM 的任务 JCT P95 低 **39.3%–39.6%**，正确任务吞吐高 **34.4%–35.8%**。四组各轮正确数均为 71/72。 [V8 启动](docs/v8-release.md) · [配对评测与复现](docs/v8-suffix-evaluation.md)
+
 ## 三条研究主线
 
 | 研究问题 | 对照与实现 | 代表结果 |
@@ -31,6 +35,7 @@ V5 通过真实模型与故障注入验证了模型响应超时、进程退出�
 | V3–V4 | 比较业务规则检索方案。V3.2 将版本化口径用于指标查询，V4 用一条参数化 SQL 在同一读快照中计算月度简报的两项指标。 |
 | V5–V6 | 从回答阶段扩展到各模型生成阶段的推测解码，用工作台混合任务比较端到端 JCT。 |
 | V7–V7.1 | 接入 UCI 零售数据进行跨数据集验证，修复全量库中已复现的日期查询超时。 |
+| V8 | 接入原生跨请求 Suffix 和可选的基于验证反馈的草稿长度调整，保留 Session-SAM 供配对评测。 |
 
 [更新日志](CHANGELOG.md)
 
@@ -84,6 +89,7 @@ V7.1 在 RTX 4090 上使用 Qwen2.5-7B-Instruct，UCI 零售固定正式集 **47
 | [web](web) | React / TypeScript 浏览器工作台与 Playwright 测试 |
 | [configs](configs) | API、模型与示例数据集配置 |
 | [scripts](scripts) | 数据准备、模型探针、回放和验收 |
+| [V8 运行与评测](docs/v8-release.md) | 推理配置切换、数据准备及实验分母 |
 | [serving/vllm](serving/vllm) | 可选 vLLM 启动器与推测解码实现 |
 | [tests](tests) | API、执行边界、恢复和业务功能回归 |
 
