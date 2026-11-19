@@ -1,5 +1,7 @@
 # 评测与复现
 
+路线图 V5 的工作台扩展实验、真实故障恢复、并发 8 定位和 UCI 原生 Suffix 对照使用独立的 [V5 真机运行手册](v5-reproduction.md)。手册包含固定工作负载、启动命令、指标覆盖和正确性分母。 [工程故障与业务错答复盘](v5-reliability.md) 汇总了状态变化、独立结果核验和回放边界。
+
 记忆基线、业务规则检索和全阶段推测解码的实验设计与源码见 [研究设计与实现](research.md)。
 
 | 评测 | 已记录结果 | 条件 |
@@ -38,3 +40,5 @@ python scripts/experiments/retail_replay.py data/databases/online_retail_ii/onli
 ~~~
 
 `scripts/experiments/retail_scale.py`、`retail_rag_pair.py`、`retail_sam_pair.py` 和 `retail_cross_domain.py` 提供进一步复现实验。运行前用 `--help` 核对参数，准备独立输出和状态目录，记录模型、tokenizer、配置、数据哈希、错误分母与并发。复现跨库实验前，分别从 [Spider](https://yale-lily.github.io/spider) 和 [BIRD](https://huggingface.co/datasets/birdsql/bird_mini_dev) 获取官方数据库。
+
+[vLLM 原生 Suffix 对照](vllm-suffix-baseline.md)记录了原生扩展的构建检查，以及 AR、请求内 Suffix、跨请求 Suffix 的评测入口。

@@ -16,11 +16,12 @@ from agentserve.config import Settings
 from agentserve.llm.client import SQL_TOOLS
 from agentserve.tools.sqlite import FUNCTION_PROFILES
 
-# The V7.1 SQL agent changes only how the same retail date bounds are executed.
-# Keep existing sessions compatible with this exact revision. Pending tasks
-# still compare the actual SQL agent fingerprint before resuming execution.
+# These revisions leave the session planning protocol unchanged.
+# Pending tasks still compare the actual SQL agent fingerprint before resuming.
 _SESSION_COMPATIBLE_SQL_AGENT = {
     "68e66a0e950ac7f874948874f9158f359e7766f9f1a1f3b12d1bf523d7411330":
+        "31dc7f292c934a2ebb3ceeb8f7fee8a0a4d8dd02c8c12da114c7f8d6a1d4f0af",
+    "9cc8f8928572c4405385f4d24e78d21ed7fec54dae90a29144290d2455c8472d":
         "31dc7f292c934a2ebb3ceeb8f7fee8a0a4d8dd02c8c12da114c7f8d6a1d4f0af",
 }
 

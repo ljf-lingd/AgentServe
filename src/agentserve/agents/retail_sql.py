@@ -1,4 +1,4 @@
-"""Use the existing date indexes for common filters on the UCI retail view."""
+"""Rewrite narrowly scoped SQL on the UCI retail view."""
 
 import re
 from datetime import date
@@ -17,6 +17,34 @@ _DATE_FILTER = re.compile(
     r"(?P<column>(?:[a-zA-Z_][a-zA-Z_0-9]*\.)?(?i:invoice_date))\s*\)\s*"
     r"(?P<operator>>=|<|=)\s*'(?P<value>[0-9]{4}-[0-9]{2}(?:-[0-9]{2})?)'"
 )
+_CUSTOMER_COUNT_QUESTION = re.compile(
+    r"\s*[\u3400-\u9fff]+\s*[0-9]{4}\s*年\s*(?:0?[1-9]|1[0-2])\s*月\s*的?\s*"
+    r"(?:有\s*ID\s*的\s*(?:去重|不同)客户数|去重后的客户数)"
+    r"\s*(?:是多少|有几位)\s*[？?]\s*(?:只返回(?:这个值|数字)[。.]?)?\s*",
+    re.IGNORECASE,
+)
+_INVOICE_COUNT = re.compile(
+    r"\s*SELECT\s+COUNT\s*\(\s*DISTINCT\s+(?P<invoice>invoice)\s*\)"
+    r"\s+FROM\s+retail_transactions\s+WHERE\b",
+    re.IGNORECASE,
+)
+
+
+def bind_retail_customer_count(question: str, sql: str) -> str:
+    if not _CUSTOMER_COUNT_QUESTION.fullmatch(question):
+        return sql
+    projection = _INVOICE_COUNT.match(sql)
+    if projection is None:
+        return sql
+    words = [token[0].lower() for token in _TOKEN.finditer(sql, projection.end())]
+    if not words or ";" in words[:-1] or any(
+        word.startswith(("--", "/*"))
+        or word in {"select", "union", "intersect", "except", "group", "having", "window", "order", "limit"}
+        for word in words
+    ):
+        return sql
+    start, end = projection.span("invoice")
+    return sql[:start] + "customer_id" + sql[end:]
 
 
 def use_retail_date_index(sql: str) -> str:

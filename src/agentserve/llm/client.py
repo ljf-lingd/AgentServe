@@ -60,7 +60,7 @@ class Completion(BaseModel):
     metrics: object = None
 
 
-def request_metrics(raw: object, sam: bool) -> dict | None:
+def request_metrics(raw: object) -> dict | None:
     if not isinstance(raw, dict):
         return None
     values = {}
@@ -68,7 +68,7 @@ def request_metrics(raw: object, sam: bool) -> dict | None:
         value = raw.get(key)
         if type(value) in (int, float) and 0 <= value < float("inf"):
             values[key] = value
-    if sam and isinstance(spec := raw.get("speculative_decoding"), dict):
+    if isinstance(spec := raw.get("speculative_decoding"), dict):
         for key in ("num_draft_tokens", "num_accepted_draft_tokens"):
             value = spec.get(key)
             if type(value) is int and value >= 0:
@@ -215,5 +215,5 @@ class VLLMClient:
             completion.id,
             completion.usage,
             choice.finish_reason,
-            request_metrics(completion.metrics, draft_history is not None),
+            request_metrics(completion.metrics),
         )

@@ -4,7 +4,7 @@ AgentServe 围绕一个可运行的 SQL Agent，研究**多轮分析如何记住
 
 AgentServe is a research-oriented SQL agent for studying session memory, evidence-grounded retrieval, and end-to-end latency with speculative decoding.
 
-[研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
+[研究设计与源码](docs/research.md) · [评测与复现](docs/evaluation.md) · [V5 真机运行手册](docs/v5-reproduction.md) · [安装与启动](docs/getting-started.md) · [接入自己的模型和数据](docs/customization.md)
 
 ## 三条研究主线
 
@@ -15,6 +15,12 @@ AgentServe is a research-oriented SQL agent for studying session memory, evidenc
 | **全阶段推测解码** | 用后缀自动机从当前请求和同会话已提交的输出中找草稿，由目标模型验证。覆盖记忆规划、SQL 生成与修复、规则问答、最终回答。 | RTX 4090、Qwen2.5-7B、每组 40 个混合任务。仅回答阶段启用 → 全生成阶段启用，服务端 **JCT P95 从 17.286 降至 10.207 秒（约 41%）**。 |
 
 JCT（Job Completion Time）从任务创建计到终态提交，包含排队、模型调用和工具执行。 [研究设计与判分口径](docs/research.md)
+
+路线图 V5 的扩展对照每组每块运行 239 条，三组四块共 2,868 次提交。全阶段 SAM 比纯 AR 的块内 JCT P95 下降 14.4%–20.6%。并发 1 的吞吐上升，并发 4 的吞吐下降。分母、知识生成覆盖、只读恢复和原生 Suffix 的同栈复现均见 [V5 真机运行手册](docs/v5-reproduction.md)。
+
+## 执行可靠性
+
+V5 通过真实模型与故障注入验证了模型响应超时、进程退出后恢复、重复提交、取消和 SQL / 知识权限。重启测试在只读查询执行后、步骤提交前结束进程，恢复时沿用原任务和截止时间，并复用已提交的两条模型输出。零售端另有一个可复现的业务错误案例：SQL 执行成功，但把去重客户数算成了去重发票数。 [工程验证与复盘](docs/v5-reliability.md)
 
 ## 项目演进
 

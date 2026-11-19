@@ -41,6 +41,11 @@ async def run_arm(base, label, block, concurrency, sequences, output):
                 row["drafts"] = sum(item.get("num_draft_tokens", 0) for item in metrics)
                 row["accepted"] = sum(item.get("num_accepted_draft_tokens", 0) for item in metrics)
                 row["requests_with_drafts"] = sum(item.get("num_draft_tokens", 0) > 0 for item in metrics)
+                row["model_replies"] = len(metrics)
+                row["replies_with_draft_metrics"] = sum(
+                    "num_draft_tokens" in item and "num_accepted_draft_tokens" in item
+                    for item in metrics
+                )
                 results.append(row)
             return results
 
@@ -54,6 +59,8 @@ async def run_arm(base, label, block, concurrency, sequences, output):
         "draft_tokens": sum(row["drafts"] for row in rows),
         "accepted_tokens": sum(row["accepted"] for row in rows),
         "requests_with_drafts": sum(row["requests_with_drafts"] for row in rows),
+        "model_replies": sum(row["model_replies"] for row in rows),
+        "replies_with_draft_metrics": sum(row["replies_with_draft_metrics"] for row in rows),
         "sequences": results,
     }
 

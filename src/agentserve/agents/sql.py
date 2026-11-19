@@ -12,7 +12,11 @@ from agentserve.agents.answer_policy import (
     render_answer,
 )
 from agentserve.agents.order_sql import compile_order_sql
-from agentserve.agents.retail_sql import RETAIL_DATABASE, use_retail_date_index
+from agentserve.agents.retail_sql import (
+    RETAIL_DATABASE,
+    bind_retail_customer_count,
+    use_retail_date_index,
+)
 from agentserve.agents.sql_policy import intent_violations
 from agentserve.agents.sql_prompt import (
     CONCISE_ANSWER_PROMPT,
@@ -213,7 +217,12 @@ class SQLAgent:
             statement = reply.sql
             tool_message = reply.message
             if task.database_id == RETAIL_DATABASE:
-                statement = use_retail_date_index(reply.sql)
+                bound = bind_retail_customer_count(task.question, reply.sql)
+                statement = use_retail_date_index(bound)
+                if bound != reply.sql:
+                    await emit("SQL_REWRITTEN", {
+                        "rule": "retail_customer_count", "original_sql": reply.sql, "sql": statement,
+                    })
                 if statement != reply.sql:
                     call = tool_message["tool_calls"][0]
                     tool_message = {**tool_message, "tool_calls": [{**call, "function": {
