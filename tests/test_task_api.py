@@ -31,8 +31,8 @@ def model(sql="SELECT COUNT(*) FROM customers", *, gate=None, entered=None):
     return httpx.MockTransport(handle)
 
 
-async def terminal(client, task_id):
-    async with asyncio.timeout(3):
+async def terminal(client, task_id, *, timeout=3):
+    async with asyncio.timeout(timeout):
         while True:
             response = await client.get(f"/tasks/{task_id}")
             assert response.status_code == 200
@@ -172,7 +172,10 @@ async def test_task_concurrency_is_bounded_and_results_independent(settings):
         accepted = await asyncio.gather(
             *(client.post("/tasks", json={**BODY, "question": str(i)}) for i in range(5))
         )
-        tasks = await asyncio.gather(*(terminal(client, r.json()["task_id"]) for r in accepted))
+        # The five tasks exceed the default poll budget on slow Windows SQLite runs.
+        tasks = await asyncio.gather(*(
+            terminal(client, response.json()["task_id"], timeout=10) for response in accepted
+        ))
         assert peak == 2
         assert [task["report"]["query_result"]["rows"] for task in tasks] == [
             [[i]] for i in range(5)

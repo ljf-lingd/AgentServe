@@ -15,6 +15,7 @@ from agentserve.agents.order_sql import compile_order_sql
 from agentserve.agents.retail_sql import (
     RETAIL_DATABASE,
     bind_retail_customer_count,
+    bind_retail_month_country,
     use_retail_date_index,
 )
 from agentserve.agents.sql_policy import intent_violations
@@ -44,6 +45,7 @@ class SQLAgent:
         emit,
         journal=None,
         memory_text=None,
+        last_query: str | None = None,
         workbench_context: tuple[str, dict[str, str]] | None = None,
     ) -> None:
         database = self.settings.databases[task.database_id]
@@ -223,6 +225,15 @@ class SQLAgent:
                     await emit("SQL_REWRITTEN", {
                         "rule": "retail_customer_count", "original_sql": reply.sql, "sql": statement,
                     })
+                if last_query:
+                    grounded = bind_retail_month_country(task.question, last_query, statement)
+                    if grounded != statement:
+                        statement = grounded
+                        await emit("SQL_REWRITTEN", {
+                            "rule": "retail_month_followup_country",
+                            "original_sql": reply.sql,
+                            "sql": statement,
+                        })
                 if statement != reply.sql:
                     call = tool_message["tool_calls"][0]
                     tool_message = {**tool_message, "tool_calls": [{**call, "function": {

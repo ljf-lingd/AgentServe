@@ -1,6 +1,6 @@
 # AgentServe
 
-AgentServe 围绕一个可运行的 SQL Agent，研究**多轮分析如何记住正确的条件、业务问答如何引用正确的规则、模型推理如何降低任务总耗时**。三个问题分别做了基线对照，选出的方案接入同一套 Task API 和工作台。
+AgentServe 是面向已登记数据集的只读经营分析助手。用户可以在同一会话里追问订单和零售数据、调整查询条件，并查看执行的 SQL、结果表和引用的业务规则。项目围绕**多轮条件继承、业务证据检索和端到端推理耗时**做基线对照，将验证过的方案接入同一套 Task API 和工作台。
 
 AgentServe is a research-oriented SQL agent for studying session memory, evidence-grounded retrieval, and end-to-end latency with speculative decoding.
 
@@ -9,6 +9,32 @@ AgentServe is a research-oriented SQL agent for studying session memory, evidenc
 ## 当前版本 · V8
 
 工作台新增跨请求 Suffix 默认配置，并提供可切换的 Suffix + AgSpec 反馈和 Session-SAM 基线。在同一张 RTX 4090、同一 Qwen2.5-7B-Instruct 的 UCI 四并发对照中，原生跨请求 Suffix 相比 Session-SAM 的任务 JCT P95 低 **39.3%–39.6%**，正确任务吞吐高 **34.4%–35.8%**。四组各轮正确数均为 71/72。 [V8 启动](docs/v8-release.md) · [配对评测与复现](docs/v8-suffix-evaluation.md)
+
+应用侧实现了任务调度、会话记忆、证据检索、只读 SQL 和步骤恢复。推理集成使用 vLLM、Qwen2.5-7B-Instruct 和 ArcticInference 的原生 Suffix，项目实现了 Session-SAM 基线及可选的请求内接受反馈。
+
+部署使用单应用进程。跨请求 Suffix 缓存在同一推理进程内共享，应只用于允许共享缓存的请求范围。BIRD Mini-Dev SQLite 的历史结果为 36/500，产品适用范围是配置过库表和业务口径的受控分析。 [评测条件](docs/evaluation.md)
+
+## V8 架构
+
+```mermaid
+flowchart TD
+    UI["工作台 / 会话 CLI"] --> API["FastAPI Task API"]
+    API --> Ledger[("SQLite 持久化账本<br/>任务 / 步骤 / 尝试 / 会话")]
+    Ledger --> Dispatch["Dispatcher<br/>领取、取消、恢复"]
+    Dispatch --> Service["TaskService"]
+    Service --> Memory["Memory<br/>冻结会话上下文"]
+    Memory --> Agent["SQL Agent"]
+    Service --> Agent
+    Service --> RAG["RAG<br/>检索业务规则和验证引用"]
+    Service --> Report["版本化指标 / 简报"]
+    Agent --> Model["OpenAI 兼容客户端"]
+    RAG --> Model
+    Model --> VLLM["vLLM + Qwen<br/>Suffix / Session-SAM"]
+    Agent --> SQL["只读 SQL Executor"]
+    Report --> SQL
+    SQL --> Data[("已登记的业务 SQLite")]
+    Service -->|提交步骤、结果与记忆| Ledger
+```
 
 ## 三条研究主线
 
@@ -79,7 +105,7 @@ python -m agentserve --config configs/app.demo.json --database demo_orders --que
 
 V7.1 在 RTX 4090 上使用 Qwen2.5-7B-Instruct，UCI 零售固定正式集 **47/48 轮正确**、**8/8 段多轮会话全对**、**零 SQL 超时**。唯一错误是把去重客户数查成了去重发票数。13 个历史超时任务经改写后，在原 1 秒 SQL 预算下全部符合金标。
 
-同系列实验中，UCI 全量数据为 1,067,371 条交易明细。规模对照为 215/216，BIRD Mini-Dev SQLite 的严格结果集正确率为 36/500。模型、数据、查询口径和并发条件会影响这些结果。 [实验条件与复现入口](docs/evaluation.md)
+同系列实验中，UCI 全量数据为 1,067,371 条交易明细，规模对照为 215/216。V8 收尾覆盖了另一条多轮错答，修复后按原始明细独立复算了销售额。 [实验条件与复现入口](docs/evaluation.md) · [多轮条件回归](docs/v8-release.md#多轮条件回归)
 
 ## 目录
 

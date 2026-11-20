@@ -28,6 +28,36 @@ _INVOICE_COUNT = re.compile(
     r"\s+FROM\s+retail_transactions\s+WHERE\b",
     re.IGNORECASE,
 )
+_MONTH_FOLLOWUP = re.compile(r"\s*再看\s*([0-9]{4})\s*年\s*(0?[1-9]|1[0-2])\s*月\s*呢\s*[？?]\s*")
+_MONTH_SALES = re.compile(
+    r"\s*SELECT\s+ROUND\s*\(\s*SUM\s*\(\s*sales_gbp\s*\)\s*,\s*6\s*\)"
+    r"(?:\s+AS\s+sales_gbp)?\s+FROM\s+retail_transactions\s+WHERE\s+"
+    r"country\s*=\s*'(?P<country>[a-z][a-z .-]*)'\s+AND\s+"
+    r"(?P<paren>\()?\s*invoice_date\s*>=\s*'(?P<start>[0-9]{4}-[0-9]{2}-01)'\s+AND\s+"
+    r"invoice_date\s*<\s*'(?P<end>[0-9]{4}-[0-9]{2}-01)'\s*(?(paren)\))\s*;?\s*",
+    re.IGNORECASE,
+)
+
+
+def bind_retail_month_country(question: str, previous_sql: str, sql: str) -> str:
+    """Keep the latest country for a month-only follow-up over the monthly sales view."""
+    month = _MONTH_FOLLOWUP.fullmatch(question)
+    if month is None:
+        return sql
+    previous = _MONTH_SALES.fullmatch(previous_sql)
+    current = _MONTH_SALES.fullmatch(sql)
+    if previous is None or current is None:
+        return sql
+    year, number = map(int, month.groups())
+    try:
+        start = date(year, number, 1)
+        end = date(year + (number == 12), number % 12 + 1, 1)
+    except ValueError:
+        return sql
+    if (current["start"], current["end"]) != (start.isoformat(), end.isoformat()):
+        return sql
+    left, right = current.span("country")
+    return sql[:left] + previous["country"] + sql[right:]
 
 
 def bind_retail_customer_count(question: str, sql: str) -> str:
