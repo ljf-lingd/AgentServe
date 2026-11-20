@@ -36,3 +36,15 @@ python -m uvicorn agentserve.api.app:create_app --factory --host 127.0.0.1 --por
 ## 验收
 
 三个模型配置在 RTX 4090 上通过 24/24 次四并发协议检查，涵盖文本、JSON Schema、命名工具和自动工具。同一批协议检查中，原生版和反馈版的 8 对输入及输出 token 一致。默认配置还通过实际工作台任务接口完成 UCI 去重客户查询，结果 29 与独立统计一致。性能对照采用原生 Suffix。 [评测分母、结果和复现命令](v8-suffix-evaluation.md) · [任务恢复与业务回归](v5-reliability.md)
+
+## 多轮条件回归
+
+真实 C4 轨迹中，用户先查比利时 2010 年 1 月销售额，再切到荷兰，最后问「再看 2011 年 11 月呢？」。第三轮的模型输入包含荷兰的最新成功 SQL，四组两轮仍全部生成了比利时条件。6,315.76 英镑是比利时的正确计算，分歧发生在模型生成的国家谓词。UCI 使用近期窗口，订单的版本化状态编译器处理订单数据。
+
+对能明确识别的 UCI 月份追问，当最近成功查询和候选 SQL 均符合受支持的单国家月销售额查询形状，且候选日期与问题一致时，执行前沿用最近查询的国家。显式指定国家或超出匹配范围的请求走常规路径。任务事件记录模型原 SQL 与实际执行 SQL，查询继续经过只读执行器。 [零售绑定](../src/agentserve/agents/retail_sql.py) · [Task API 回归](../tests/test_retail_workload.py)
+
+两轮四组归档的八条失败轨迹使用同一对来源 SQL 和错误 SQL。在 1,067,371 条全量 UCI 明细上只读回放，修复后为 25,874.01 英镑，与按原始交易明细独立计算一致。Task API 回归覆盖原错误和显式切回比利时。本次使用归档 SQL 和测试替身验证，历史 C4 真机分数为各组各轮 71/72。 [原始真机对照](v8-suffix-evaluation.md#四并发真机结果)
+
+```bash
+python -m pytest -q tests/test_retail_workload.py -k month_followup
+```

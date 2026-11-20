@@ -23,6 +23,8 @@ _SESSION_COMPATIBLE_SQL_AGENT = {
         "31dc7f292c934a2ebb3ceeb8f7fee8a0a4d8dd02c8c12da114c7f8d6a1d4f0af",
     "9cc8f8928572c4405385f4d24e78d21ed7fec54dae90a29144290d2455c8472d":
         "31dc7f292c934a2ebb3ceeb8f7fee8a0a4d8dd02c8c12da114c7f8d6a1d4f0af",
+    "6a4fc4bae67338a60e9e41f9e6b07e780e24d13e8f0d230bc71cc055131c83b7":
+        "31dc7f292c934a2ebb3ceeb8f7fee8a0a4d8dd02c8c12da114c7f8d6a1d4f0af",
 }
 
 

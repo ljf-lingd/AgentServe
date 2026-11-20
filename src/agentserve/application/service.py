@@ -176,6 +176,7 @@ class TaskService:
                         and not ((pack.plan or {}).get("state") or {}).get("workbench_answer")):
                         workbench_context = await self.workbench.model_context(deadline, journal)
                     memory_text = pack.text if pack else None
+                    last_query = None
                     if pack and (pack.plan or {}).get("route") == "recent_window":
                         recent_turns = json.loads(memory_text)["recent_turns"]
                         recent = recent_turns[-1] if recent_turns else None
@@ -208,6 +209,7 @@ class TaskService:
                     await self.agent.run(
                         task, report, deadline=deadline, emit=emit, journal=journal,
                         memory_text=memory_text,
+                        last_query=last_query,
                         workbench_context=workbench_context,
                     )
                 if self.workbench and task.database_id == ORDER_DATABASE and report.answer_source != "workbench":

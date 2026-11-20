@@ -189,3 +189,66 @@ async def test_retail_task_journals_the_executed_statement_in_a_v7_session(setti
         steps = (await client.get(f"/tasks/{task_id}/steps")).raise_for_status().json()
         assert [step["input"]["sql"] for step in steps["steps"] if step["kind"] == "sql"] == [executed]
 
+
+async def test_retail_month_followup_keeps_the_last_country(settings):
+    database = settings.databases.pop("demo_orders")
+    settings.databases[RETAIL_DATABASE] = database
+    settings.answer_style = "evidence_direct_v5"
+    settings.memory = MemorySettings(policy="state_on_demand", resources_identity="test-pinned")
+    schema = SCHEMA["SCHEMA"] + SCHEMA["VIEW"]
+    database.schema_path.write_text(schema, encoding="utf-8")
+    with sqlite3.connect(database.path) as conn:
+        conn.executescript(schema)
+        conn.executemany(
+            """INSERT INTO retail_lines(source_sheet,source_row,invoice,stock_code,
+               quantity,invoice_date,unit_price_millionths,customer_id,country)
+               VALUES('test',?,'1','sku',?, ?,1000000,'A',?)""",
+            [(1, 2, "2011-10-05", "Belgium"), (2, 3, "2011-10-05", "Netherlands"),
+             (3, 5, "2011-11-05", "Belgium"), (4, 7, "2011-11-05", "Netherlands")],
+        )
+
+    def sales(country, start, end):
+        return (f"SELECT ROUND(SUM(sales_gbp), 6) AS sales_gbp FROM retail_transactions "
+                f"WHERE country = '{country}' AND (invoice_date >= '{start}' AND invoice_date < '{end}')")
+
+    belgium = sales("Belgium", "2011-10-01", "2011-11-01")
+    netherlands = sales("Netherlands", "2011-10-01", "2011-11-01")
+    stale = sales("Belgium", "2011-11-01", "2011-12-01")
+    corrected = sales("Netherlands", "2011-11-01", "2011-12-01")
+    replies = iter([belgium, netherlands, stale, stale])
+
+    def model(request):
+        messages = json.loads(request.content)["messages"]
+        sql = next(replies)
+        if sql == stale and messages[-1]["content"] == "再看2011 年 11 月呢？":
+            assert any("Latest successful query: " + netherlands in msg["content"] for msg in messages)
+        return httpx.Response(200, json=completion(sql=sql))
+
+    app = create_app(settings, model_transport=httpx.MockTransport(model),
+                     resource_transport=httpx.MockTransport(resources))
+    async with app.router.lifespan_context(app), httpx.AsyncClient(
+        transport=httpx.ASGITransport(app), base_url="http://test",
+    ) as client:
+        session = await client.post("/sessions", json={"database_id": RETAIL_DATABASE})
+        session_id = session.raise_for_status().json()["session_id"]
+        turns = [
+            ("比利时 2011 年 10 月的销售额是多少？", belgium, 2),
+            ("那荷兰呢？", netherlands, 3),
+            ("再看2011 年 11 月呢？", corrected, 7),
+            ("再看比利时2011 年 11 月呢？", stale, 5),
+        ]
+        for question, statement, amount in turns:
+            submitted = await client.post("/tasks", json={
+                "database_id": RETAIL_DATABASE, "session_id": session_id, "question": question,
+            })
+            task_id = submitted.raise_for_status().json()["task_id"]
+            task = await terminal(client, task_id)
+            assert task["status"] == "COMPLETED", task["error"]
+            assert task["report"]["sql"] == statement
+            assert task["report"]["query_result"]["rows"] == [[amount]]
+            if statement == corrected:
+                events = (await client.get(f"/tasks/{task_id}/events")).raise_for_status().json()["events"]
+                assert [event["payload"] for event in events if event["type"] == "SQL_REWRITTEN"] == [
+                    {"rule": "retail_month_followup_country", "original_sql": stale, "sql": corrected},
+                ]
+

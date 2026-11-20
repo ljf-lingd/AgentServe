@@ -1,5 +1,11 @@
 # Changelog
 
+## V8
+
+- Integrated native cross-request Suffix as the workbench default, with optional acceptance feedback and the Session-SAM baseline.
+- Fixed country inheritance for supported retail month-only sales follow-ups and added a Task API regression.
+- Added the workbench architecture and linked the archived serving experiments and query replay.
+
 ## V7.1
 
 - Added indexed date-range execution for validated UCI retail date filters.
